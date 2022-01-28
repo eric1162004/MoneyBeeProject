@@ -13,6 +13,9 @@
 		45EA7F4627A45D40009C0F58 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45EA7F4527A45D40009C0F58 /* Preview Assets.xcassets */; };
 		45EA7F7B27A49112009C0F58 /* BubblegumSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45EA7F7A27A49112009C0F58 /* BubblegumSans-Regular.ttf */; };
 		45EA7F7E27A49396009C0F58 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA7F7D27A49396009C0F58 /* Constants.swift */; };
+		45EA7F8027A49BE3009C0F58 /* AppText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA7F7F27A49BE3009C0F58 /* AppText.swift */; };
+		45EA7F8227A4A399009C0F58 /* StrokeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA7F8127A4A399009C0F58 /* StrokeText.swift */; };
+		45EA7F8527A4A81B009C0F58 /* RootScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA7F8427A4A81B009C0F58 /* RootScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		45EA7F7A27A49112009C0F58 /* BubblegumSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BubblegumSans-Regular.ttf"; sourceTree = "<group>"; };
 		45EA7F7C27A492FB009C0F58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		45EA7F7D27A49396009C0F58 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		45EA7F7F27A49BE3009C0F58 /* AppText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppText.swift; sourceTree = "<group>"; };
+		45EA7F8127A4A399009C0F58 /* StrokeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeText.swift; sourceTree = "<group>"; };
+		45EA7F8427A4A81B009C0F58 /* RootScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,8 @@
 		45EA7F7527A489D1009C0F58 /* Reuseables */ = {
 			isa = PBXGroup;
 			children = (
+				45EA7F7F27A49BE3009C0F58 /* AppText.swift */,
+				45EA7F8127A4A399009C0F58 /* StrokeText.swift */,
 			);
 			path = Reuseables;
 			sourceTree = "<group>";
@@ -95,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				45EA7F4027A45D3E009C0F58 /* SplashScreen.swift */,
+				45EA7F8427A4A81B009C0F58 /* RootScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -178,9 +187,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45EA7F8227A4A399009C0F58 /* StrokeText.swift in Sources */,
 				45EA7F4127A45D3E009C0F58 /* SplashScreen.swift in Sources */,
 				45EA7F3F27A45D3E009C0F58 /* MoneyBeeApp.swift in Sources */,
+				45EA7F8027A49BE3009C0F58 /* AppText.swift in Sources */,
 				45EA7F7E27A49396009C0F58 /* Constants.swift in Sources */,
+				45EA7F8527A4A81B009C0F58 /* RootScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

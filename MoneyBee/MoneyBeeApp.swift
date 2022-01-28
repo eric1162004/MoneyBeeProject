@@ -11,7 +11,7 @@ import SwiftUI
 struct MoneyBeeApp: App {
     var body: some Scene {
         WindowGroup {
-            SplashScreen()
+            RootScreen()
         }
     }
 }

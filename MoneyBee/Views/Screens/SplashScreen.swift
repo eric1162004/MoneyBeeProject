@@ -8,10 +8,36 @@
 import SwiftUI
 
 struct SplashScreen: View {
+    
     var body: some View {
-        Text("Hello, world!")
-            .font(.custom(Fonts.bubbleGum, size: 36))
-            .padding()
+
+        VStack{
+            Spacer()
+            
+            // title
+            StrokeText(text: "Money Bee", width: 0.5, color: .black)
+                .foregroundColor(Color.primaryColor)
+                .font(.system(size: FontSize.xlarge, weight: .bold))
+                .padding(.bottom, Dm.large)
+            
+            // App logo
+            Image("honeyBeeLogo")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 150, alignment: .center)
+            
+            // Subtitle
+            AppText(text: "Money Tracker",
+                    fontSize: FontSize.medium)
+            AppText(text: "for kids",
+                    fontSize: FontSize.small)
+            
+            Spacer()
+            
+        }.ignoresSafeArea()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.backgroundColor)
+        
     }
 }
 
