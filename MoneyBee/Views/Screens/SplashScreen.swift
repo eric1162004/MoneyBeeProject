@@ -7,15 +7,16 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct SplashScreen: View {
     var body: some View {
         Text("Hello, world!")
+            .font(.custom(Fonts.bubbleGum, size: 36))
             .padding()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        SplashScreen()
     }
 }
