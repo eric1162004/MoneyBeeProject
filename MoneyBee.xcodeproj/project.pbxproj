@@ -10,6 +10,8 @@
 		456B7AD027A4D2B20048E05F /* AppSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456B7ACF27A4D2B20048E05F /* AppSecureTextField.swift */; };
 		456B7AD227A4D7790048E05F /* AppCapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456B7AD127A4D7790048E05F /* AppCapsuleButton.swift */; };
 		456B7AD427A4EA5D0048E05F /* AppHyperLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456B7AD327A4EA5D0048E05F /* AppHyperLink.swift */; };
+		456B7AD627A50CD40048E05F /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456B7AD527A50CD40048E05F /* HomeScreen.swift */; };
+		456B7AD827A51BA50048E05F /* AppRoundedCornerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456B7AD727A51BA50048E05F /* AppRoundedCornerButton.swift */; };
 		45EA7F3F27A45D3E009C0F58 /* MoneyBeeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA7F3E27A45D3E009C0F58 /* MoneyBeeApp.swift */; };
 		45EA7F4127A45D3E009C0F58 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA7F4027A45D3E009C0F58 /* SplashScreen.swift */; };
 		45EA7F4327A45D40009C0F58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45EA7F4227A45D40009C0F58 /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 		456B7ACF27A4D2B20048E05F /* AppSecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecureTextField.swift; sourceTree = "<group>"; };
 		456B7AD127A4D7790048E05F /* AppCapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCapsuleButton.swift; sourceTree = "<group>"; };
 		456B7AD327A4EA5D0048E05F /* AppHyperLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHyperLink.swift; sourceTree = "<group>"; };
+		456B7AD527A50CD40048E05F /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		456B7AD727A51BA50048E05F /* AppRoundedCornerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoundedCornerButton.swift; sourceTree = "<group>"; };
 		45EA7F3B27A45D3E009C0F58 /* MoneyBee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyBee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45EA7F3E27A45D3E009C0F58 /* MoneyBeeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyBeeApp.swift; sourceTree = "<group>"; };
 		45EA7F4027A45D3E009C0F58 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 				456B7ACF27A4D2B20048E05F /* AppSecureTextField.swift */,
 				456B7AD127A4D7790048E05F /* AppCapsuleButton.swift */,
 				456B7AD327A4EA5D0048E05F /* AppHyperLink.swift */,
+				456B7AD727A51BA50048E05F /* AppRoundedCornerButton.swift */,
 			);
 			path = Reuseables;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 				45EA7F8427A4A81B009C0F58 /* RootScreen.swift */,
 				45EA7F8627A4AD50009C0F58 /* SignInScreen.swift */,
 				45EA7F8827A4AD63009C0F58 /* SignUpScreen.swift */,
+				456B7AD527A50CD40048E05F /* HomeScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -209,8 +215,10 @@
 				45EA7F8227A4A399009C0F58 /* StrokeText.swift in Sources */,
 				45EA7F4127A45D3E009C0F58 /* SplashScreen.swift in Sources */,
 				456B7AD227A4D7790048E05F /* AppCapsuleButton.swift in Sources */,
+				456B7AD827A51BA50048E05F /* AppRoundedCornerButton.swift in Sources */,
 				45EA7F8B27A4B982009C0F58 /* AppTextField.swift in Sources */,
 				45EA7F3F27A45D3E009C0F58 /* MoneyBeeApp.swift in Sources */,
+				456B7AD627A50CD40048E05F /* HomeScreen.swift in Sources */,
 				45EA7F8927A4AD63009C0F58 /* SignUpScreen.swift in Sources */,
 				45EA7F8727A4AD50009C0F58 /* SignInScreen.swift in Sources */,
 				456B7AD027A4D2B20048E05F /* AppSecureTextField.swift in Sources */,
