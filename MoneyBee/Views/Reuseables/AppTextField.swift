@@ -13,6 +13,7 @@ struct AppTextField: View {
     var placeholder: String = ""
     var leadingIcon: String = ""
     var trailingIcon: String = ""
+    var trailingIconHandler: (() -> ())?
     
     var body: some View {
         HStack{
@@ -31,7 +32,15 @@ struct AppTextField: View {
             
             // trailing icon
             if(!leadingIcon.isEmpty){
-                Image(systemName: trailingIcon)
+                if let handler = trailingIconHandler {
+                    Button {
+                        handler()
+                    } label: {
+                        Image(systemName: trailingIcon)
+                    }
+                } else {
+                    Image(systemName: trailingIcon)
+                }
             }
 
         }

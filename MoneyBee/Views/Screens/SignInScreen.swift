@@ -12,11 +12,13 @@ struct SignInScreen: View {
     @State var email: String = ""
     @State var password: String = ""
     
+    @State var errorMsg : String?
+    
     var body: some View {
         
         VStack{
             // top banner
-            TopBanner()
+            SignInAndSignUpTopBanner()
                 .padding(.top, Dm.xlarge)
             
             // title
@@ -29,14 +31,30 @@ struct SignInScreen: View {
                 
                 AppSecureField(password: $password)
                 
+                // error message
+                if let errorMsg = errorMsg {
+                    Text(errorMsg)
+                        .bold()
+                        .foregroundColor(.appRed)
+                }
+                
                 // sign in button
                 AppCapsuleButton(label: "Sign In", backgroundColor: Color.appGreen){
-                    print("pressed")
+                    
+                    errorMsg = nil
+                    
+                    guard !email.isEmpty, !password.isEmpty else{
+                        errorMsg = "Fields cannot be empty."
+                        return
+                    }
+                    
+                    // TODO: Sign in user
+                    print("\(email) \(password)")
                 }
                 
                 // go to sign Up screen
-                AppHyperLink(label: "Don't have an account?"){
-                    print("pressed")
+                NavigationLink(destination: SignUpScreen()){
+                    AppHyperLink(label: "Don't have an account?")
                 }
                 
             }.padding(.horizontal, Dm.medium)
@@ -49,7 +67,7 @@ struct SignInScreen: View {
 }
 
 
-private struct TopBanner: View {
+struct SignInAndSignUpTopBanner: View {
     var body: some View {
         ZStack(alignment: .center){
             Image("honeyBeeLogo2")

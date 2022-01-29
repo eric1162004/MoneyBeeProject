@@ -13,7 +13,7 @@ struct RootScreen: View {
         NavigationView{
 //            SplashScreen()
             SignInScreen()
-            
+                
         }
     }
 }

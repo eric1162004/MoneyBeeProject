@@ -11,12 +11,19 @@ struct AppHyperLink: View {
     
     var label: String
     var color: Color = .black
-    var handlePress: () -> Void
+    var handlePress: (() -> ())?
     
     var body: some View {
-        Button {
-            handlePress()
-        } label: {
+        if let handler = handlePress {
+            Button {
+                handler()
+            } label: {
+                Text(label)
+                    .font(.custom(Fonts.bubbleGum, size: FontSize.tiny))
+                    .underline()
+                    .foregroundColor(color)
+            }
+        } else {
             Text(label)
                 .font(.custom(Fonts.bubbleGum, size: FontSize.tiny))
                 .underline()
@@ -27,6 +34,6 @@ struct AppHyperLink: View {
 
 struct AppHyperLink_Previews: PreviewProvider {
     static var previews: some View {
-        AppHyperLink(label: "Click me"){}
+        AppHyperLink(label: "Click me")
     }
 }
