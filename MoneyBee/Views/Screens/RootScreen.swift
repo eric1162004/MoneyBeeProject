@@ -11,7 +11,9 @@ import SwiftUI
 struct RootScreen: View {
     var body: some View {
         NavigationView{
-            SplashScreen()
+//            SplashScreen()
+            SignInScreen()
+            
         }
     }
 }
