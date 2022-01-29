@@ -13,7 +13,8 @@ struct RootScreen: View {
         NavigationView{
 //            SplashScreen()
 //            SignInScreen()
-            HomeScreen()
+//            HomeScreen()
+            EarningScreen()
                 
         }
     }

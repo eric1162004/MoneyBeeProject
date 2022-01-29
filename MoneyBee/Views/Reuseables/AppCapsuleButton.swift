@@ -11,6 +11,7 @@ struct AppCapsuleButton: View {
     
     let label: String
     var backgroundColor: Color = Color.primaryColor
+    var fontSize: CGFloat = FontSize.medium
     let handlePressed: () -> Void
     
     var body: some View {
@@ -18,7 +19,7 @@ struct AppCapsuleButton: View {
             handlePressed()
         }){
             Text(label)
-                .font(.custom(Fonts.bubbleGum, size: FontSize.medium))
+                .font(.custom(Fonts.bubbleGum, size: fontSize))
                 .frame(maxWidth: .infinity, minHeight: Dm.medium, alignment: .center)
                 .padding()
                 .background(backgroundColor)

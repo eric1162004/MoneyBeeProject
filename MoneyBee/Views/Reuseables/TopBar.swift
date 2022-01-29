@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct TopBar: View {
+    
     var title: String
     var leadingIcon: String?
     var trailingIcon: String?
-    var BackgroundColor: Color = Color.primaryColor
+    var backgroundColor: Color = Color.primaryColor
     var leadingIconHandler: (() -> ())?
     var trailingIconHandler: (() -> ())?
     
@@ -45,7 +46,7 @@ struct TopBar: View {
         }
         .frame(maxWidth: .infinity, minHeight: 80, alignment: .bottom)
         .padding(.vertical, Dm.medium)
-        .background(BackgroundColor)
+        .background(backgroundColor)
     }
 }
 

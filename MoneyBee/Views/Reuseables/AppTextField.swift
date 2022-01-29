@@ -31,15 +31,17 @@ struct AppTextField: View {
                 .textInputAutocapitalization(.never)
             
             // trailing icon
-            if(!leadingIcon.isEmpty){
+            if(!trailingIcon.isEmpty){
                 if let handler = trailingIconHandler {
                     Button {
                         handler()
                     } label: {
                         Image(systemName: trailingIcon)
+                            .foregroundColor(Color.secondary)
                     }
                 } else {
                     Image(systemName: trailingIcon)
+                        .foregroundColor(Color.secondary)
                 }
             }
 
@@ -57,7 +59,8 @@ struct AppTextField_Previews: PreviewProvider {
         VStack{
             AppTextField(
                 text: .constant("email"),
-                leadingIcon: "person"
+                leadingIcon: "person",
+                trailingIcon: "person"
             )
         }
     }
