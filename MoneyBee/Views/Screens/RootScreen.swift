@@ -12,7 +12,8 @@ struct RootScreen: View {
     var body: some View {
         NavigationView{
 //            SplashScreen()
-            SignInScreen()
+//            SignInScreen()
+            HomeScreen()
                 
         }
     }
