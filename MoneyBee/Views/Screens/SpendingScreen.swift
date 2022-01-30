@@ -55,9 +55,13 @@ struct SpendingChartView: View {
             
             AppText(text: "Dec 2020", fontSize: FontSize.medium)
             
-            SpendingTable()
+            // Spending Pie Chart
+            PieChartView(values: [200.0, 180.0, 180.0, 100.0], colors: [Color.appGreen, Color.appBlue, Color.primaryColor, Color.appRed], backgroundColor: Color.clear)
             
             Spacer()
+            
+            SpendingTable()
+                .frame(maxHeight: 280)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(Dm.medium)
@@ -69,29 +73,33 @@ struct SpendingTable: View {
     
     var body: some View {
         
-        VStack{
-            
-            ForEach(1...4, id:\.self) { _ in
-                HStack{
-                    Circle()
-                        .fill(Color.appGreen)
-                        .frame(width: 50)
+        GeometryReader{ geometry in
+            VStack{
+                
+                ForEach(1...4, id:\.self) { _ in
+                    HStack{
+                        Circle()
+                            .fill(Color.appGreen)
+                            .frame(width: geometry.size.width * 0.1)
+                        
+                 
+                        
+                        AppText(text: "Food", fontSize: FontSize.small)
+                            .frame(width: geometry.size.width * 0.3)
+                        
+                        
+                        AppText(text: "$100.00", fontSize: FontSize.small)
+                            .frame(width: geometry.size.width * 0.4)
+                    }
                     
-                    Spacer()
-                    
-                    AppText(text: "Food", fontSize: FontSize.small)
-                    
-                    Spacer()
-                    
-                    AppText(text: "$200.00", fontSize: FontSize.small)
                 }
+                
             }
-            
+            .padding(Dm.medium)
+            .background(.white)
+            .opacity(0.95)
+            .clipShape(RoundedRectangle(cornerRadius: CornerRadius.large))
         }
-        .padding(Dm.medium)
-        .background()
-        .opacity(0.95)
-        .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
         
     }
     
@@ -100,5 +108,6 @@ struct SpendingTable: View {
 struct SpendingScreen_Previews: PreviewProvider {
     static var previews: some View {
         SpendingScreen()
+            
     }
 }

@@ -25,6 +25,7 @@
 		457CD9B727A5EA91007A9EF0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9B627A5EA91007A9EF0 /* Date.swift */; };
 		457CD9B927A60F84007A9EF0 /* AppSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9B827A60F84007A9EF0 /* AppSideMenu.swift */; };
 		457CD9BB27A6168F007A9EF0 /* AppCircularProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9BA27A6168F007A9EF0 /* AppCircularProfileImage.swift */; };
+		457CD9BD27A6387F007A9EF0 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9BC27A6387F007A9EF0 /* PieChartView.swift */; };
 		45EA7F3F27A45D3E009C0F58 /* MoneyBeeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA7F3E27A45D3E009C0F58 /* MoneyBeeApp.swift */; };
 		45EA7F4127A45D3E009C0F58 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA7F4027A45D3E009C0F58 /* SplashScreen.swift */; };
 		45EA7F4327A45D40009C0F58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45EA7F4227A45D40009C0F58 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		457CD9B627A5EA91007A9EF0 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		457CD9B827A60F84007A9EF0 /* AppSideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSideMenu.swift; sourceTree = "<group>"; };
 		457CD9BA27A6168F007A9EF0 /* AppCircularProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCircularProfileImage.swift; sourceTree = "<group>"; };
+		457CD9BC27A6387F007A9EF0 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		45EA7F3B27A45D3E009C0F58 /* MoneyBee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyBee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45EA7F3E27A45D3E009C0F58 /* MoneyBeeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyBeeApp.swift; sourceTree = "<group>"; };
 		45EA7F4027A45D3E009C0F58 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
@@ -91,6 +93,14 @@
 				457CD9B627A5EA91007A9EF0 /* Date.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		457CD9BE27A638F5007A9EF0 /* PieChartView */ = {
+			isa = PBXGroup;
+			children = (
+				457CD9BC27A6387F007A9EF0 /* PieChartView.swift */,
+			);
+			path = PieChartView;
 			sourceTree = "<group>";
 		};
 		45EA7F3227A45D3E009C0F58 = {
@@ -144,6 +154,7 @@
 		45EA7F7527A489D1009C0F58 /* Reuseables */ = {
 			isa = PBXGroup;
 			children = (
+				457CD9BE27A638F5007A9EF0 /* PieChartView */,
 				45EA7F7F27A49BE3009C0F58 /* AppText.swift */,
 				45EA7F8127A4A399009C0F58 /* StrokeText.swift */,
 				45EA7F8A27A4B982009C0F58 /* AppTextField.swift */,
@@ -258,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				457CD9BD27A6387F007A9EF0 /* PieChartView.swift in Sources */,
 				456B7AD427A4EA5D0048E05F /* AppHyperLink.swift in Sources */,
 				45EA7F8227A4A399009C0F58 /* StrokeText.swift in Sources */,
 				45EA7F4127A45D3E009C0F58 /* SplashScreen.swift in Sources */,
