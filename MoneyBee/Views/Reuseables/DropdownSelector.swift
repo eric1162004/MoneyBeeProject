@@ -54,7 +54,6 @@ struct Dropdown: View {
             }
         }
         .frame(minHeight: CGFloat(options.count) * 30, maxHeight: 250)
-        
         .padding(Dm.small)
         .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(UIColor.separator), lineWidth: 4))
         .background(.white)
@@ -100,7 +99,7 @@ struct DropdownSelector: View {
         .overlay(
             VStack {
                 if self.shouldShowDropdown {
-                    Spacer(minLength: buttonHeight + 30)
+                    Spacer(minLength: buttonHeight + 20)
                     Dropdown(options: self.options, onOptionSelected: { option in
                         shouldShowDropdown = false
                         selectedOption = option

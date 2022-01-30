@@ -1,5 +1,5 @@
 //
-//  AppEarningsOrSpendingCard.swift
+//  AppWishItemCard.swift
 //  MoneyBee
 //
 //  Created by Eric Cheung on 2022-01-29.
@@ -7,30 +7,34 @@
 
 import SwiftUI
 
-struct AppEarningsOrSpendingCard: View {
+struct AppWishItemCard: View {
     
     @State var title:String
-    @State var subtitle: String
+    @State var imageName: String
     @State var amount: Float
     @State var backgroundColor: Color = Color.primaryColor
+    @State var buyButtonHandler: (() -> ())?
     @State var swipeDeleteHandler: (() -> ())?
     
     var body: some View {
+        
         HStack{
-            VStack(alignment: .leading){
+            VStack{
+                AppRoundedImageView(imageName: imageName)
                 
-                // cardTitle
                 AppText(text: title, fontSize: FontSize.small, fontColor: .white)
-                
-                // cardSubtitle
-                AppText(text: subtitle, fontSize: FontSize.tiny, fontColor: .white)
             }
+            .frame(maxWidth: .infinity)
             
-            Spacer()
-            
-            // Money Amount
-            AppMoneyAmountView(amount: amount)
-            
+            VStack{
+                AppMoneyAmountView(amount: amount)
+                
+                AppRoundedCornerButton(label: "Buy!", backgroundColor: Color.appGreen) {
+                    
+                    buyButtonHandler?()
+                }
+            }
+            .frame(maxWidth: 150)
         }
         .frame(maxWidth: .infinity)
         .padding(.horizontal, Dm.small)
@@ -50,12 +54,11 @@ struct AppEarningsOrSpendingCard: View {
                 Label("Delete", systemImage: "trash.fill")
             }
         }
-
     }
 }
 
-struct AppEarningsOrSpendingCard_Previews: PreviewProvider {
+struct AppWishItemCard_Previews: PreviewProvider {
     static var previews: some View {
-        AppEarningsOrSpendingCard(title: "Making my own bed", subtitle: "Dec 16, 2021", amount: 2){}
+        AppWishItemCard(title: "Soft Panda", imageName: "honeyBeeLogo2", amount: 20)
     }
 }

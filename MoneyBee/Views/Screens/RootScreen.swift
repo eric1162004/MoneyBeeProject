@@ -15,7 +15,8 @@ struct RootScreen: View {
 //            SignInScreen()
 //            HomeScreen()
 //            EarningScreen()
-            SpendingScreen()
+//            SpendingScreen()
+            WishListScreen()
                 
         }
     }

@@ -29,10 +29,12 @@ struct AppDatePicker: View {
              displayedComponents: [.date]
         )
             .font(Font.custom(Fonts.bubbleGum, size: FontSize.small))
+            .accentColor(Color.primaryColor)
             .padding(Dm.small)
             .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(UIColor.separator), lineWidth: 4))
             .background(.white)
             .clipShape(RoundedRectangle(cornerRadius: 20))
+            
     }
 }
 

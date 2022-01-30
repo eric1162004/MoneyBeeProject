@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		456ABAF227A64BA500E66F8D /* SpendingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456ABAF127A64BA500E66F8D /* SpendingType.swift */; };
+		456ABAF427A651C200E66F8D /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456ABAF327A651C200E66F8D /* ViewExtension.swift */; };
+		456ABAF627A65C3E00E66F8D /* AppRoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456ABAF527A65C3E00E66F8D /* AppRoundedImageView.swift */; };
+		456ABAF827A65FE300E66F8D /* AppWishItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456ABAF727A65FE300E66F8D /* AppWishItemCard.swift */; };
+		456ABAFA27A6631F00E66F8D /* AppMoneyAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456ABAF927A6631F00E66F8D /* AppMoneyAmountView.swift */; };
 		456B7AD027A4D2B20048E05F /* AppSecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456B7ACF27A4D2B20048E05F /* AppSecureTextField.swift */; };
 		456B7AD227A4D7790048E05F /* AppCapsuleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456B7AD127A4D7790048E05F /* AppCapsuleButton.swift */; };
 		456B7AD427A4EA5D0048E05F /* AppHyperLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456B7AD327A4EA5D0048E05F /* AppHyperLink.swift */; };
@@ -41,6 +46,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		456ABAF127A64BA500E66F8D /* SpendingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingType.swift; sourceTree = "<group>"; };
+		456ABAF327A651C200E66F8D /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		456ABAF527A65C3E00E66F8D /* AppRoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoundedImageView.swift; sourceTree = "<group>"; };
+		456ABAF727A65FE300E66F8D /* AppWishItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWishItemCard.swift; sourceTree = "<group>"; };
+		456ABAF927A6631F00E66F8D /* AppMoneyAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMoneyAmountView.swift; sourceTree = "<group>"; };
 		456B7ACF27A4D2B20048E05F /* AppSecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecureTextField.swift; sourceTree = "<group>"; };
 		456B7AD127A4D7790048E05F /* AppCapsuleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCapsuleButton.swift; sourceTree = "<group>"; };
 		456B7AD327A4EA5D0048E05F /* AppHyperLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHyperLink.swift; sourceTree = "<group>"; };
@@ -91,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				457CD9B627A5EA91007A9EF0 /* Date.swift */,
+				456ABAF327A651C200E66F8D /* ViewExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -101,6 +112,14 @@
 				457CD9BC27A6387F007A9EF0 /* PieChartView.swift */,
 			);
 			path = PieChartView;
+			sourceTree = "<group>";
+		};
+		457CD9C327A64A58007A9EF0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				456ABAF127A64BA500E66F8D /* SpendingType.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		45EA7F3227A45D3E009C0F58 = {
@@ -122,6 +141,7 @@
 		45EA7F3D27A45D3E009C0F58 /* MoneyBee */ = {
 			isa = PBXGroup;
 			children = (
+				457CD9C327A64A58007A9EF0 /* Models */,
 				457CD9B327A5E586007A9EF0 /* Utilities */,
 				45EA7F7C27A492FB009C0F58 /* Info.plist */,
 				45EA7F7827A490B6009C0F58 /* Fonts */,
@@ -170,6 +190,9 @@
 				457CD9B427A5E717007A9EF0 /* AppDatePicker.swift */,
 				457CD9B827A60F84007A9EF0 /* AppSideMenu.swift */,
 				457CD9BA27A6168F007A9EF0 /* AppCircularProfileImage.swift */,
+				456ABAF527A65C3E00E66F8D /* AppRoundedImageView.swift */,
+				456ABAF727A65FE300E66F8D /* AppWishItemCard.swift */,
+				456ABAF927A6631F00E66F8D /* AppMoneyAmountView.swift */,
 			);
 			path = Reuseables;
 			sourceTree = "<group>";
@@ -270,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				457CD9BD27A6387F007A9EF0 /* PieChartView.swift in Sources */,
+				456ABAF427A651C200E66F8D /* ViewExtension.swift in Sources */,
 				456B7AD427A4EA5D0048E05F /* AppHyperLink.swift in Sources */,
 				45EA7F8227A4A399009C0F58 /* StrokeText.swift in Sources */,
 				45EA7F4127A45D3E009C0F58 /* SplashScreen.swift in Sources */,
@@ -281,12 +305,15 @@
 				456B7ADA27A520AD0048E05F /* EditProfileScreen.swift in Sources */,
 				45EA7F8B27A4B982009C0F58 /* AppTextField.swift in Sources */,
 				45EA7F3F27A45D3E009C0F58 /* MoneyBeeApp.swift in Sources */,
+				456ABAF227A64BA500E66F8D /* SpendingType.swift in Sources */,
 				456B7AE227A534A30048E05F /* WishListScreen.swift in Sources */,
 				456B7AD627A50CD40048E05F /* HomeScreen.swift in Sources */,
 				45EA7F8927A4AD63009C0F58 /* SignUpScreen.swift in Sources */,
 				45EA7F8727A4AD50009C0F58 /* SignInScreen.swift in Sources */,
 				457CD9BB27A6168F007A9EF0 /* AppCircularProfileImage.swift in Sources */,
 				457CD9AE27A5BC65007A9EF0 /* AppEarningsOrSpendingCard.swift in Sources */,
+				456ABAF627A65C3E00E66F8D /* AppRoundedImageView.swift in Sources */,
+				456ABAF827A65FE300E66F8D /* AppWishItemCard.swift in Sources */,
 				456B7AD027A4D2B20048E05F /* AppSecureTextField.swift in Sources */,
 				45EA7F8027A49BE3009C0F58 /* AppText.swift in Sources */,
 				45EA7F7E27A49396009C0F58 /* Constants.swift in Sources */,
@@ -297,6 +324,7 @@
 				456B7AE427A537A40048E05F /* DropdownSelector.swift in Sources */,
 				457CD9B227A5CAF9007A9EF0 /* AppPopupView.swift in Sources */,
 				457CD9B027A5C071007A9EF0 /* AppFloatingButton.swift in Sources */,
+				456ABAFA27A6631F00E66F8D /* AppMoneyAmountView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

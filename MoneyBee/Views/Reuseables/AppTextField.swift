@@ -25,7 +25,10 @@ struct AppTextField: View {
             }
 
             // text field
-            TextField(placeholder, text: $text)
+            TextField("", text: $text)
+                .placeholder(when: text.isEmpty) {
+                    Text(placeholder).foregroundColor(.gray)
+            }
                 .font(Font.custom(Fonts.bubbleGum, size: FontSize.small))
                 .disableAutocorrection(true)
                 .textInputAutocapitalization(.never)

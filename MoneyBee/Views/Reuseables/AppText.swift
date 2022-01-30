@@ -16,11 +16,12 @@ struct AppText: View {
         Text(text)
             .font(.custom(Fonts.bubbleGum, size: fontSize))
             .foregroundColor(fontColor)
+            .fixedSize(horizontal: false, vertical: true)
     }
 }
 
 struct AppText_Previews: PreviewProvider {
     static var previews: some View {
-        AppText(text: "Hello World")
+        AppText(text: "Hello Worldddddddddddddddddddddddddddddddddddddddddddd")
     }
 }

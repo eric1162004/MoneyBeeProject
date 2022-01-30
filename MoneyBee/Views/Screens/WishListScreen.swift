@@ -36,7 +36,12 @@ struct WishListScreen: View {
                         
                         ForEach(1...10, id: \.self){item in
                         // an earning card
-                            Text("hello")
+                            AppWishItemCard(
+                                title: "Soft Pandaa",
+                                imageName: "honeyBeeLogo2",
+                                amount: 20,
+                                backgroundColor: item % 2 == 0 ? Color.appBlue: Color.appLightBlue
+                                )
                         // clear the default white list item background
                         .listRowBackground(Color.clear)
                         }
@@ -50,6 +55,8 @@ struct WishListScreen: View {
                 // handle action button pressed
                 showPopUp.toggle()
             }
+            .padding(.horizontal, Dm.medium)
+            .padding(.vertical, Dm.xlarge)
             
             // show add new earning pop up
             if $showPopUp.wrappedValue {
@@ -57,6 +64,9 @@ struct WishListScreen: View {
                 // all text field goes here
                 let popupForm: AnyView = AnyView(
                     VStack{
+                        
+                        AppRoundedImageView()
+                        
                         AppTextField(text: $newWishItemTitle, placeholder: "Title")
                         
                         AppTextField(text: $newWishItemTitle, placeholder: "Cost")
