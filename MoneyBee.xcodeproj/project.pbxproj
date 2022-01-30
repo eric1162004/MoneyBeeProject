@@ -21,6 +21,8 @@
 		457CD9AE27A5BC65007A9EF0 /* AppEarningsOrSpendingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9AD27A5BC65007A9EF0 /* AppEarningsOrSpendingCard.swift */; };
 		457CD9B027A5C071007A9EF0 /* AppFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9AF27A5C071007A9EF0 /* AppFloatingButton.swift */; };
 		457CD9B227A5CAF9007A9EF0 /* AppPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9B127A5CAF9007A9EF0 /* AppPopupView.swift */; };
+		457CD9B527A5E717007A9EF0 /* AppDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9B427A5E717007A9EF0 /* AppDatePicker.swift */; };
+		457CD9B727A5EA91007A9EF0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9B627A5EA91007A9EF0 /* Date.swift */; };
 		45EA7F3F27A45D3E009C0F58 /* MoneyBeeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA7F3E27A45D3E009C0F58 /* MoneyBeeApp.swift */; };
 		45EA7F4127A45D3E009C0F58 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA7F4027A45D3E009C0F58 /* SplashScreen.swift */; };
 		45EA7F4327A45D40009C0F58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45EA7F4227A45D40009C0F58 /* Assets.xcassets */; };
@@ -50,6 +52,8 @@
 		457CD9AD27A5BC65007A9EF0 /* AppEarningsOrSpendingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEarningsOrSpendingCard.swift; sourceTree = "<group>"; };
 		457CD9AF27A5C071007A9EF0 /* AppFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFloatingButton.swift; sourceTree = "<group>"; };
 		457CD9B127A5CAF9007A9EF0 /* AppPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPopupView.swift; sourceTree = "<group>"; };
+		457CD9B427A5E717007A9EF0 /* AppDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatePicker.swift; sourceTree = "<group>"; };
+		457CD9B627A5EA91007A9EF0 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		45EA7F3B27A45D3E009C0F58 /* MoneyBee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyBee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45EA7F3E27A45D3E009C0F58 /* MoneyBeeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyBeeApp.swift; sourceTree = "<group>"; };
 		45EA7F4027A45D3E009C0F58 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
@@ -77,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		457CD9B327A5E586007A9EF0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				457CD9B627A5EA91007A9EF0 /* Date.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		45EA7F3227A45D3E009C0F58 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +108,7 @@
 		45EA7F3D27A45D3E009C0F58 /* MoneyBee */ = {
 			isa = PBXGroup;
 			children = (
+				457CD9B327A5E586007A9EF0 /* Utilities */,
 				45EA7F7C27A492FB009C0F58 /* Info.plist */,
 				45EA7F7827A490B6009C0F58 /* Fonts */,
 				45EA7F7427A489C1009C0F58 /* Views */,
@@ -139,6 +152,7 @@
 				457CD9AD27A5BC65007A9EF0 /* AppEarningsOrSpendingCard.swift */,
 				457CD9AF27A5C071007A9EF0 /* AppFloatingButton.swift */,
 				457CD9B127A5CAF9007A9EF0 /* AppPopupView.swift */,
+				457CD9B427A5E717007A9EF0 /* AppDatePicker.swift */,
 			);
 			path = Reuseables;
 			sourceTree = "<group>";
@@ -244,6 +258,7 @@
 				456B7AE027A534800048E05F /* SpendingScreen.swift in Sources */,
 				456B7ADE27A5341E0048E05F /* EarningScreen.swift in Sources */,
 				456B7AD227A4D7790048E05F /* AppCapsuleButton.swift in Sources */,
+				457CD9B727A5EA91007A9EF0 /* Date.swift in Sources */,
 				456B7AD827A51BA50048E05F /* AppRoundedCornerButton.swift in Sources */,
 				456B7ADA27A520AD0048E05F /* EditProfileScreen.swift in Sources */,
 				45EA7F8B27A4B982009C0F58 /* AppTextField.swift in Sources */,
@@ -257,6 +272,7 @@
 				45EA7F8027A49BE3009C0F58 /* AppText.swift in Sources */,
 				45EA7F7E27A49396009C0F58 /* Constants.swift in Sources */,
 				45EA7F8527A4A81B009C0F58 /* RootScreen.swift in Sources */,
+				457CD9B527A5E717007A9EF0 /* AppDatePicker.swift in Sources */,
 				456B7ADC27A520EF0048E05F /* TopBar.swift in Sources */,
 				456B7AE427A537A40048E05F /* DropdownSelector.swift in Sources */,
 				457CD9B227A5CAF9007A9EF0 /* AppPopupView.swift in Sources */,

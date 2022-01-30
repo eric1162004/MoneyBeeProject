@@ -9,32 +9,32 @@ import SwiftUI
 
 struct EarningScreen: View {
     
-    @State private var selectedDate: String = ""
+    // list of dropdown options
+    // a dropdown option must have a string index and label text
+    @State var options: [DropdownOption] = [
+        DropdownOption(key: "0", value: "Jan 2020"),
+        DropdownOption(key: "1", value: "Feb 2020"),
+        DropdownOption(key: "2", value: "Mar 2020"),
+        DropdownOption(key: "3", value: "Mar 2020"),
+        DropdownOption(key: "4", value: "Mar 2020"),
+        DropdownOption(key: "5", value: "Mar 2020"),
+    ]
+    
+    @State var selectedMonthYear: String = ""
     @State private var searchString: String = ""
     
     // show add earning pop up
     @State private var showPopUp = false
     
     // pop up states
-    @State private var newEarningTitle: String = ""
-    @State private var newEarningAmount: Float = 0
-    @State private var newEarningDatePicker: Date = Date()
-    
-    // list of dropdown options
-    // a dropdown option must have a string index and label text
-    let options: [DropdownOption] = [
-        DropdownOption(key: "0", value: "Sunday"),
-        DropdownOption(key: "1", value: "Monday"),
-        DropdownOption(key: "2", value: "Tuesday"),
-        DropdownOption(key: "3", value: "Wednesday"),
-        DropdownOption(key: "4", value: "Thursday"),
-        DropdownOption(key: "5", value: "Friday"),
-        DropdownOption(key: "6", value: "Saturday")
-    ]
-    
+    @State var newEarningTitle: String = ""
+    @State var newEarningAmount: Float = 0
+    @State var newEarningDate: Date = Date()
+
     var body: some View {
         
         ZStack {
+            Color.backgroundColor
             
             // Screen without pop up
             VStack{
@@ -54,9 +54,8 @@ struct EarningScreen: View {
                         placeholder: "Pick a month",
                         options: options,
                         onOptionSelected: { option in
-                            print(option)
+                            selectedMonthYear = option.value
                         })
-                        .padding(.horizontal)
                         .zIndex(1)
                     
                     // display the total amount of earnings made in the month
@@ -67,35 +66,35 @@ struct EarningScreen: View {
                 .offset(y: -Dm.tiny)
                 .zIndex(1)
                 
-                // search bar - search by earning title
-                AppTextField(text:$searchString, placeholder: "search", trailingIcon: "magnifyingglass", trailingIconHandler: {
-                    
-                    // handler search icon pressed
-                    print("search..")
-                })
-                    .shadow(color: .gray, radius: 5, x: 0, y: 2)
-                    .padding(.horizontal, Dm.medium)
-                
-                
                 // this zstack allow floating action to sit on top of the list
                 ZStack(alignment: .bottomTrailing){
-                    Color.backgroundColor
+//                    Color.backgroundColor
                     
                     // list of earning cards
-                    List{
-                        
-                        ForEach(1...10, id: \.self){item in
-                        // an earning card
-                            AppEarningsOrSpendingCard(title: "Making my own bed", subtitle: "Dec 16, 2021", amount: 2, backgroundColor: item%2 == 0 ? Color.appGreen : Color.appLightGreen) {
-                            // handle swipt delete
+                        List{
+                            
+                            // search bar - search by earning title
+                            AppTextField(text:$searchString, placeholder: "search", trailingIcon: "magnifyingglass", trailingIconHandler: {
+                                
+                                // handler search icon pressed
+                                print("search..")
+                            })
+                                .listRowBackground(Color.backgroundColor)
+                                .shadow(color: .gray, radius: 5, x: 0, y: 2)
+                            
+                            ForEach(1...10, id: \.self){item in
+                            // an earning card
+                                AppEarningsOrSpendingCard(title: "Making my own bed", subtitle: "Dec 16, 2021", amount: 2, backgroundColor: item%2 == 0 ? Color.appGreen : Color.appLightGreen) {
+                                // handle swipt delete
+                                
+                            }
+                            // clear the default white list item background
+                                .listRowBackground(Color.backgroundColor)
+                            }
                             
                         }
-                        // clear the default white list item background
-                        .listRowBackground(Color.clear)
-                        }
-                        
-                    }
-                    .listStyle(.plain)
+                        .listStyle(.plain)
+                    
                     
                     // floating action button to add a new earning
                     AppFloatingButton(iconName: "plus", iconBackgroundColor: Color.appGreen) {
@@ -103,13 +102,11 @@ struct EarningScreen: View {
                         // handle action button pressed
                         showPopUp.toggle()
                     }
-                    
+                    .padding(.horizontal, Dm.medium)
+                    .padding(.vertical, Dm.xlarge)
                 }
+                
             }
-            .background(Color.backgroundColor)
-            .navigationBarHidden(true)
-            .ignoresSafeArea()
-            
             
             // show add new earning pop up
             if $showPopUp.wrappedValue {
@@ -121,7 +118,7 @@ struct EarningScreen: View {
                         
                         AppTextField(text: $newEarningTitle, placeholder: "Amount")
                         
-                        AppTextField(text: $newEarningTitle, placeholder: "Date")
+                        AppDatePicker(selectedDate: $newEarningDate)
                     }
                 )
                 
@@ -133,12 +130,17 @@ struct EarningScreen: View {
                     handleCancel:{ $showPopUp.wrappedValue.toggle()}
                 )
             }
+            
         }
+        .navigationBarHidden(true)
+        .ignoresSafeArea()
+
     }
 }
 
 struct EarningScreen_Previews: PreviewProvider {
     static var previews: some View {
         EarningScreen()
+.previewInterfaceOrientation(.portrait)
     }
 }

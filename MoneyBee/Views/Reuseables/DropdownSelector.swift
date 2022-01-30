@@ -54,13 +54,12 @@ struct Dropdown: View {
             }
         }
         .frame(minHeight: CGFloat(options.count) * 30, maxHeight: 250)
-        .padding(.vertical, 5)
-        .background(Color.white)
-        .cornerRadius(5)
-        .overlay(
-            RoundedRectangle(cornerRadius: 5)
-                .stroke(Color.gray, lineWidth: 1)
-        )
+        
+        .padding(Dm.small)
+        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(UIColor.separator), lineWidth: 4))
+        .background(.white)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .shadow(color: .gray, radius: 5, x: 0, y: 2)
     }
 }
 
@@ -87,18 +86,21 @@ struct DropdownSelector: View {
                 Image(systemName: self.shouldShowDropdown ? "arrowtriangle.up.fill" : "arrowtriangle.down.fill")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: FontSize.tiny / 1.5)
-                    .foregroundColor(Color.black)
+                    .frame(width: FontSize.tiny / 1.7)
+                    .foregroundColor(selectedOption == nil ? Color.gray: Color.black)
             }
         }
-        .padding(.horizontal)
         .cornerRadius(CornerRadius.medium)
-        .frame(width: .infinity, height: self.buttonHeight)
-        .shadow(radius: Dm.tiny)
+        .frame(maxWidth: .infinity)
+        .padding(Dm.small)
+        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(UIColor.separator), lineWidth: 4))
+        .background(.white)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .shadow(color: .gray, radius: 5, x: 0, y: 2)
         .overlay(
             VStack {
                 if self.shouldShowDropdown {
-                    Spacer(minLength: buttonHeight + 10)
+                    Spacer(minLength: buttonHeight + 30)
                     Dropdown(options: self.options, onOptionSelected: { option in
                         shouldShowDropdown = false
                         selectedOption = option
@@ -106,9 +108,6 @@ struct DropdownSelector: View {
                     })
                 }
             }, alignment: .topLeading
-        )
-        .background(
-            RoundedRectangle(cornerRadius: 5).fill(Color.white)
         )
     }
 }

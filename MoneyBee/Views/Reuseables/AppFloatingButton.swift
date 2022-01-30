@@ -35,7 +35,8 @@ struct AppFloatingButton: View {
                 .background(iconBackgroundColor)
                 .clipShape(Circle())
         }
-        .padding(Dm.medium)
+        .overlay(Circle().stroke(.white, lineWidth: 2))
+        .shadow(color: .gray, radius: 5, x: 0, y: 2)
         .zIndex(1)
     }
 }

@@ -57,7 +57,7 @@ struct AppPopupView: View {
                 Spacer()
             }.padding()
         }
-        .frame(width: 300, height: 500)
+        .frame(maxWidth: 330, maxHeight: 520)
         .cornerRadius(20).shadow(radius: 20)
     }
     }

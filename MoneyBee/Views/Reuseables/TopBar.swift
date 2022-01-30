@@ -21,7 +21,7 @@ struct TopBar: View {
             Image(systemName: leadingIcon ?? "")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 40, height: 40)
+                .frame(width: 30, height: 30)
                 .padding(.horizontal)
                 .foregroundColor(.white)
                 .onTapGesture {
@@ -37,14 +37,14 @@ struct TopBar: View {
             Image(systemName: trailingIcon ?? "")
                 .resizable()
                 .scaledToFit()
-                .frame(width:40, height: 40)
+                .frame(width:30, height: 30)
                 .padding(.horizontal)
                 .foregroundColor(.white)
                 .onTapGesture {
                     trailingIconHandler?()
                 }
         }
-        .frame(maxWidth: .infinity, minHeight: 80, alignment: .bottom)
+        .frame(maxWidth: .infinity, minHeight: 60, alignment: .bottom)
         .padding(.vertical, Dm.medium)
         .background(backgroundColor)
     }
