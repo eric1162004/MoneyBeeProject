@@ -60,7 +60,6 @@ struct HomeScreen: View {
                         .background(Color.primaryColor)
                         .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
                         .shadow(radius: Dm.tiny)
-//                        .padding(.top, -Dm.medium)
                         .padding(.bottom, Dm.small)
                         
                         
