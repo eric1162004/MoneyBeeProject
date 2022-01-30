@@ -8,62 +8,92 @@
 import SwiftUI
 
 struct HomeScreen: View {
+
+    @State var showMenu = false
+
     var body: some View {
-        ScrollView {
-            VStack{
-                // Topbar
-                TopBar(title: "Money Bee", leadingIcon: "line.3.horizontal", leadingIconHandler: { print("pressed")})
-//                    .padding(.top, Dm.large)
+        
+        // Drag gesture that allow side menu to close from right to left
+        let drag = DragGesture()
+            .onEnded {
                 
-                // Screen Content
-                VStack{
-                    // User Avatar image and Greeting
-                    HStack(alignment: .center){
-                        Image("honeyBeeLogo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 60, height: 60, alignment: .center)
-                            .clipShape(Circle())
-                        
-                        AppText(text: "Hello, Justin!", fontSize: FontSize.large)
-                        
-                        // push everything to the left
-                        Spacer()
+                // check whether the user has exceeded a certain threshold value with his swiping gesture, if this is the case, we close the menu
+                if $0.translation.width < -100 {
+                    withAnimation {
+                        self.showMenu = false
                     }
-                    
-                    // Display Saving Amount
-                    VStack{
-                        AppText(text: "Your Total Saving:", fontSize: FontSize.large, fontColor: .white)
-                        AppText(text: "$100", fontSize: FontSize.large, fontColor: .white)
-                    }
-                    .frame(maxWidth: .infinity, minHeight: 200)
-                    .background(Color.primaryColor)
-                    .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
-                    .shadow(radius: Dm.tiny)
-                    .padding(.top, -Dm.medium)
-                    .padding(.bottom, Dm.small)
-                    
-                    
-                    // Buttons
-                    VStack(spacing: Dm.small){
-                        AppRoundedCornerButton(label: "Earnings", backgroundColor: Color.appGreen){}
-                        AppRoundedCornerButton(label: "Spendings", backgroundColor: Color.appRed){}
-                        AppRoundedCornerButton(label: "Wish List", backgroundColor: Color.appBlue){}
-                    }
-                    
                 }
-                .padding(.horizontal, Dm.medium)
-                
-                Spacer()
             }
-            
-            
+    
+        return GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                
+                VStack{
+                    // Topbar
+                    TopBar(title: "Money Bee", leadingIcon: "line.3.horizontal", leadingIconHandler: { print("pressed")
+                        showMenu.toggle()
+                    })
+                    
+                    // Screen Content
+                    ScrollView{
+                        // User Avatar image and Greeting
+                        HStack(alignment: .center){
+                            Image("honeyBeeLogo")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 60, height: 60, alignment: .center)
+                                .clipShape(Circle())
+                            
+                            AppText(text: "Hello, Justin!", fontSize: FontSize.large)
+                                .padding(.vertical, Dm.small)
+                            
+                            // push everything to the left
+                            Spacer()
+                        }
+                        
+                        // Display Saving Amount
+                        VStack{
+                            AppText(text: "Your Total Saving:", fontSize: FontSize.large, fontColor: .white)
+                            AppText(text: "$100", fontSize: FontSize.large, fontColor: .white)
+                        }
+                        .frame(maxWidth: .infinity, minHeight: 200)
+                        .background(Color.primaryColor)
+                        .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
+                        .shadow(radius: Dm.tiny)
+//                        .padding(.top, -Dm.medium)
+                        .padding(.bottom, Dm.small)
+                        
+                        
+                        // Buttons
+                        VStack(spacing: Dm.small){
+                            AppRoundedCornerButton(label: "Earnings", backgroundColor: Color.appGreen, height: 100, fontSize: FontSize.large){}
+                            
+                            AppRoundedCornerButton(label: "Spendings", backgroundColor: Color.appRed, height: 100, fontSize: FontSize.large){}
+                            
+                            AppRoundedCornerButton(label: "Wish List", backgroundColor: Color.appBlue, height: 100, fontSize: FontSize.large){}
+                        }
+                        
+                    }
+                    .padding(.horizontal, Dm.medium)
+                    
+                    Spacer()
+                }
+                .background(Color.backgroundColor)
+                .ignoresSafeArea()
+                
+                if showMenu{
+                    AppSideMenu()
+                        .frame(width: geometry.size.width / 2, height: geometry.size.height)
+                        .background(Color.backgroundColor)
+                        .transition(.move(edge: .leading))
+                }
+            }
+            // attach the swipe-to-close side menu gesture
+            .gesture(drag)
+            .navigationBarHidden(true)
         }
-        .background(Color.backgroundColor)
-        .ignoresSafeArea()
-        .navigationBarHidden(true)
     }
-       
+    
 }
 
 struct HomeScreen_Previews: PreviewProvider {

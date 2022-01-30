@@ -23,6 +23,8 @@
 		457CD9B227A5CAF9007A9EF0 /* AppPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9B127A5CAF9007A9EF0 /* AppPopupView.swift */; };
 		457CD9B527A5E717007A9EF0 /* AppDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9B427A5E717007A9EF0 /* AppDatePicker.swift */; };
 		457CD9B727A5EA91007A9EF0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9B627A5EA91007A9EF0 /* Date.swift */; };
+		457CD9B927A60F84007A9EF0 /* AppSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9B827A60F84007A9EF0 /* AppSideMenu.swift */; };
+		457CD9BB27A6168F007A9EF0 /* AppCircularProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9BA27A6168F007A9EF0 /* AppCircularProfileImage.swift */; };
 		45EA7F3F27A45D3E009C0F58 /* MoneyBeeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA7F3E27A45D3E009C0F58 /* MoneyBeeApp.swift */; };
 		45EA7F4127A45D3E009C0F58 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA7F4027A45D3E009C0F58 /* SplashScreen.swift */; };
 		45EA7F4327A45D40009C0F58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45EA7F4227A45D40009C0F58 /* Assets.xcassets */; };
@@ -54,6 +56,8 @@
 		457CD9B127A5CAF9007A9EF0 /* AppPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPopupView.swift; sourceTree = "<group>"; };
 		457CD9B427A5E717007A9EF0 /* AppDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatePicker.swift; sourceTree = "<group>"; };
 		457CD9B627A5EA91007A9EF0 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		457CD9B827A60F84007A9EF0 /* AppSideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSideMenu.swift; sourceTree = "<group>"; };
+		457CD9BA27A6168F007A9EF0 /* AppCircularProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCircularProfileImage.swift; sourceTree = "<group>"; };
 		45EA7F3B27A45D3E009C0F58 /* MoneyBee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyBee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45EA7F3E27A45D3E009C0F58 /* MoneyBeeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyBeeApp.swift; sourceTree = "<group>"; };
 		45EA7F4027A45D3E009C0F58 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 				457CD9AF27A5C071007A9EF0 /* AppFloatingButton.swift */,
 				457CD9B127A5CAF9007A9EF0 /* AppPopupView.swift */,
 				457CD9B427A5E717007A9EF0 /* AppDatePicker.swift */,
+				457CD9B827A60F84007A9EF0 /* AppSideMenu.swift */,
+				457CD9BA27A6168F007A9EF0 /* AppCircularProfileImage.swift */,
 			);
 			path = Reuseables;
 			sourceTree = "<group>";
@@ -267,12 +273,14 @@
 				456B7AD627A50CD40048E05F /* HomeScreen.swift in Sources */,
 				45EA7F8927A4AD63009C0F58 /* SignUpScreen.swift in Sources */,
 				45EA7F8727A4AD50009C0F58 /* SignInScreen.swift in Sources */,
+				457CD9BB27A6168F007A9EF0 /* AppCircularProfileImage.swift in Sources */,
 				457CD9AE27A5BC65007A9EF0 /* AppEarningsOrSpendingCard.swift in Sources */,
 				456B7AD027A4D2B20048E05F /* AppSecureTextField.swift in Sources */,
 				45EA7F8027A49BE3009C0F58 /* AppText.swift in Sources */,
 				45EA7F7E27A49396009C0F58 /* Constants.swift in Sources */,
 				45EA7F8527A4A81B009C0F58 /* RootScreen.swift in Sources */,
 				457CD9B527A5E717007A9EF0 /* AppDatePicker.swift in Sources */,
+				457CD9B927A60F84007A9EF0 /* AppSideMenu.swift in Sources */,
 				456B7ADC27A520EF0048E05F /* TopBar.swift in Sources */,
 				456B7AE427A537A40048E05F /* DropdownSelector.swift in Sources */,
 				457CD9B227A5CAF9007A9EF0 /* AppPopupView.swift in Sources */,

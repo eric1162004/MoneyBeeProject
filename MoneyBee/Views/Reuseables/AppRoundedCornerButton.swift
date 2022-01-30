@@ -11,15 +11,16 @@ struct AppRoundedCornerButton: View {
     
     var label: String
     var backgroundColor: Color = Color.primaryColor
+    var height: CGFloat = Dm.xlarge
+    var fontSize: CGFloat = FontSize.small
     var handlePress: () -> ()
-    
     
     var body: some View {
         Button {
            handlePress()
         } label: {
-            AppText(text: label, fontSize: FontSize.large, fontColor: .white)
-                .frame(maxWidth: .infinity, minHeight: 100)
+            AppText(text: label, fontSize: fontSize, fontColor: .white)
+                .frame(maxWidth: .infinity, minHeight: height)
                 .background(backgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
         }

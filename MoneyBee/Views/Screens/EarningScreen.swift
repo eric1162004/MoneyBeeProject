@@ -68,32 +68,31 @@ struct EarningScreen: View {
                 
                 // this zstack allow floating action to sit on top of the list
                 ZStack(alignment: .bottomTrailing){
-//                    Color.backgroundColor
                     
                     // list of earning cards
-                        List{
+                    List{
+                        
+                        // search bar - search by earning title
+                        AppTextField(text:$searchString, placeholder: "search", trailingIcon: "magnifyingglass", trailingIconHandler: {
                             
-                            // search bar - search by earning title
-                            AppTextField(text:$searchString, placeholder: "search", trailingIcon: "magnifyingglass", trailingIconHandler: {
-                                
-                                // handler search icon pressed
-                                print("search..")
-                            })
-                                .listRowBackground(Color.backgroundColor)
-                                .shadow(color: .gray, radius: 5, x: 0, y: 2)
-                            
-                            ForEach(1...10, id: \.self){item in
-                            // an earning card
-                                AppEarningsOrSpendingCard(title: "Making my own bed", subtitle: "Dec 16, 2021", amount: 2, backgroundColor: item%2 == 0 ? Color.appGreen : Color.appLightGreen) {
-                                // handle swipt delete
-                                
-                            }
-                            // clear the default white list item background
-                                .listRowBackground(Color.backgroundColor)
-                            }
+                            // handler search icon pressed
+                            print("search..")
+                        })
+                            .listRowBackground(Color.backgroundColor)
+                            .shadow(color: .gray, radius: 5, x: 0, y: 2)
+                        
+                        ForEach(1...10, id: \.self){item in
+                        // an earning card
+                            AppEarningsOrSpendingCard(title: "Making my own bed", subtitle: "Dec 16, 2021", amount: 2, backgroundColor: item%2 == 0 ? Color.appGreen : Color.appLightGreen) {
+                            // handle swipt delete
                             
                         }
-                        .listStyle(.plain)
+                        // clear the default white list item background
+                            .listRowBackground(Color.backgroundColor)
+                        }
+                        
+                    }
+                    .listStyle(.plain)
                     
                     
                     // floating action button to add a new earning
@@ -111,7 +110,7 @@ struct EarningScreen: View {
             // show add new earning pop up
             if $showPopUp.wrappedValue {
                 
-                // all text field goes here
+                // all text field inside the pop up goes here
                 let popupForm: AnyView = AnyView(
                     VStack{
                         AppTextField(text: $newEarningTitle, placeholder: "Title")

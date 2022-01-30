@@ -22,14 +22,7 @@ struct EditProfileScreen: View {
                     // Image Edit
                     ZStack(alignment:.bottomTrailing){
                         // Image
-                        Image("honeyBeeLogo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 150, height: 150, alignment: .center)
-                            .padding()
-                            .background(.white)
-                            .clipShape(Circle())
-                            .padding(.bottom)
+                        AppCircularProfileImage(imageName: "honeyBeeLogo")
                     
                         // image edit icon
                         Image(systemName: "pencil")
