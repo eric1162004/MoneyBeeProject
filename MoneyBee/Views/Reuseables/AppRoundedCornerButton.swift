@@ -13,17 +13,29 @@ struct AppRoundedCornerButton: View {
     var backgroundColor: Color = Color.primaryColor
     var height: CGFloat = Dm.xlarge
     var fontSize: CGFloat = FontSize.small
-    var handlePress: () -> ()
+    var handlePress: (() -> ())?
     
     var body: some View {
-        Button {
-           handlePress()
-        } label: {
+        
+        // if handlePress is provided, return a button view
+        if let handlePress = handlePress {
+            Button {
+               handlePress()
+            } label: {
+                AppText(text: label, fontSize: fontSize, fontColor: .white)
+                    .frame(maxWidth: .infinity, minHeight: height)
+                    .background(backgroundColor)
+                    .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
+            }
+            
+        } else{
+            // if handlePress is not provided, return a view that look like a button
             AppText(text: label, fontSize: fontSize, fontColor: .white)
                 .frame(maxWidth: .infinity, minHeight: height)
                 .background(backgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
         }
+
     }
 }
 

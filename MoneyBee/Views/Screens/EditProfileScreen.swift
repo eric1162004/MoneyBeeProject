@@ -11,10 +11,17 @@ struct EditProfileScreen: View {
     
     @State var name: String = ""
     
+    // allow us to pop the current view off the navigation stack
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
             VStack{
                 // Topbar
-                TopBar(title: "Edit Profile", leadingIcon: "line.3.horizontal", leadingIconHandler: { print("pressed")})
+                TopBar(title: "Edit Profile", leadingIcon: "chevron.left", leadingIconHandler: { 
+
+                    // back to home screen
+                    presentation.wrappedValue.dismiss()
+                })
                 
                 // Screen Content
                 VStack(spacing: Dm.small){
@@ -44,7 +51,10 @@ struct EditProfileScreen: View {
                     
                     // save button
                     AppCapsuleButton(label: "Save", backgroundColor: Color.appGreen){
-                        print("pressed")
+                        
+                        // back to home screen
+                        presentation.wrappedValue.dismiss()
+                        
                     }
                     .padding(.bottom, Dm.small)
 

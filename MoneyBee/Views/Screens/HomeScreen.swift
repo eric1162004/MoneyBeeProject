@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct HomeScreen: View {
-
+    
+    @Binding var isAuthenticated: Bool
     @State var showMenu = false
-
+    
     var body: some View {
         
         // Drag gesture that allow side menu to close from right to left
@@ -65,11 +66,18 @@ struct HomeScreen: View {
                         
                         // Buttons
                         VStack(spacing: Dm.small){
-                            AppRoundedCornerButton(label: "Earnings", backgroundColor: Color.appGreen, height: 100, fontSize: FontSize.large){}
                             
-                            AppRoundedCornerButton(label: "Spendings", backgroundColor: Color.appRed, height: 100, fontSize: FontSize.large){}
+                            NavigationLink(destination: EarningScreen()){
+                                AppRoundedCornerButton(label: "Earnings", backgroundColor: Color.appGreen, height: 100, fontSize: FontSize.large)
+                            }
                             
-                            AppRoundedCornerButton(label: "Wish List", backgroundColor: Color.appBlue, height: 100, fontSize: FontSize.large){}
+                            NavigationLink(destination: SpendingScreen()){
+                                AppRoundedCornerButton(label: "Spendings", backgroundColor: Color.appRed, height: 100, fontSize: FontSize.large)
+                            }
+                            
+                            NavigationLink(destination: WishListScreen()){
+                                AppRoundedCornerButton(label: "Wish List", backgroundColor: Color.appBlue, height: 100, fontSize: FontSize.large)
+                            }
                         }
                         
                     }
@@ -81,7 +89,7 @@ struct HomeScreen: View {
                 .ignoresSafeArea()
                 
                 if showMenu{
-                    AppSideMenu()
+                    AppSideMenu(isAuthenticated: $isAuthenticated)
                         .frame(width: geometry.size.width / 2, height: geometry.size.height)
                         .background(Color.backgroundColor)
                         .transition(.move(edge: .leading))
@@ -90,6 +98,9 @@ struct HomeScreen: View {
             // attach the swipe-to-close side menu gesture
             .gesture(drag)
             .navigationBarHidden(true)
+            .onAppear {
+                showMenu = false
+            }
         }
     }
     
@@ -97,6 +108,6 @@ struct HomeScreen: View {
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        HomeScreen()
+        HomeScreen(isAuthenticated: .constant(true))
     }
 }

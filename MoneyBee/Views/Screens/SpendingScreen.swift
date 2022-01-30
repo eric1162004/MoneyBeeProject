@@ -11,6 +11,9 @@ struct SpendingScreen: View {
     
     @State private var showChartSheet = false
     
+    // allow us to pop the current view off the navigation stack
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
         
         VStack {
@@ -21,11 +24,11 @@ struct SpendingScreen: View {
                 trailingIcon: "chart.pie.fill",
                 backgroundColor: Color.appRed,
                 leadingIconHandler: {
-                    print("pressed")
-                    
+                    // back to home screen
+                    presentation.wrappedValue.dismiss()
                 },
                 trailingIconHandler: {
-                    print("pressed piechart")
+                    // show pie chart sheet
                     showChartSheet.toggle()
                 })
             

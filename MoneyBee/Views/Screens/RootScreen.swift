@@ -9,14 +9,23 @@
 import SwiftUI
 
 struct RootScreen: View {
+    
+    @State var isAuthenticated: Bool = false
+    
     var body: some View {
         NavigationView{
+
+            if !isAuthenticated {
+                SignInScreen(isAuthenticated: $isAuthenticated)
+            } else {
+                HomeScreen(isAuthenticated: $isAuthenticated)
+            }
+            
 //            SplashScreen()
 //            SignInScreen()
 //            HomeScreen()
 //            EarningScreen()
 //            SpendingScreen()
-            WishListScreen()
                 
         }
     }

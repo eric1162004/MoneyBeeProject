@@ -16,6 +16,9 @@ struct WishListScreen: View {
     @State private var newWishItemTitle: String = ""
     @State private var newWishItemCost: Float = 0
     
+    // allow us to pop the current view off the navigation stack
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
         
         // this zstack allow floating action to sit on top of the list
@@ -27,10 +30,10 @@ struct WishListScreen: View {
                     leadingIcon: "chevron.left",
                     backgroundColor: Color.appBlue,
                     leadingIconHandler: {
-                        print("pressed")
+                        // back to home screen
+                        presentation.wrappedValue.dismiss()
                     })
 
-                    
                     // list of earning cards
                     List{
                         

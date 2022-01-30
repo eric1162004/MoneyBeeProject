@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AppSideMenu: View {
     
+    @Binding var isAuthenticated: Bool
     
     var body: some View {
         VStack{
@@ -21,19 +22,20 @@ struct AppSideMenu: View {
             
             // edit profile button
             VStack {
-                AppRoundedCornerButton(label: "Edit Profile", backgroundColor:  Color.appBlue) {
-                    
-                    // navigate to edit profile screen
-                    print("pressed")
-                }
                 
+                NavigationLink {
+                    EditProfileScreen()
+                } label: {
+                    AppRoundedCornerButton(label: "Edit Profile", backgroundColor:  Color.appBlue)
+                }
+
                 Spacer()
                 
                 //
                 AppRoundedCornerButton(label: "Logout", backgroundColor:  Color.appRed) {
                     
                     // log out user
-                    print("pressed")
+                    $isAuthenticated.wrappedValue.toggle()
                 }
                 
             }
@@ -49,6 +51,6 @@ struct AppSideMenu: View {
 
 struct AppSideMenu_Previews: PreviewProvider {
     static var previews: some View {
-        AppSideMenu()
+        AppSideMenu(isAuthenticated: .constant(true))
     }
 }

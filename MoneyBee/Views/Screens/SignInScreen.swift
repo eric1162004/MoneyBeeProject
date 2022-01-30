@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SignInScreen: View {
     
+    @Binding var isAuthenticated: Bool
+    
     @State var email: String = ""
     @State var password: String = ""
     
@@ -49,6 +51,7 @@ struct SignInScreen: View {
                     }
                     
                     // TODO: Sign in user
+                    $isAuthenticated.wrappedValue.toggle()
                     print("\(email) \(password)")
                 }
                 
@@ -65,7 +68,6 @@ struct SignInScreen: View {
         .ignoresSafeArea()
     }
 }
-
 
 struct SignInAndSignUpTopBanner: View {
     var body: some View {
@@ -86,6 +88,6 @@ struct SignInAndSignUpTopBanner: View {
 
 struct SignInScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SignInScreen()
+        SignInScreen(isAuthenticated: .constant(false))
     }
 }

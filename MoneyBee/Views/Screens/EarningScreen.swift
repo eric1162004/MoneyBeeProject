@@ -30,6 +30,9 @@ struct EarningScreen: View {
     @State var newEarningTitle: String = ""
     @State var newEarningAmount: Float = 0
     @State var newEarningDate: Date = Date()
+    
+    // allow us to pop the current view off the navigation stack
+    @Environment(\.presentationMode) var presentation
 
     var body: some View {
         
@@ -44,7 +47,10 @@ struct EarningScreen: View {
                     title: "Earnings",
                     leadingIcon: "chevron.left",
                     backgroundColor: Color.appGreen,
-                    leadingIconHandler: { print("pressed")}
+                    leadingIconHandler: {
+                        // back to home screen
+                        presentation.wrappedValue.dismiss()
+                    }
                 )
                 
                 // Month Selector and Month Total
