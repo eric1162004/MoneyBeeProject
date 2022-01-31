@@ -16,8 +16,8 @@ struct Fonts {
 
 extension Color {
     
-    static let primaryColor = Color("primaryColor")
-    static let backgroundColor = Color("backgroundColor")
+    static let primaryColor = Color("appPrimaryColor")
+    static let backgroundColor = Color("appBackgroundColor")
     static let appRed = Color("appRed")
     static let appLightRed = Color("appLightRed")
     static let appGreen = Color("appGreen")
