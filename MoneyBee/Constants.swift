@@ -36,7 +36,7 @@ struct FontSize {
     static let xlarge: CGFloat = 45
 }
 
-// Dimensions for marger
+// Dimensions for margin
 struct Dm {
     
     static let tiny: CGFloat = 10
