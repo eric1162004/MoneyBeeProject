@@ -26,6 +26,7 @@
 		45737AA927A8952F00AE9A87 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45737AA827A8952F00AE9A87 /* GoogleService-Info.plist */; };
 		45737AAE27A8970800AE9A87 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AAD27A8970800AE9A87 /* AuthService.swift */; };
 		45737AB027A897BB00AE9A87 /* ResolverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AAF27A897BB00AE9A87 /* ResolverExtension.swift */; };
+		45737AB227A89F8700AE9A87 /* AppSignInAndSignUpTopBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AB127A89F8700AE9A87 /* AppSignInAndSignUpTopBanner.swift */; };
 		457CD9AE27A5BC65007A9EF0 /* AppEarningsOrSpendingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9AD27A5BC65007A9EF0 /* AppEarningsOrSpendingCard.swift */; };
 		457CD9B027A5C071007A9EF0 /* AppFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9AF27A5C071007A9EF0 /* AppFloatingButton.swift */; };
 		457CD9B227A5CAF9007A9EF0 /* AppPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9B127A5CAF9007A9EF0 /* AppPopupView.swift */; };
@@ -69,6 +70,7 @@
 		45737AA827A8952F00AE9A87 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		45737AAD27A8970800AE9A87 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		45737AAF27A897BB00AE9A87 /* ResolverExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolverExtension.swift; sourceTree = "<group>"; };
+		45737AB127A89F8700AE9A87 /* AppSignInAndSignUpTopBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSignInAndSignUpTopBanner.swift; sourceTree = "<group>"; };
 		457CD9AD27A5BC65007A9EF0 /* AppEarningsOrSpendingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEarningsOrSpendingCard.swift; sourceTree = "<group>"; };
 		457CD9AF27A5C071007A9EF0 /* AppFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFloatingButton.swift; sourceTree = "<group>"; };
 		457CD9B127A5CAF9007A9EF0 /* AppPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPopupView.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				456ABAF527A65C3E00E66F8D /* AppRoundedImageView.swift */,
 				456ABAF727A65FE300E66F8D /* AppWishItemCard.swift */,
 				456ABAF927A6631F00E66F8D /* AppMoneyAmountView.swift */,
+				45737AB127A89F8700AE9A87 /* AppSignInAndSignUpTopBanner.swift */,
 			);
 			path = Reuseables;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				456ABAF827A65FE300E66F8D /* AppWishItemCard.swift in Sources */,
 				456B7AD027A4D2B20048E05F /* AppSecureTextField.swift in Sources */,
 				45EA7F8027A49BE3009C0F58 /* AppText.swift in Sources */,
+				45737AB227A89F8700AE9A87 /* AppSignInAndSignUpTopBanner.swift in Sources */,
 				45EA7F7E27A49396009C0F58 /* Constants.swift in Sources */,
 				45EA7F8527A4A81B009C0F58 /* RootScreen.swift in Sources */,
 				457CD9B527A5E717007A9EF0 /* AppDatePicker.swift in Sources */,

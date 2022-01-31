@@ -7,18 +7,22 @@
 //  This is our application entry screen.
 
 import SwiftUI
+import Resolver
 
 struct RootScreen: View {
     
-    @State var isAuthenticated: Bool = false
+    // AuthenticationService is registered in Resolver.
+    @ObservedObject var authService: AuthService = Resolver.resolve()
+    
+//    @State var isAuthenticated: Bool = false
     
     var body: some View {
         NavigationView{
 
-            if !isAuthenticated {
-                SignInScreen(isAuthenticated: $isAuthenticated)
+            if authService.user == nil {
+                SignInScreen()
             } else {
-                HomeScreen(isAuthenticated: $isAuthenticated)
+                HomeScreen()
             }
             
 //            SplashScreen()

@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct AppSideMenu: View {
     
-    @Binding var isAuthenticated: Bool
+    // AuthenticationService is registered in Resolver.
+    @ObservedObject var authService: AuthService = Resolver.resolve()
     
     var body: some View {
         VStack{
@@ -35,7 +37,7 @@ struct AppSideMenu: View {
                 AppRoundedCornerButton(label: "Logout", backgroundColor:  Color.appRed) {
                     
                     // log out user
-                    $isAuthenticated.wrappedValue.toggle()
+                    authService.signOut()
                 }
                 
             }
@@ -51,6 +53,6 @@ struct AppSideMenu: View {
 
 struct AppSideMenu_Previews: PreviewProvider {
     static var previews: some View {
-        AppSideMenu(isAuthenticated: .constant(true))
+        AppSideMenu()
     }
 }

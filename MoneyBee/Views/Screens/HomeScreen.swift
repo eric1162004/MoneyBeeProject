@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct HomeScreen: View {
     
-    @Binding var isAuthenticated: Bool
     @State var showMenu = false
     
     var body: some View {
@@ -89,7 +89,7 @@ struct HomeScreen: View {
                 .ignoresSafeArea()
                 
                 if showMenu{
-                    AppSideMenu(isAuthenticated: $isAuthenticated)
+                    AppSideMenu()
                         .frame(width: geometry.size.width / 2, height: geometry.size.height)
                         .background(Color.backgroundColor)
                         .transition(.move(edge: .leading))
@@ -108,6 +108,6 @@ struct HomeScreen: View {
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        HomeScreen(isAuthenticated: .constant(true))
+        HomeScreen()
     }
 }

@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct SignUpScreen: View {
+    
+    // AuthenticationService is registered in Resolver.
+    @ObservedObject var authService: AuthService = Resolver.resolve()
     
     @State var name: String = ""
     @State var email: String = ""
@@ -24,7 +28,7 @@ struct SignUpScreen: View {
         ScrollView {
             VStack{
                 // top banner
-                SignInAndSignUpTopBanner()
+                AppSignInAndSignUpTopBanner()
 //                    .padding(.top, Dm.xlarge)
                 
                 // title
@@ -66,11 +70,12 @@ struct SignUpScreen: View {
                         guard password == confirmPassword else {
                             errorMsg = "Passwords are not matching."
                             return
-                            
                         }
                         
                         // TODO: Sign up user
                         print("\(name) \(email) \(password) \(confirmPassword)")
+                        
+                        authService.signUp(email: email, password: password)
                     }
                     
                     // back to sign Up screen

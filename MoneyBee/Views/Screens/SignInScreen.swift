@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct SignInScreen: View {
     
-    @Binding var isAuthenticated: Bool
+    // AuthenticationService is registered in Resolver.
+    @ObservedObject var authService: AuthService = Resolver.resolve()
     
     @State var email: String = ""
     @State var password: String = ""
@@ -20,7 +22,7 @@ struct SignInScreen: View {
         
         VStack{
             // top banner
-            SignInAndSignUpTopBanner()
+            AppSignInAndSignUpTopBanner()
                 .padding(.top, Dm.xlarge)
             
             // title
@@ -51,8 +53,8 @@ struct SignInScreen: View {
                     }
                     
                     // TODO: Sign in user
-                    $isAuthenticated.wrappedValue.toggle()
-                    print("\(email) \(password)")
+                    authService.signIn(
+                        email: email, password: password)
                 }
                 
                 // go to sign Up screen
@@ -67,27 +69,10 @@ struct SignInScreen: View {
         .background(Color.backgroundColor)
         .ignoresSafeArea()
     }
-}
-
-struct SignInAndSignUpTopBanner: View {
-    var body: some View {
-        ZStack(alignment: .center){
-            Image("honeyBeeLogo2")
-                .resizable()
-                .scaledToFit()
-                .padding(.top, -Dm.medium)
-            
-            StrokeText(text: "Money Bee", width: 0.5, color: .black)
-                .font(.custom(Fonts.bubbleGum, size: FontSize.xlarge))
-                .foregroundColor(.white)
-        }
-        .background(Color.primaryColor)
-    }
-}
-        
+}        
 
 struct SignInScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SignInScreen(isAuthenticated: .constant(false))
+        SignInScreen()
     }
 }
