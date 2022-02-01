@@ -9,6 +9,7 @@ import Foundation
 import Resolver
 
 extension Resolver: ResolverRegistering {
+    
   public static func registerAllServices() {
       
       // provide a singleton of Repository
@@ -20,4 +21,5 @@ extension Resolver: ResolverRegistering {
       // provide a singleton of ImageStorageService
       register { ImageStorageService() }.scope(.application)
   }
+    
 }

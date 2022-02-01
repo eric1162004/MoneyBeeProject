@@ -10,7 +10,7 @@ import Resolver
 
 struct EarningScreen: View {
     
-    @Injected var repo: FirestoreRepository<Earning>
+    @ObservedObject var earningVM = EarningViewModel()
     
     // list of dropdown options
     // a dropdown option must have a string index and label text
@@ -29,14 +29,9 @@ struct EarningScreen: View {
     // show add earning pop up
     @State private var showPopUp = false
     
-    // pop up states
-    @State var newEarningTitle: String = ""
-    @State var newEarningAmount: Float = 0
-    @State var newEarningDate: Date = Date()
-    
     // allow us to pop the current view off the navigation stack
     @Environment(\.presentationMode) var presentation
-
+    
     var body: some View {
         
         ZStack {
@@ -90,13 +85,15 @@ struct EarningScreen: View {
                             .listRowBackground(Color.backgroundColor)
                             .shadow(color: .gray, radius: 5, x: 0, y: 2)
                         
-                        ForEach(1...10, id: \.self){item in
-                        // an earning card
-                            AppEarningsOrSpendingCard(title: "Making my own bed", subtitle: "Dec 16, 2021", amount: 2, backgroundColor: item%2 == 0 ? Color.appGreen : Color.appLightGreen) {
-                            // handle swipt delete
-                            
-                        }
-                        // clear the default white list item background
+                        
+                        // display all earnings
+                        ForEach(earningVM.earnings){ earning in
+                            // an earning card
+                            EarningCard(earning: earning, backgroundColor: Color.appLightGreen) {
+                                // handle swipt delete
+                                earningVM.remove(earning)
+                            }
+                            // clear the default white list item background
                             .listRowBackground(Color.backgroundColor)
                         }
                         
@@ -116,48 +113,72 @@ struct EarningScreen: View {
             }
             
             // show add new earning pop up
-            if $showPopUp.wrappedValue {
-                
-                // all text field inside the pop up goes here
-                let popupForm: AnyView = AnyView(
-                    VStack{
-                        AppTextField(text: $newEarningTitle, placeholder: "Title")
-                        
-                        AppTextField(text: $newEarningTitle, placeholder: "Amount")
-                        
-                        AppDatePicker(selectedDate: $newEarningDate)
-                    }
-                )
-                
-                AppPopupView(
-                    title: "New Earning",
-                    backgroundColor: Color.appLightGreen,
-                    showPopUp: $showPopUp,
-                    view: popupForm,
-                    handleConfirm: {
-                        
-                        print(repo.collectionName)
-                        repo.add(Earning(title: "test1", amount: 1, date: Date()))
-                        
-                        print("close earning pop")
-                    },
-                    handleCancel:{
-                        print("close earning pop")
-
-                    }
-                )
-            }
-            
+            EarningPopupField(showPopUp: $showPopUp)
         }
         .navigationBarHidden(true)
         .ignoresSafeArea()
+    }
+}
 
+private struct EarningPopupField: View {
+    
+    @ObservedObject var earningVM = EarningViewModel()
+    
+    @Binding var showPopUp: Bool
+    
+    // pop up states
+    @State private var newEarningTitle: String = ""
+    @State private var newEarningAmount: String = ""
+    @State private var newEarningDate: Date = Date()
+    
+    private func resetFields() {
+        newEarningTitle = ""
+        newEarningAmount = ""
+        newEarningDate = Date()
+    }
+
+    var body: some View {
+        if $showPopUp.wrappedValue {
+            
+            // all text field inside the pop up goes here
+            let popupForm: AnyView = AnyView(
+                VStack{
+                    
+                    // new earning title
+                    AppTextField(text: $newEarningTitle, placeholder: "Title")
+                    
+                    // new earning amount
+                    AppTextField(text: $newEarningAmount, placeholder: "Amount", keyboardType: .numberPad)
+                    
+                    // new earning date
+                    AppDatePicker(selectedDate: $newEarningDate)
+                }
+            )
+            
+            AppPopupView(
+                title: "New Earning",
+                backgroundColor: Color.appLightGreen,
+                showPopUp: $showPopUp,
+                view: popupForm,
+                handleConfirm: {
+                    
+                    earningVM.add(Earning(
+                        title: newEarningTitle, amount: newEarningAmount.floatValue, date: newEarningDate))
+                    
+                    resetFields()
+                    
+                },
+                handleCancel:{
+                    resetFields()
+                }
+            )
+        }
     }
 }
 
 struct EarningScreen_Previews: PreviewProvider {
     static var previews: some View {
         EarningScreen()
-.previewInterfaceOrientation(.portrait)
+            .previewInterfaceOrientation(.portrait)
     }
 }

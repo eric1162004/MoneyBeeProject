@@ -14,16 +14,18 @@ import Combine
 class FirestoreRepository<itemType: Codable & Identifiable & Reposable>: Repository, ObservableObject {
     
     // initialize db
-    var db = Firestore.firestore()
-    let collectionName: String
-    var collectionRef: CollectionReference {
+    private var db = Firestore.firestore()
+    
+    private let collectionName: String
+    private var collectionRef: CollectionReference {
         db.collection(collectionName)
     }
+    
     @Published var items = [itemType]()
 
     // inject authService from Resolver
-    @Injected var authService: AuthService
-    var userId: String = "unknown"
+    @Injected private var authService: AuthService
+    private var userId: String = "unknown"
     
     // to store cancellables
     private var cancellables = Set<AnyCancellable>()

@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-struct AppEarningsOrSpendingCard: View {
+struct EarningCard: View {
     
-    @State var title:String
-    @State var subtitle: String
-    @State var amount: Float
+    @State var earning: Earning
     @State var backgroundColor: Color = Color.primaryColor
     @State var swipeDeleteHandler: (() -> ())?
     
@@ -20,16 +18,16 @@ struct AppEarningsOrSpendingCard: View {
             VStack(alignment: .leading){
                 
                 // cardTitle
-                AppText(text: title, fontSize: FontSize.small, fontColor: .white)
+                AppText(text: earning.title, fontSize: FontSize.small, fontColor: .white)
                 
                 // cardSubtitle
-                AppText(text: subtitle, fontSize: FontSize.tiny, fontColor: .white)
+                AppText(text: earning.date.dateToString(), fontSize: FontSize.tiny, fontColor: .white)
             }
             
             Spacer()
             
             // Money Amount
-            AppMoneyAmountView(amount: amount)
+            AppMoneyAmountView(amount: earning.amount)
             
         }
         .frame(maxWidth: .infinity)
@@ -56,6 +54,6 @@ struct AppEarningsOrSpendingCard: View {
 
 struct AppEarningsOrSpendingCard_Previews: PreviewProvider {
     static var previews: some View {
-        AppEarningsOrSpendingCard(title: "Making my own bed", subtitle: "Dec 16, 2021", amount: 2){}
+        EarningCard(earning: Earning(title: "hello", amount: 34, date: Date()))
     }
 }

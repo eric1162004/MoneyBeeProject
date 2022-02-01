@@ -117,15 +117,15 @@ struct SpendingScreenContent: View {
                             .listRowBackground(Color.backgroundColor)
                             .shadow(color: .gray, radius: 5, x: 0, y: 2)
                         
-                        ForEach(1...10, id: \.self){item in
+//                        ForEach(1...10, id: \.self){item in
                         // an earning card
-                            AppEarningsOrSpendingCard(title: "Making my own bed", subtitle: "Dec 16, 2021", amount: 2, backgroundColor: item%2 == 0 ? Color.appRed : Color.appLightRed) {
+                            SpendingCard(spending: Spending(title: "Spending..", amount: 20, date: Date()), backgroundColor: 2 % 2 == 0 ? Color.appRed : Color.appLightRed) {
                             // handle swipt delete
-                            
-                        }
+
+//                        }
                         // clear the default white list item background
-                            .listRowBackground(Color.backgroundColor)
                         }
+                            .listRowBackground(Color.backgroundColor)
                         
                     }
                     .listStyle(.plain)

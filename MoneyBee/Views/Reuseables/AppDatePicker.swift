@@ -13,14 +13,11 @@ struct AppDatePicker: View {
     
     let dateRange: ClosedRange<Date> = {
         let calendar = Calendar.current
-        let startComponents = DateComponents(year: 2021, month: 1, day: 1)
-        let endComponents = DateComponents(year: 2021, month: 12, day: 31)
-        return calendar.date(from:startComponents)!
-            ...
-            calendar.date(from:endComponents)!
+        let startDate = Calendar.current.date(byAdding: .year, value: -5, to: Date())!
+        let endDate = Calendar.current.date(byAdding: .day, value: 0, to: Date())!
+        return startDate...endDate
     }()
-    
-    
+
     var body: some View {
         DatePicker(
             "Date",

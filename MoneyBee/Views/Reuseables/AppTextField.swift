@@ -11,6 +11,7 @@ struct AppTextField: View {
     
     @Binding var text: String
     var placeholder: String = ""
+    var keyboardType: UIKeyboardType = .default
     var leadingIcon: String = ""
     var trailingIcon: String = ""
     var trailingIconHandler: (() -> ())?
@@ -32,6 +33,7 @@ struct AppTextField: View {
                 .font(Font.custom(Fonts.bubbleGum, size: FontSize.small))
                 .disableAutocorrection(true)
                 .textInputAutocapitalization(.never)
+                .keyboardType(keyboardType)
             
             // trailing icon
             if(!trailingIcon.isEmpty){

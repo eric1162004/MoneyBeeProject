@@ -9,13 +9,6 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-protocol Reposable {
-    var id: String? {get set}
-    var createdTime: Timestamp? {get set}
-    var userId: String? {get set}
-}
-
-
 struct Earning: Identifiable, Codable, Reposable {
     
     @DocumentID var id: String?

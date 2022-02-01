@@ -9,13 +9,13 @@ import Foundation
 
 extension Date {
     
-    static func dateToString(_ date: Date, _ format: String = "dd/MMM/yyy") -> String {
+    func dateToString(_ format: String = "MMM dd yyy") -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
-        return dateFormatter.string(from: date)
+        return dateFormatter.string(from: self)
     }
     
-    static func stringToDate(_ dateString: String, _ format: String = "dd/MMM/yyy") -> Date? {
+    static func stringToDate(_ dateString: String, _ format: String = "MMM dd yyy") -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.date(from: dateString)
