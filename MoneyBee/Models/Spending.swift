@@ -15,6 +15,7 @@ struct Spending: Identifiable, Codable, Reposable {
     var title: String
     var amount: Float
     var date: Date
+    var type: String
     @ServerTimestamp var createdTime: Timestamp?
     var userId: String?
 }

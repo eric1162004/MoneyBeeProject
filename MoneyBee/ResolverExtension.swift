@@ -14,9 +14,11 @@ extension Resolver: ResolverRegistering {
       
       // provide a singleton of Repository
       register { FirestoreRepository<Earning>() }.scope(.application)
+      register { FirestoreRepository<Spending>() }.scope(.application)
       
       // View Models
       register { EarningViewModel() }.scope(.application)
+      register { SpendingViewModel() }.scope(.application)
       
       // provide a singleton of AuthService
       register { AuthService() }.scope(.application)

@@ -31,13 +31,15 @@
 		45737AB627A8A45F00AE9A87 /* FirestoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AB527A8A45E00AE9A87 /* FirestoreRepository.swift */; };
 		45737AB827A8A4A500AE9A87 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AB727A8A4A500AE9A87 /* RepositoryProtocol.swift */; };
 		45737ABA27A8A57D00AE9A87 /* Earning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AB927A8A57D00AE9A87 /* Earning.swift */; };
-		45737ABC27A8DDBD00AE9A87 /* EarningViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737ABB27A8DDBD00AE9A87 /* EarningViewModal.swift */; };
+		45737ABC27A8DDBD00AE9A87 /* EarningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737ABB27A8DDBD00AE9A87 /* EarningViewModel.swift */; };
 		45737ABE27A8DEF400AE9A87 /* Reposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737ABD27A8DEF400AE9A87 /* Reposable.swift */; };
 		45737AC027A8E9E000AE9A87 /* AppSpendingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737ABF27A8E9E000AE9A87 /* AppSpendingCard.swift */; };
 		45737AC227A8EA7A00AE9A87 /* Spending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AC127A8EA7A00AE9A87 /* Spending.swift */; };
 		45737AC427A8F5D400AE9A87 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AC327A8F5D400AE9A87 /* String.swift */; };
 		45737AC627A9222F00AE9A87 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AC527A9222F00AE9A87 /* Array.swift */; };
 		45737ACA27A949CD00AE9A87 /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AC927A949CD00AE9A87 /* Float.swift */; };
+		45737ACC27A952AC00AE9A87 /* SpendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737ACB27A952AC00AE9A87 /* SpendingViewModel.swift */; };
+		45737ACE27A95B1200AE9A87 /* SpendingChartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737ACD27A95B1200AE9A87 /* SpendingChartScreen.swift */; };
 		457CD9AE27A5BC65007A9EF0 /* AppEarningCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9AD27A5BC65007A9EF0 /* AppEarningCard.swift */; };
 		457CD9B027A5C071007A9EF0 /* AppFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9AF27A5C071007A9EF0 /* AppFloatingButton.swift */; };
 		457CD9B227A5CAF9007A9EF0 /* AppPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9B127A5CAF9007A9EF0 /* AppPopupView.swift */; };
@@ -86,13 +88,15 @@
 		45737AB527A8A45E00AE9A87 /* FirestoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreRepository.swift; sourceTree = "<group>"; };
 		45737AB727A8A4A500AE9A87 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
 		45737AB927A8A57D00AE9A87 /* Earning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earning.swift; sourceTree = "<group>"; };
-		45737ABB27A8DDBD00AE9A87 /* EarningViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningViewModal.swift; sourceTree = "<group>"; };
+		45737ABB27A8DDBD00AE9A87 /* EarningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningViewModel.swift; sourceTree = "<group>"; };
 		45737ABD27A8DEF400AE9A87 /* Reposable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reposable.swift; sourceTree = "<group>"; };
 		45737ABF27A8E9E000AE9A87 /* AppSpendingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSpendingCard.swift; sourceTree = "<group>"; };
 		45737AC127A8EA7A00AE9A87 /* Spending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spending.swift; sourceTree = "<group>"; };
 		45737AC327A8F5D400AE9A87 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		45737AC527A9222F00AE9A87 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		45737AC927A949CD00AE9A87 /* Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
+		45737ACB27A952AC00AE9A87 /* SpendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingViewModel.swift; sourceTree = "<group>"; };
+		45737ACD27A95B1200AE9A87 /* SpendingChartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingChartScreen.swift; sourceTree = "<group>"; };
 		457CD9AD27A5BC65007A9EF0 /* AppEarningCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEarningCard.swift; sourceTree = "<group>"; };
 		457CD9AF27A5C071007A9EF0 /* AppFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFloatingButton.swift; sourceTree = "<group>"; };
 		457CD9B127A5CAF9007A9EF0 /* AppPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPopupView.swift; sourceTree = "<group>"; };
@@ -153,7 +157,8 @@
 		45737AAC27A8967D00AE9A87 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				45737ABB27A8DDBD00AE9A87 /* EarningViewModal.swift */,
+				45737ABB27A8DDBD00AE9A87 /* EarningViewModel.swift */,
+				45737ACB27A952AC00AE9A87 /* SpendingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 				456B7ADD27A5341E0048E05F /* EarningScreen.swift */,
 				456B7ADF27A534800048E05F /* SpendingScreen.swift */,
 				456B7AE127A534A30048E05F /* WishListScreen.swift */,
+				45737ACD27A95B1200AE9A87 /* SpendingChartScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -468,10 +474,12 @@
 				45EA7F7E27A49396009C0F58 /* Constants.swift in Sources */,
 				45EA7F8527A4A81B009C0F58 /* RootScreen.swift in Sources */,
 				457CD9B527A5E717007A9EF0 /* AppDatePicker.swift in Sources */,
+				45737ACC27A952AC00AE9A87 /* SpendingViewModel.swift in Sources */,
 				457CD9B927A60F84007A9EF0 /* AppSideMenu.swift in Sources */,
-				45737ABC27A8DDBD00AE9A87 /* EarningViewModal.swift in Sources */,
+				45737ABC27A8DDBD00AE9A87 /* EarningViewModel.swift in Sources */,
 				456B7ADC27A520EF0048E05F /* TopBar.swift in Sources */,
 				456B7AE427A537A40048E05F /* DropdownSelector.swift in Sources */,
+				45737ACE27A95B1200AE9A87 /* SpendingChartScreen.swift in Sources */,
 				457CD9B227A5CAF9007A9EF0 /* AppPopupView.swift in Sources */,
 				45737ABA27A8A57D00AE9A87 /* Earning.swift in Sources */,
 				45737AAE27A8970800AE9A87 /* AuthService.swift in Sources */,

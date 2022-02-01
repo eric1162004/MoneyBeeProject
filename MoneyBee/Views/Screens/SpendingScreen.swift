@@ -6,75 +6,65 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct SpendingScreen: View {
     
-    @State private var showChartSheet = false
+    @State var showChartSheet = false
     
-    // allow us to pop the current view off the navigation stack
-    @Environment(\.presentationMode) var presentation
+    // show add earning pop up
+    @State var showPopUp = false
     
     var body: some View {
-        
-        VStack {
-            // Topbar
-            TopBar(
-                title: "Spendings",
-                leadingIcon: "chevron.left",
-                trailingIcon: "chart.pie.fill",
-                backgroundColor: Color.appRed,
-                leadingIconHandler: {
-                    // back to home screen
-                    presentation.wrappedValue.dismiss()
-                },
-                trailingIconHandler: {
-                    // show pie chart sheet
-                    showChartSheet.toggle()
-                })
-            
-            // Screen Content
-            SpendingScreenContent()
+        ZStack(alignment: .center){
+            VStack {
+                // Topbar
+                SpendingScreenTopBar(showChartSheet: $showChartSheet)
+                
+                // Screen Content
+                SpendingScreenContent(showPopUp: $showPopUp)
+            }
+            // show add new earning pop up
+            SpendingPopupField(showPopUp: $showPopUp)
         }
         .sheet(isPresented: $showChartSheet) {
             SpendingChartView()
         }
-        .background(Color.backgroundColor)
         .ignoresSafeArea()
         .navigationBarHidden(true)
     }
 }
 
+struct SpendingScreenTopBar: View {
+    
+    @Binding var showChartSheet: Bool
+    
+    // allow us to pop the current view off the navigation stack
+    @Environment(\.presentationMode) var presentation
+    
+    var body: some View {
+        TopBar(
+            title: "Spendings",
+            leadingIcon: "chevron.left",
+            trailingIcon: "chart.pie.fill",
+            backgroundColor: Color.appRed,
+            leadingIconHandler: {
+                // back to home screen
+                presentation.wrappedValue.dismiss()
+            },
+            trailingIconHandler: {
+                // show pie chart sheet
+                showChartSheet.toggle()
+            })
+    }
+}
+
 struct SpendingScreenContent: View {
     
-    // list of dropdown options
-    // a dropdown option must have a string index and label text
-    @State var options: [DropdownOption] = [
-        DropdownOption(key: "0", value: "Jan 2020"),
-        DropdownOption(key: "1", value: "Feb 2020"),
-        DropdownOption(key: "2", value: "Mar 2020"),
-        DropdownOption(key: "3", value: "Mar 2020"),
-        DropdownOption(key: "4", value: "Mar 2020"),
-        DropdownOption(key: "5", value: "Mar 2020"),
-    ]
-    
-    @State var spendingTypeOptions: [DropdownOption] = [
-        DropdownOption(key: "0", value: SpendingType.FOOD),
-        DropdownOption(key: "1", value: SpendingType.SCHOOL),
-        DropdownOption(key: "2", value: SpendingType.PLAY),
-        DropdownOption(key: "3", value: SpendingType.OTHER),
-    ]
-    
-    @State var selectedMonthYear: String = ""
-    @State private var searchString: String = ""
+    @ObservedObject var spendingVM : SpendingViewModel = Resolver.resolve()
     
     // show add earning pop up
-    @State private var showPopUp = false
-    
-    // pop up states
-    @State var newSpendingType: String = ""
-    @State var newSpendingTitle: String = ""
-    @State var newSpendingAmount: Float = 0
-    @State var newSpendingDate: Date = Date()
+    @Binding var showPopUp : Bool
     
     var body: some View {
         ZStack {
@@ -82,165 +72,173 @@ struct SpendingScreenContent: View {
             
             // Screen without pop up
             VStack{
-                
                 // Month Selector and Month Total
                 VStack{
                     // select a month of which earnings are made
-//                    DropdownSelector(
-//                        placeholder: "Pick a month",
-//                        options: options,
-//                        onOptionSelected: { option in
-//                            selectedMonthYear = option.value
-//                        })
-//                        .zIndex(1)
+                    MonthSection()
                     
-                    // display the total amount of earnings made in the month
-                    AppText(text: "Month Total: $200", fontSize: FontSize.medium, fontColor: .white)
+                    // this zstack allow floating action to sit on top of the list
+                    ZStack(alignment: .bottomTrailing){
+                        
+                        // list of earning cards
+                        EarningListSection()
+                        
+                        // floating action button to add a new earning
+                        SpendingScreenFloadButton(showPopUp: $showPopUp)
+                    }
                 }
-                .padding(Dm.medium)
-                .background(Color.appLightRed)
-                .offset(y: -Dm.tiny)
+            }
+            
+        }
+    }
+}
+
+private struct MonthSection: View {
+    
+    @ObservedObject var spendingVM : SpendingViewModel = Resolver.resolve()
+    
+    var body: some View {
+        VStack{
+            // select a month of which earnings are made
+            DropdownSelector(
+                selectedOption: $spendingVM.selectedMonthYear,
+                placeholder: "Pick a month",
+                options: spendingVM.dateOptions,
+                onOptionSelected: { option in
+                    spendingVM.selectedMonthYear = option
+                })
                 .zIndex(1)
-                
-                // this zstack allow floating action to sit on top of the list
-                ZStack(alignment: .bottomTrailing){
-                    
-                    // list of earning cards
-                    List{
-                        
-                        // search bar - search by earning title
-                        AppTextField(text:$searchString, placeholder: "search", trailingIcon: "magnifyingglass", trailingIconHandler: {
-                            
-                            // handler search icon pressed
-                            print("search..")
-                        })
-                            .listRowBackground(Color.backgroundColor)
-                            .shadow(color: .gray, radius: 5, x: 0, y: 2)
-                        
-//                        ForEach(1...10, id: \.self){item in
-                        // an earning card
-                            SpendingCard(spending: Spending(title: "Spending..", amount: 20, date: Date()), backgroundColor: 2 % 2 == 0 ? Color.appRed : Color.appLightRed) {
-                            // handle swipt delete
-
-//                        }
-                        // clear the default white list item background
-                        }
-                            .listRowBackground(Color.backgroundColor)
-                        
-                    }
-                    .listStyle(.plain)
-                    
-                    
-                    // floating action button to add a new earning
-                    AppFloatingButton(iconName: "plus", iconBackgroundColor: Color.appRed) {
-                        
-                        // handle action button pressed
-                        showPopUp.toggle()
-                    }
-                    .padding(.horizontal, Dm.medium)
-                    .padding(.vertical, Dm.xlarge)
-                }
-                
-            }
             
-            // show add new earning pop up
-            if $showPopUp.wrappedValue {
-                
-                // all text field inside the pop up goes here
-                let popupForm: AnyView = AnyView(
-                    VStack{
-//                        DropdownSelector(
-//                            placeholder: "Spending Type",
-//                            options: spendingTypeOptions,
-//                            onOptionSelected: { option in
-//                                newSpendingType = option.value
-//                            })
-//                            .zIndex(3)
-                        
-                        AppTextField(text: $newSpendingTitle, placeholder: "Title")
-                        
-                        AppTextField(text: $newSpendingTitle, placeholder: "Amount")
-                        
-                        AppDatePicker(selectedDate: $newSpendingDate)
-                    }
-                )
-                
-                AppPopupView(
-                    title: "New Earning",
-                    backgroundColor: Color.appLightRed,
-                    showPopUp: $showPopUp, view: popupForm,
-                    handleConfirm: { $showPopUp.wrappedValue.toggle() },
-                    handleCancel:{ $showPopUp.wrappedValue.toggle()}
-                )
-            }
-            
+            // display the total amount of earnings made in the month
+            AppText(text: "Month Total: $\(spendingVM.monthTotal.toStringWithDecimal(n: 2))", fontSize: FontSize.medium, fontColor: .white)
         }
-        .navigationBarHidden(true)
-        .ignoresSafeArea()
-    }
-    
-}
-
-struct SpendingChartView: View {
-    
-    // used to dismiss the sheetview: dismiss()
-    @Environment(\.dismiss) var dismiss
-
-    var body: some View {
-        VStack(){
-            
-            AppText(text: "Dec 2020", fontSize: FontSize.medium)
-            
-            // Spending Pie Chart
-            PieChartView(values: [200.0, 180.0, 180.0, 100.0], colors: [Color.appGreen, Color.appBlue, Color.primaryColor, Color.appRed], backgroundColor: Color.clear)
-            
-            Spacer()
-            
-            SpendingTable()
-                .frame(maxHeight: 280)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(Dm.medium)
-        .background(Color.backgroundColor)
+        .background(Color.appLightRed)
+        .offset(y: -Dm.tiny)
+        .zIndex(1)
     }
 }
 
-struct SpendingTable: View {
+private struct EarningListSection: View {
+    
+    @ObservedObject var spendingVM : SpendingViewModel = Resolver.resolve()
     
     var body: some View {
-        
-        GeometryReader{ geometry in
-            VStack{
-                
-                ForEach(1...4, id:\.self) { _ in
-                    HStack{
-                        Circle()
-                            .fill(Color.appGreen)
-                            .frame(width: geometry.size.width * 0.1)
-                        
-                        AppText(text: "Food", fontSize: FontSize.small)
-                            .frame(width: geometry.size.width * 0.3)
-                        
-                        
-                        AppText(text: "$100.00", fontSize: FontSize.small)
-                            .frame(width: geometry.size.width * 0.4)
+        List{
+            // search bar - search by spending title
+            AppTextField(text:$spendingVM.searchTerm, placeholder: "search", trailingIcon: "magnifyingglass")
+                .listRowBackground(Color.backgroundColor)
+                .shadow(color: .gray, radius: 5, x: 0, y: 2)
+            
+            // an earning card
+            ForEach(spendingVM.spendings){ spending in
+                // an earning card
+                SpendingCard(spending: spending, backgroundColor: Color.appLightRed) {
+                    // handle swipt delete
+                    spendingVM.remove(spending)
+                }
+                // clear the default white list item background
+                .listRowBackground(Color.backgroundColor)
+            }
+        }
+        .listStyle(.plain)
+    }
+}
+
+private struct SpendingScreenFloadButton: View {
+    
+    @Binding var showPopUp: Bool
+    
+    var body: some View {
+        AppFloatingButton(iconName: "plus", iconBackgroundColor: Color.appRed) {
+            // handle action button pressed
+            showPopUp.toggle()
+        }
+        .padding(.horizontal, Dm.medium)
+        .padding(.vertical, Dm.xlarge)
+    }
+    
+}
+
+private struct SpendingPopupField: View {
+    
+    @ObservedObject var spendingVM : SpendingViewModel = Resolver.resolve()
+    
+    @Binding var showPopUp: Bool
+    
+    @State var spendingTypeOptions: [DropdownOption] = [
+        DropdownOption(key: SpendingType.FOOD, value: SpendingType.FOOD),
+        DropdownOption(key: SpendingType.SCHOOL, value: SpendingType.SCHOOL),
+        DropdownOption(key: SpendingType.PLAY, value: SpendingType.PLAY),
+        DropdownOption(key: SpendingType.OTHER, value: SpendingType.OTHER),
+    ]
+    
+    // pop up states
+    @State var newSpendingType: DropdownOption?
+    @State var newSpendingTitle: String = ""
+    @State var newSpendingAmount: String = ""
+    @State var newSpendingDate: Date = Date()
+    
+    private func resetFields() {
+        newSpendingTitle = ""
+        newSpendingAmount = ""
+        newSpendingType = nil
+        newSpendingDate = Date()
+    }
+    
+    var body: some View {
+        if $showPopUp.wrappedValue {
+            
+            // all text field inside the pop up goes here
+            let popupForm: AnyView = AnyView(
+                VStack{
+                    
+                    // new spending type
+                    DropdownSelector(
+                        selectedOption: $newSpendingType,
+                        placeholder: "Spending Type",
+                        options: spendingTypeOptions,
+                        onOptionSelected: { option in
+                            newSpendingType = option
+                        })
+                        .zIndex(3)
+                    
+                    // new spending title
+                    AppTextField(text: $newSpendingTitle, placeholder: "Title")
+                    
+                    // new spending amount
+                    AppTextField(text: $newSpendingAmount, placeholder: "Amount", keyboardType: .numberPad)
+                    
+                    // new spending date
+                    AppDatePicker(selectedDate: $newSpendingDate)
+                }
+            )
+            
+            AppPopupView(
+                title: "New Spending",
+                backgroundColor: Color.appLightRed,
+                showPopUp: $showPopUp,
+                view: popupForm,
+                handleConfirm: {
+                    
+                    if let newSpendingType = newSpendingType, !newSpendingTitle.isEmpty {
+                        spendingVM.add(Spending(
+                            title: newSpendingTitle, amount: newSpendingAmount.floatValue, date: newSpendingDate, type: newSpendingType.value))
                     }
                     
+                    resetFields()
+                    
+                },
+                handleCancel:{
+                    resetFields()
                 }
-                
-            }
-            .padding(Dm.medium)
-            .background(.white)
-            .opacity(0.95)
-            .clipShape(RoundedRectangle(cornerRadius: CornerRadius.large))
+            )
         }
-        
     }
 }
 
 struct SpendingScreen_Previews: PreviewProvider {
     static var previews: some View {
         SpendingScreen()
-            
     }
 }
