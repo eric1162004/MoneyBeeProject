@@ -41,14 +41,16 @@ struct AppPopupView: View {
                     
                     AppCapsuleButton(label: "Cancel", backgroundColor: Color.appRed, fontSize: FontSize.tiny){
                         
-                        //
+                        handleCancel()
+                        
                         $showPopUp.wrappedValue.toggle()
                     }
                     .frame(width: 100, height: 20)
                     
                     AppCapsuleButton(label: "Confirm", backgroundColor: Color.appGreen, fontSize: FontSize.tiny){
                         
-                        // new earnings
+                        handleConfirm()
+                      
                         $showPopUp.wrappedValue.toggle()
                     }
                     .frame(width: 100, height: 20)

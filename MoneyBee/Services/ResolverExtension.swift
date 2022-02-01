@@ -12,9 +12,12 @@ extension Resolver: ResolverRegistering {
   public static func registerAllServices() {
       
       // provide a singleton of Repository
-//      register { FirestoreTaskRepository() as TaskRepository }.scope(.application)
+      register { FirestoreRepository<Earning>() }.scope(.application)
       
       // provide a singleton of AuthService
       register { AuthService() }.scope(.application)
+      
+      // provide a singleton of ImageStorageService
+      register { ImageStorageService() }.scope(.application)
   }
 }

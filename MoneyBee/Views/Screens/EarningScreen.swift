@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct EarningScreen: View {
+    
+    @Injected var repo: FirestoreRepository<Earning>
     
     // list of dropdown options
     // a dropdown option must have a string index and label text
@@ -103,7 +106,6 @@ struct EarningScreen: View {
                     
                     // floating action button to add a new earning
                     AppFloatingButton(iconName: "plus", iconBackgroundColor: Color.appGreen) {
-                        
                         // handle action button pressed
                         showPopUp.toggle()
                     }
@@ -130,9 +132,19 @@ struct EarningScreen: View {
                 AppPopupView(
                     title: "New Earning",
                     backgroundColor: Color.appLightGreen,
-                    showPopUp: $showPopUp, view: popupForm,
-                    handleConfirm: { $showPopUp.wrappedValue.toggle() },
-                    handleCancel:{ $showPopUp.wrappedValue.toggle()}
+                    showPopUp: $showPopUp,
+                    view: popupForm,
+                    handleConfirm: {
+                        
+                        print(repo.collectionName)
+                        repo.add(Earning(title: "test1", amount: 1, date: Date()))
+                        
+                        print("close earning pop")
+                    },
+                    handleCancel:{
+                        print("close earning pop")
+
+                    }
                 )
             }
             

@@ -14,8 +14,6 @@ struct RootScreen: View {
     // AuthenticationService is registered in Resolver.
     @ObservedObject var authService: AuthService = Resolver.resolve()
     
-//    @State var isAuthenticated: Bool = false
-    
     var body: some View {
         NavigationView{
 

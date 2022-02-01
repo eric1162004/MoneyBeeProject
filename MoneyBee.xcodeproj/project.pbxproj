@@ -27,6 +27,10 @@
 		45737AAE27A8970800AE9A87 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AAD27A8970800AE9A87 /* AuthService.swift */; };
 		45737AB027A897BB00AE9A87 /* ResolverExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AAF27A897BB00AE9A87 /* ResolverExtension.swift */; };
 		45737AB227A89F8700AE9A87 /* AppSignInAndSignUpTopBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AB127A89F8700AE9A87 /* AppSignInAndSignUpTopBanner.swift */; };
+		45737AB427A8A36A00AE9A87 /* ImageStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AB327A8A36A00AE9A87 /* ImageStorageService.swift */; };
+		45737AB627A8A45F00AE9A87 /* FirestoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AB527A8A45E00AE9A87 /* FirestoreRepository.swift */; };
+		45737AB827A8A4A500AE9A87 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AB727A8A4A500AE9A87 /* RepositoryProtocol.swift */; };
+		45737ABA27A8A57D00AE9A87 /* Earning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AB927A8A57D00AE9A87 /* Earning.swift */; };
 		457CD9AE27A5BC65007A9EF0 /* AppEarningsOrSpendingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9AD27A5BC65007A9EF0 /* AppEarningsOrSpendingCard.swift */; };
 		457CD9B027A5C071007A9EF0 /* AppFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9AF27A5C071007A9EF0 /* AppFloatingButton.swift */; };
 		457CD9B227A5CAF9007A9EF0 /* AppPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9B127A5CAF9007A9EF0 /* AppPopupView.swift */; };
@@ -71,6 +75,10 @@
 		45737AAD27A8970800AE9A87 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		45737AAF27A897BB00AE9A87 /* ResolverExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolverExtension.swift; sourceTree = "<group>"; };
 		45737AB127A89F8700AE9A87 /* AppSignInAndSignUpTopBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSignInAndSignUpTopBanner.swift; sourceTree = "<group>"; };
+		45737AB327A8A36A00AE9A87 /* ImageStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorageService.swift; sourceTree = "<group>"; };
+		45737AB527A8A45E00AE9A87 /* FirestoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreRepository.swift; sourceTree = "<group>"; };
+		45737AB727A8A4A500AE9A87 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
+		45737AB927A8A57D00AE9A87 /* Earning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earning.swift; sourceTree = "<group>"; };
 		457CD9AD27A5BC65007A9EF0 /* AppEarningsOrSpendingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEarningsOrSpendingCard.swift; sourceTree = "<group>"; };
 		457CD9AF27A5C071007A9EF0 /* AppFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFloatingButton.swift; sourceTree = "<group>"; };
 		457CD9B127A5CAF9007A9EF0 /* AppPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPopupView.swift; sourceTree = "<group>"; };
@@ -113,7 +121,9 @@
 		45737AAA27A8964400AE9A87 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				45737AAF27A897BB00AE9A87 /* ResolverExtension.swift */,
 				45737AAD27A8970800AE9A87 /* AuthService.swift */,
+				45737AB327A8A36A00AE9A87 /* ImageStorageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -121,6 +131,8 @@
 		45737AAB27A8965700AE9A87 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				45737AB527A8A45E00AE9A87 /* FirestoreRepository.swift */,
+				45737AB727A8A4A500AE9A87 /* RepositoryProtocol.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -137,7 +149,6 @@
 			children = (
 				457CD9B627A5EA91007A9EF0 /* Date.swift */,
 				456ABAF327A651C200E66F8D /* ViewExtension.swift */,
-				45737AAF27A897BB00AE9A87 /* ResolverExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -154,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				456ABAF127A64BA500E66F8D /* SpendingType.swift */,
+				45737AB927A8A57D00AE9A87 /* Earning.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -402,6 +414,7 @@
 				456B7AD427A4EA5D0048E05F /* AppHyperLink.swift in Sources */,
 				45737AB027A897BB00AE9A87 /* ResolverExtension.swift in Sources */,
 				45EA7F8227A4A399009C0F58 /* StrokeText.swift in Sources */,
+				45737AB827A8A4A500AE9A87 /* RepositoryProtocol.swift in Sources */,
 				45EA7F4127A45D3E009C0F58 /* SplashScreen.swift in Sources */,
 				456B7AE027A534800048E05F /* SpendingScreen.swift in Sources */,
 				456B7ADE27A5341E0048E05F /* EarningScreen.swift in Sources */,
@@ -409,7 +422,9 @@
 				457CD9B727A5EA91007A9EF0 /* Date.swift in Sources */,
 				456B7AD827A51BA50048E05F /* AppRoundedCornerButton.swift in Sources */,
 				456B7ADA27A520AD0048E05F /* EditProfileScreen.swift in Sources */,
+				45737AB627A8A45F00AE9A87 /* FirestoreRepository.swift in Sources */,
 				45EA7F8B27A4B982009C0F58 /* AppTextField.swift in Sources */,
+				45737AB427A8A36A00AE9A87 /* ImageStorageService.swift in Sources */,
 				45EA7F3F27A45D3E009C0F58 /* MoneyBeeApp.swift in Sources */,
 				456ABAF227A64BA500E66F8D /* SpendingType.swift in Sources */,
 				456B7AE227A534A30048E05F /* WishListScreen.swift in Sources */,
@@ -430,6 +445,7 @@
 				456B7ADC27A520EF0048E05F /* TopBar.swift in Sources */,
 				456B7AE427A537A40048E05F /* DropdownSelector.swift in Sources */,
 				457CD9B227A5CAF9007A9EF0 /* AppPopupView.swift in Sources */,
+				45737ABA27A8A57D00AE9A87 /* Earning.swift in Sources */,
 				45737AAE27A8970800AE9A87 /* AuthService.swift in Sources */,
 				457CD9B027A5C071007A9EF0 /* AppFloatingButton.swift in Sources */,
 				456ABAFA27A6631F00E66F8D /* AppMoneyAmountView.swift in Sources */,
