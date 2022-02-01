@@ -55,7 +55,7 @@ struct PieSliceData {
 }
 
 struct PieChartView: View {
-    public let values: [Double]
+    public var values: [Double]
     public var colors: [Color]
     
     public var backgroundColor: Color
@@ -76,11 +76,19 @@ struct PieChartView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack{
-                ForEach(0..<self.values.count){ i in
-                    PieSliceView(pieSliceData: self.slices[i])
+                if values.reduce(0, +) != 0 {
+                    ForEach(0..<self.values.count){ i in
+                        
+                        // if the slice is "0%", do not include in the chart
+                        if self.slices[i].text != "0%"{
+                            PieSliceView(pieSliceData: self.slices[i])
+                        }
+                    }
+                }else {
+                    AppText(text: "No Data to show", fontSize: FontSize.large)
                 }
-                .frame(width: geometry.size.width, height: geometry.size.width)
             }
+            .frame(width: geometry.size.width, height: geometry.size.width)
             .background(self.backgroundColor)
             .foregroundColor(Color.white)
         }

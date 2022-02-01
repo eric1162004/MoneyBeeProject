@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import Combine
 import Resolver
 
@@ -22,6 +23,25 @@ class SpendingViewModel: ObservableObject {
     @Published var selectedMonthYear: DropdownOption?
     
     @Published var monthTotal: Float = 0
+    
+    // spending total by type in order: Food, School, Play, Other
+    @Published var spendingChartTotalAmounts: [Double]?
+    
+    var spendingTypes: [SpendingType] = [
+        Food(), School(), Play(), Other()
+    ]
+    
+    var spendingChartTypeColors: [Color] {
+        spendingTypes.map {
+            $0.color
+        }
+    }
+    
+    var spendingTypeOptions: [DropdownOption] {
+        spendingTypes.map {
+            DropdownOption(key: $0.name, value: $0.name)
+        }
+    }
     
     private var spendingsCopy: [Spending] = [Spending]()
     
@@ -54,7 +74,7 @@ class SpendingViewModel: ObservableObject {
                 }
             }
             .map { dropdownOptions in
-                dropdownOptions.removingDuplicates()
+                return dropdownOptions.removingDuplicates()
             }
             .removeDuplicates()
             .assign(to: \.dateOptions, on: self)
@@ -65,7 +85,11 @@ class SpendingViewModel: ObservableObject {
             .sink { (_) in
                 //
             } receiveValue: { [weak self] selectedDateOption in
+                
                 self?.filterByMonthYear(selectedDateOption)
+                
+                // populate the piechart
+                self?.populatePieChart()
                 
             }.store(in: &cancellables)
         
@@ -79,15 +103,20 @@ class SpendingViewModel: ObservableObject {
                     return nil
                 }
                 
+                // populate the piechart
+                self?.populatePieChart()
+                
                 return string
             }) // prevents sending numerous requests and sends nil if the count of the characters is less than 1.
             .compactMap{ $0 } // removes the nil values so the search string does not get passed down to the publisher chain
             .sink { (_) in
                 //
+
             } receiveValue: { [weak self] string in
                 self?.filterBySearchTerm(string)
                 
             }.store(in: &cancellables)
+
     }
     
     func filterBySearchTerm(_ searchTerm: String){
@@ -100,6 +129,33 @@ class SpendingViewModel: ObservableObject {
         
         // caluclate month total
         monthTotal = spendings.map({ $0.amount }).reduce(0, +)
+    }
+    
+    func populatePieChart() {
+        self.spendingChartTotalAmounts = [Double](repeating: 0.0, count: spendingTypes.count)
+        
+        // extract whatever in (filtered) spendings and map it to spendingChartTotalAmounts
+        spendings.forEach { [weak self] spending in
+            let index = getSpendingTypeIndex(spending)
+            if index != -1 {
+                self?.spendingChartTotalAmounts![index] += Double(spending.amount)
+            }
+        }
+    }
+    
+    func getSpendingTypeIndex(_ spendingType: SpendingType) -> Int {
+        return spendingTypes.firstIndex(where: {$0.name == spendingType.name}) ?? -1
+    }
+    
+    func getSpendingTypeIndex(_ spending: Spending) -> Int {
+        var index = 0
+        for spendingType in self.spendingTypes{
+            if spendingType.name == spending.type{
+                return index
+            }
+            index+=1
+        }
+        return -1
     }
     
     func reload(){

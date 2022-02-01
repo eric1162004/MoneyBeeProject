@@ -6,11 +6,33 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct SpendingType {
-    
-    static let FOOD = "Food"
-    static let SCHOOL = "School"
-    static let PLAY = "Play"
-    static let OTHER = "Other"
+
+
+protocol SpendingType{
+    var name : String {get}
+    var color : Color {get}
 }
+
+struct Food : SpendingType {
+    var name: String = "Food"
+    var color: Color = Color.appGreen
+}
+
+struct School : SpendingType{
+    var name: String = "School"
+    var color: Color = Color.appBlue
+}
+
+struct Play: SpendingType{
+    var name: String = "Play"
+    var color: Color = Color.primaryColor
+}
+
+struct Other : SpendingType{
+    var name: String = "Other"
+    var color: Color = Color.appRed
+}
+
+

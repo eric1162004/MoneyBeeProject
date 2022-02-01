@@ -165,14 +165,7 @@ private struct SpendingPopupField: View {
     @ObservedObject var spendingVM : SpendingViewModel = Resolver.resolve()
     
     @Binding var showPopUp: Bool
-    
-    @State var spendingTypeOptions: [DropdownOption] = [
-        DropdownOption(key: SpendingType.FOOD, value: SpendingType.FOOD),
-        DropdownOption(key: SpendingType.SCHOOL, value: SpendingType.SCHOOL),
-        DropdownOption(key: SpendingType.PLAY, value: SpendingType.PLAY),
-        DropdownOption(key: SpendingType.OTHER, value: SpendingType.OTHER),
-    ]
-    
+
     // pop up states
     @State var newSpendingType: DropdownOption?
     @State var newSpendingTitle: String = ""
@@ -197,7 +190,7 @@ private struct SpendingPopupField: View {
                     DropdownSelector(
                         selectedOption: $newSpendingType,
                         placeholder: "Spending Type",
-                        options: spendingTypeOptions,
+                        options: spendingVM.spendingTypeOptions,
                         onOptionSelected: { option in
                             newSpendingType = option
                         })

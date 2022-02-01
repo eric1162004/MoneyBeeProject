@@ -6,24 +6,32 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct SpendingChartView: View {
+    
+    @ObservedObject var spendingVM : SpendingViewModel = Resolver.resolve()
     
     // used to dismiss the sheetview: dismiss()
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
         VStack(){
-            
-            AppText(text: "Dec 2020", fontSize: FontSize.medium)
-            
             // Spending Pie Chart
-            PieChartView(values: [200.0, 180.0, 180.0, 100.0], colors: [Color.appGreen, Color.appBlue, Color.primaryColor, Color.appRed], backgroundColor: Color.clear)
+            if let totalAmount = spendingVM.spendingChartTotalAmounts {
+                AppText(text: spendingVM.selectedMonthYear?.value ?? "Overall Spending", fontSize: FontSize.medium)
+                
+                PieChartView(values: totalAmount, colors: spendingVM.spendingChartTypeColors, backgroundColor: Color.clear)
+                
+                Spacer()
+                
+                SpendingTable()
+                    .frame(maxHeight: 280)
+                
+            } else {
+                AppText(text: "Please select a month.", fontSize: FontSize.large)
+            }
             
-            Spacer()
-            
-            SpendingTable()
-                .frame(maxHeight: 280)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(Dm.medium)
@@ -34,25 +42,28 @@ struct SpendingChartView: View {
 
 struct SpendingTable: View {
     
+    @ObservedObject var spendingVM : SpendingViewModel = Resolver.resolve()
+    
     var body: some View {
         
         GeometryReader{ geometry in
             VStack{
                 
-                ForEach(1...4, id:\.self) { _ in
+                ForEach(spendingVM.spendingTypes, id:\.name) { SpendingType in
                     HStack{
                         Circle()
-                            .fill(Color.appGreen)
+                            .fill(SpendingType.color)
                             .frame(width: geometry.size.width * 0.1)
                         
-                        AppText(text: "Food", fontSize: FontSize.small)
+                        AppText(text: SpendingType.name, fontSize: FontSize.small)
                             .frame(width: geometry.size.width * 0.3)
                         
+                        let moneyAmount = String(format:"$%.2f", spendingVM.spendingChartTotalAmounts![spendingVM.getSpendingTypeIndex(SpendingType)])
                         
-                        AppText(text: "$100.00", fontSize: FontSize.small)
+                        AppText(text: moneyAmount,
+                                fontSize:FontSize.small)
                             .frame(width: geometry.size.width * 0.4)
                     }
-                    
                 }
                 
             }
