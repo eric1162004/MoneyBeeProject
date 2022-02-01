@@ -36,6 +36,7 @@
 		45737AC027A8E9E000AE9A87 /* AppSpendingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737ABF27A8E9E000AE9A87 /* AppSpendingCard.swift */; };
 		45737AC227A8EA7A00AE9A87 /* Spending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AC127A8EA7A00AE9A87 /* Spending.swift */; };
 		45737AC427A8F5D400AE9A87 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AC327A8F5D400AE9A87 /* String.swift */; };
+		45737AC627A9222F00AE9A87 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45737AC527A9222F00AE9A87 /* Array.swift */; };
 		457CD9AE27A5BC65007A9EF0 /* AppEarningCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9AD27A5BC65007A9EF0 /* AppEarningCard.swift */; };
 		457CD9B027A5C071007A9EF0 /* AppFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9AF27A5C071007A9EF0 /* AppFloatingButton.swift */; };
 		457CD9B227A5CAF9007A9EF0 /* AppPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457CD9B127A5CAF9007A9EF0 /* AppPopupView.swift */; };
@@ -89,6 +90,7 @@
 		45737ABF27A8E9E000AE9A87 /* AppSpendingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSpendingCard.swift; sourceTree = "<group>"; };
 		45737AC127A8EA7A00AE9A87 /* Spending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spending.swift; sourceTree = "<group>"; };
 		45737AC327A8F5D400AE9A87 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		45737AC527A9222F00AE9A87 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		457CD9AD27A5BC65007A9EF0 /* AppEarningCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEarningCard.swift; sourceTree = "<group>"; };
 		457CD9AF27A5C071007A9EF0 /* AppFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFloatingButton.swift; sourceTree = "<group>"; };
 		457CD9B127A5CAF9007A9EF0 /* AppPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPopupView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				457CD9B627A5EA91007A9EF0 /* Date.swift */,
 				456ABAF327A651C200E66F8D /* ViewExtension.swift */,
 				45737AC327A8F5D400AE9A87 /* String.swift */,
+				45737AC527A9222F00AE9A87 /* Array.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				457CD9AE27A5BC65007A9EF0 /* AppEarningCard.swift in Sources */,
 				456ABAF627A65C3E00E66F8D /* AppRoundedImageView.swift in Sources */,
 				45737ABE27A8DEF400AE9A87 /* Reposable.swift in Sources */,
+				45737AC627A9222F00AE9A87 /* Array.swift in Sources */,
 				456ABAF827A65FE300E66F8D /* AppWishItemCard.swift in Sources */,
 				456B7AD027A4D2B20048E05F /* AppSecureTextField.swift in Sources */,
 				45EA7F8027A49BE3009C0F58 /* AppText.swift in Sources */,

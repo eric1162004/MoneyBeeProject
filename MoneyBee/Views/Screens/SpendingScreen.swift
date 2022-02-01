@@ -86,13 +86,13 @@ struct SpendingScreenContent: View {
                 // Month Selector and Month Total
                 VStack{
                     // select a month of which earnings are made
-                    DropdownSelector(
-                        placeholder: "Pick a month",
-                        options: options,
-                        onOptionSelected: { option in
-                            selectedMonthYear = option.value
-                        })
-                        .zIndex(1)
+//                    DropdownSelector(
+//                        placeholder: "Pick a month",
+//                        options: options,
+//                        onOptionSelected: { option in
+//                            selectedMonthYear = option.value
+//                        })
+//                        .zIndex(1)
                     
                     // display the total amount of earnings made in the month
                     AppText(text: "Month Total: $200", fontSize: FontSize.medium, fontColor: .white)
@@ -149,13 +149,13 @@ struct SpendingScreenContent: View {
                 // all text field inside the pop up goes here
                 let popupForm: AnyView = AnyView(
                     VStack{
-                        DropdownSelector(
-                            placeholder: "Spending Type",
-                            options: spendingTypeOptions,
-                            onOptionSelected: { option in
-                                newSpendingType = option.value
-                            })
-                            .zIndex(3)
+//                        DropdownSelector(
+//                            placeholder: "Spending Type",
+//                            options: spendingTypeOptions,
+//                            onOptionSelected: { option in
+//                                newSpendingType = option.value
+//                            })
+//                            .zIndex(3)
                         
                         AppTextField(text: $newSpendingTitle, placeholder: "Title")
                         

@@ -65,7 +65,7 @@ struct Dropdown: View {
 struct DropdownSelector: View {
     
     @State private var shouldShowDropdown = false
-    @State private var selectedOption: DropdownOption? = nil
+    @Binding var selectedOption: DropdownOption?
     var placeholder: String
     var options: [DropdownOption]
     var onOptionSelected: ((_ option: DropdownOption) -> Void)?
@@ -129,13 +129,13 @@ struct DropdownSelector_Previews: PreviewProvider {
 
     static var previews: some View {
         Group {
-            DropdownSelector(
-                placeholder: "Day of the week",
-                options: options,
-                onOptionSelected: { option in
-                    print(option)
-            })
-            .padding(.horizontal)
+//            DropdownSelector(
+//                placeholder: "Day of the week",
+//                options: options,
+//                onOptionSelected: { option in
+//                    print(option)
+//            })
+//            .padding(.horizontal)
         }
     }
 }

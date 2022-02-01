@@ -12,20 +12,6 @@ struct EarningScreen: View {
     
     @ObservedObject var earningVM = EarningViewModel()
     
-    // list of dropdown options
-    // a dropdown option must have a string index and label text
-    @State var options: [DropdownOption] = [
-        DropdownOption(key: "0", value: "Jan 2020"),
-        DropdownOption(key: "1", value: "Feb 2020"),
-        DropdownOption(key: "2", value: "Mar 2020"),
-        DropdownOption(key: "3", value: "Mar 2020"),
-        DropdownOption(key: "4", value: "Mar 2020"),
-        DropdownOption(key: "5", value: "Mar 2020"),
-    ]
-    
-    @State var selectedMonthYear: String = ""
-    @State private var searchString: String = ""
-    
     // show add earning pop up
     @State private var showPopUp = false
     
@@ -55,15 +41,16 @@ struct EarningScreen: View {
                 VStack{
                     // select a month of which earnings are made
                     DropdownSelector(
+                        selectedOption: $earningVM.selectedMonthYear,
                         placeholder: "Pick a month",
-                        options: options,
+                        options: earningVM.dateOptions,
                         onOptionSelected: { option in
-                            selectedMonthYear = option.value
+                            earningVM.selectedMonthYear = option
                         })
                         .zIndex(1)
                     
                     // display the total amount of earnings made in the month
-                    AppText(text: "Month Total: $200", fontSize: FontSize.medium, fontColor: .white)
+                    AppText(text: "Month Total: $\(earningVM.monthTotal)", fontSize: FontSize.medium, fontColor: .white)
                 }
                 .padding(Dm.medium)
                 .background(Color.appLightGreen)
@@ -77,11 +64,7 @@ struct EarningScreen: View {
                     List{
                         
                         // search bar - search by earning title
-                        AppTextField(text:$searchString, placeholder: "search", trailingIcon: "magnifyingglass", trailingIconHandler: {
-                            
-                            // handler search icon pressed
-                            print("search..")
-                        })
+                        AppTextField(text:$earningVM.searchTerm, placeholder: "search", trailingIcon: "magnifyingglass")
                             .listRowBackground(Color.backgroundColor)
                             .shadow(color: .gray, radius: 5, x: 0, y: 2)
                         
@@ -108,8 +91,8 @@ struct EarningScreen: View {
                     }
                     .padding(.horizontal, Dm.medium)
                     .padding(.vertical, Dm.xlarge)
+                    
                 }
-                
             }
             
             // show add new earning pop up
