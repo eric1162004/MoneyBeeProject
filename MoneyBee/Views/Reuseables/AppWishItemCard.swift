@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct AppWishItemCard: View {
-    
-    @State var title:String
-    @State var imageName: String
-    @State var amount: Float
+
+    @State var wishItem: WishItem
     @State var backgroundColor: Color = Color.primaryColor
     @State var buyButtonHandler: (() -> ())?
     @State var swipeDeleteHandler: (() -> ())?
@@ -20,14 +18,20 @@ struct AppWishItemCard: View {
         
         HStack{
             VStack{
-                AppRoundedImageView(imageName: imageName)
                 
-                AppText(text: title, fontSize: FontSize.small, fontColor: .white)
+                if !wishItem.imageUrl.isEmpty{
+                    AysncImageLoader(imageUrl: wishItem.imageUrl)
+                        .scaledToFit()
+                        .frame(width: 140, height: 140)
+                        .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
+                }
+                
+                AppText(text: wishItem.title, fontSize: FontSize.small, fontColor: .white)
             }
             .frame(maxWidth: .infinity)
             
             VStack{
-                AppMoneyAmountView(amount: amount)
+                AppMoneyAmountView(amount: wishItem.cost)
                 
                 AppRoundedCornerButton(label: "Buy!", backgroundColor: Color.appGreen) {
                     
@@ -59,6 +63,6 @@ struct AppWishItemCard: View {
 
 struct AppWishItemCard_Previews: PreviewProvider {
     static var previews: some View {
-        AppWishItemCard(title: "Soft Panda", imageName: "honeyBeeLogo2", amount: 20)
+        AppWishItemCard(wishItem: WishItem(title: "cat", cost: 20, imageUrl: "https://i.guim.co.uk/img/media/c5e73ed8e8325d7e79babf8f1ebbd9adc0d95409/2_5_1754_1053/master/1754.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=b6ba011b74a9f7a5c8322fe75478d9d"))
     }
 }

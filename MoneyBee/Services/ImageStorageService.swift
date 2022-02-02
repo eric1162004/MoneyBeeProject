@@ -72,7 +72,7 @@ public class ImageStorageService: ObservableObject {
     // delete an image by providing the uuid of the image
     func delete(uuid: String) {
         // Create a storage reference
-        let imageRef = storageRef.child("images/\(uuid).jpg")
+        let imageRef = storageRef.child("\(uuid).jpg")
         
         imageRef.delete { error in
             if let error = error {

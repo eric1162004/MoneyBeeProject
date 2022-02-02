@@ -7,49 +7,59 @@
 
 import SwiftUI
 
-struct AppRoundedImageView: View {
+struct AppImageView: View {
     
+    var uiImage: UIImage?
+    var imageUrl: String?
     var imageName: String?
     var iconName: String?
     
     var body: some View {
-        ZStack{
-            if let imageName = imageName {
+            if let uiImage = uiImage {
+                
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFit()
+            }
+            else if let imageUrl = imageUrl {
+                
+                AysncImageLoader(imageUrl: imageUrl)
+                    .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
+
+            }
+            else if let imageName = imageName {
                 
                 // return image
                 Image(imageName)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 80, height: 80)
                     .foregroundColor(.gray)
                 
-            } else if let iconName = iconName {
+            }
+            else if let iconName = iconName {
                 
                 // return a icon image
                 Image(systemName: iconName)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 80, height: 80)
                     .foregroundColor(.gray)
                 
-            } else{
+            }
+            else {
                 // if both imageName and iconName are not provided, then return a placeholder image
-                Image(systemName: "nosign")
+                Image(systemName: "photo.fill")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 80, height: 80)
                     .foregroundColor(.gray)
+                    .padding()
             }
-
-        }
-        .padding(Dm.medium)
-        .background()
-        .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
+        
     }
 }
 
 struct AppImageSelector_Previews: PreviewProvider {
     static var previews: some View {
-        AppRoundedImageView()
+        AppImageView(imageUrl: "https://i.guim.co.uk/img/media/c5e73ed8e8325d7e79babf8f1ebbd9adc0d95409/2_5_1754_1053/master/1754.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=b6ba011b74a9f7a5c8322fe75478d9df")
     }
 }
