@@ -23,9 +23,9 @@ struct AppImageView: View {
             }
             else if let imageUrl = imageUrl {
                 
-//                AysncImageLoader(imageUrl: imageUrl)
-//                    .scaledToFit()
-//                    .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
+                AysncImageLoader(imageUrl: imageUrl)
+                    .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
 
             }
             else if let imageName = imageName {
