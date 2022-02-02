@@ -99,4 +99,17 @@ class FirestoreRepository<itemType: Codable & Identifiable & Reposable>: Reposit
         }
     }
     
+    func getById(_ id: String, _ onCompleted: @escaping ((Result<itemType?, Error>) -> Void)) {
+        let docRef = collectionRef.document(id)
+        
+        docRef.getDocument { (document, error) in
+            
+            let result = Result {
+                try document?.data(as: itemType.self)
+            }
+            
+            onCompleted(result)
+        }
+    }
+    
 }

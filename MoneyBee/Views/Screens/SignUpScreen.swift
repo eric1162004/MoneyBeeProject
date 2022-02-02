@@ -13,6 +13,8 @@ struct SignUpScreen: View {
     // AuthenticationService is registered in Resolver.
     @ObservedObject var authService: AuthService = Resolver.resolve()
     
+    @ObservedObject var appUserViewModel: AppUserViewModel = Resolver.resolve()
+    
     @State var name: String = ""
     @State var email: String = ""
     @State var password: String = ""
@@ -75,7 +77,11 @@ struct SignUpScreen: View {
                         // TODO: Sign up user
                         print("\(name) \(email) \(password) \(confirmPassword)")
                         
-                        authService.signUp(email: email, password: password)
+                        authService.signUp(email: email, password: password, onError: { error in
+                            print(error.localizedDescription)
+                        }, onSuccess:{
+                            appUserViewModel.add(AppUser(name: name, email: email))
+                        })
                     }
                     
                     // back to sign Up screen

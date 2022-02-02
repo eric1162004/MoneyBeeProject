@@ -18,21 +18,38 @@ class AuthService: ObservableObject {
         self.registerStateListener()
     }
     
-    func signIn(email: String, password: String){
+    func signIn(
+        email: String,
+        password: String,
+        onError: @escaping ((Error) -> Void),
+        onSuccess: @escaping (() -> Void)
+    ){
         auth.signIn(withEmail: email, password: password) { result, error in
-            guard result != nil, error == nil else { return }
+            guard result != nil, error == nil else {
+                onError(error!)
+                return
+            }
             
             // Success
             print("User has signed in.")
+            onSuccess()
         }
     }
     
-    func signUp(email: String, password: String){
+    func signUp(
+        email: String,
+        password: String,
+        onError: @escaping ((Error) -> Void),
+        onSuccess: @escaping (() -> Void)
+    ){
         auth.createUser(withEmail: email, password: password) { result, error in
-            guard result != nil, error == nil else { return }
-            
+            guard result != nil, error == nil else {
+                onError(error!)
+                return
+            }
             // sucess
             print("User has signed up.")
+            onSuccess()
         }
     }
     

@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct EditProfileScreen: View {
     
-    @State var name: String = ""
+    @ObservedObject var appUserViewModel: AppUserViewModel = Resolver.resolve()
+    
+    @State private var showingPhotoPicker =  false
     
     // allow us to pop the current view off the navigation stack
     @Environment(\.presentationMode) var presentation
@@ -29,11 +32,27 @@ struct EditProfileScreen: View {
                     // Image Edit
                     ZStack(alignment:.bottomTrailing){
                         // Image
-                        AppCircularProfileImage(imageName: "honeyBeeLogo")
+                        
+                        if(appUserViewModel.selectedImage != nil) {
+                            Image(uiImage: appUserViewModel.selectedImage!)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 150, height: 150, alignment: .center)
+                                .background(.white)
+                                .clipShape(Circle())
+                                .padding(.bottom)
+                            
+                        }else {
+                            AysncImageLoader(imageUrl: appUserViewModel.appUser.imageUrl)
+                                .scaledToFit()
+                                .frame(width: 150, height: 150, alignment: .center)
+                                .background(.white)
+                                .clipShape(Circle())
+                                .padding(.bottom)
+                        }
                     
+                        Image(systemName: "photo.fill")
                         // image edit icon
-                        Image(systemName: "pencil")
-                            .resizable()
                             .scaledToFit()
                             .frame(width: 20, height: 20, alignment: .center)
                             .padding()
@@ -42,15 +61,23 @@ struct EditProfileScreen: View {
                             .clipShape(Circle())
                             .padding(.leading)
                             .offset(y: -Dm.medium)
+                            .onTapGesture {
+                                showingPhotoPicker.toggle()
+                            }
                     }
                     
+                    // Email
+                    AppText(text: appUserViewModel.appUser.email, fontSize: FontSize.small)
+                    
                     // name field
-                    AppTextField(text: $name, placeholder: "name", leadingIcon: "person")
+                    AppTextField(text: $appUserViewModel.appUser.name, placeholder: "name", leadingIcon: "person")
                     
                     Spacer()
                     
                     // save button
                     AppCapsuleButton(label: "Save", backgroundColor: Color.appGreen){
+                        
+                        appUserViewModel.update()
                         
                         // back to home screen
                         presentation.wrappedValue.dismiss()
@@ -61,6 +88,9 @@ struct EditProfileScreen: View {
                 }
                 .padding(Dm.medium)
         }
+            .sheet(isPresented: $showingPhotoPicker) {
+                PhotoPicker(image: $appUserViewModel.selectedImage)
+            }
         .background(Color.backgroundColor)
         .ignoresSafeArea()
         .navigationBarHidden(true)

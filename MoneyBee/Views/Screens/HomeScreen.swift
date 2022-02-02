@@ -10,6 +10,8 @@ import Resolver
 
 struct HomeScreen: View {
     
+    @ObservedObject var appUserViewModel: AppUserViewModel = Resolver.resolve()
+    
     @State var showMenu = false
     
     var body: some View {
@@ -39,13 +41,30 @@ struct HomeScreen: View {
                     ScrollView{
                         // User Avatar image and Greeting
                         HStack(alignment: .center){
-                            Image("honeyBeeLogo")
-                                .resizable()
+                            if !appUserViewModel.appUser.imageUrl.isEmpty{
+                                
+                                AsyncImage(url: URL(string: appUserViewModel.appUser.imageUrl)) { image in
+                                    image.resizable()
+                                } placeholder: {
+                                    Image(systemName: "photo.fill")
+                                        .resizable()
+                                        .foregroundColor(.white)
+                                }
                                 .scaledToFit()
                                 .frame(width: 60, height: 60, alignment: .center)
+                                .background(.white)
                                 .clipShape(Circle())
-                            
-                            AppText(text: "Hello, Justin!", fontSize: FontSize.large)
+                                .padding(.bottom)
+                                
+                            } else {
+                                Image("honeyBeeLogo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 60, height: 60, alignment: .center)
+                                    .clipShape(Circle())
+                            }
+
+                            AppText(text: "Hello, \(appUserViewModel.appUser.name)!", fontSize: FontSize.large)
                                 .padding(.vertical, Dm.small)
                             
                             // push everything to the left
@@ -89,7 +108,7 @@ struct HomeScreen: View {
                 .ignoresSafeArea()
                 
                 if showMenu{
-                    AppSideMenu()
+                    SideMenu()
                         .frame(width: geometry.size.width / 2, height: geometry.size.height)
                         .background(Color.backgroundColor)
                         .transition(.move(edge: .leading))

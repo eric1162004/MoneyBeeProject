@@ -12,6 +12,7 @@ struct AysncImageLoader: View {
     @State var imageUrl: String
     
     var body: some View {
+
         AsyncImage(url: URL(string: imageUrl)) { image in
             image.resizable()
         } placeholder: {
