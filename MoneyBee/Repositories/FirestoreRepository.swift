@@ -23,7 +23,7 @@ class FirestoreRepository<itemType: Codable & Identifiable & Reposable>: Reposit
     
     @Published var items = [itemType]()
 
-    // inject authService from Resolver
+    // inject AuthService from Resolver
     @Injected private var authService: AuthService
     private var userId: String = "unknown"
     
@@ -32,9 +32,10 @@ class FirestoreRepository<itemType: Codable & Identifiable & Reposable>: Reposit
     
     init() {
 
+        // set the name of the collection: lowercased of the item type + s
         self.collectionName = String(describing: itemType.self).lowercased() + "s"
         
-        // kicks in whenever the user property on the authentication service changes
+        // subscribe to the authentication service changes
         // extracts the user's ID
         authService.$user
             .compactMap { user in

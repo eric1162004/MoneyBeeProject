@@ -11,55 +11,72 @@ import Resolver
 
 class EarningViewModel: ObservableObject {
     
+    // Retrieve the FirestoreRepository Singleton from Resolver
     @Published var earningRepo: FirestoreRepository<Earning> = Resolver.resolve()
     
+    // Store all earnings that should display to the users
     @Published var earnings: [Earning] = [Earning]()
     
+    // Store the search term that the user has typed in
     @Published var searchTerm: String = ""
     
+    // Store the dropdown options
     @Published var dateOptions = [DropdownOption]()
     
+    // Store the dropdown option that the user has pick
     @Published var selectedMonthYear: DropdownOption?
     
+    // Calculated month total
     @Published var monthTotal: Float = 0
     
+    // Hold a copy of all the earnings to replace the filtered earnings
     private var earningsCopy: [Earning] = [Earning]()
     
+    // Store canacllables
     private var cancellables = Set<AnyCancellable>()
     
     init(){
         
+        // subscribe to earnings change from firebase
+        // and set them to the earnings property
         earningRepo.$items
             .assign(to: \.earnings, on: self)
             .store(in: &cancellables)
         
+        // keep a copy in the earnings
         earningRepo.$items
             .assign(to: \.earningsCopy, on: self)
             .store(in: &cancellables)
         
+        // Filter earnings by month year
         earningRepo.$items
             .map{ earnings in
+                // select the earning date and remove duplicate
                 earnings.map { earning -> Date in
                     let earningDate = earning.date
                     return earningDate
                 }.removingDuplicates()
             }
             .map { dates -> [Date] in
+                // sort the dates in descending order
                 let sortedDates = dates.sorted(by: { $0.compare($1) == .orderedDescending })
                 return sortedDates
             }
             .map { sortedDates in
+                // transform the date object in dropdownoption object
                 sortedDates.map { date in
                     DropdownOption(key: date.dateToMonthYearString(), value: date.dateToMonthYearString())
                 }
             }
             .map { dropdownOptions in
+                // removing all duplicates
                 dropdownOptions.removingDuplicates()
             }
             .removeDuplicates()
             .assign(to: \.dateOptions, on: self)
             .store(in: &cancellables)
         
+        // store the month year option selected by the user
         $selectedMonthYear
             .compactMap{ $0 }
             .sink { (_) in
@@ -69,6 +86,7 @@ class EarningViewModel: ObservableObject {
                 
             }.store(in: &cancellables)
         
+        // filter earnings by title
         $searchTerm
             .debounce(for: .milliseconds(800), scheduler: RunLoop.main) // debounces the string publisher, such that it delays the process of sending request to remote server.
             .removeDuplicates()
@@ -90,28 +108,33 @@ class EarningViewModel: ObservableObject {
             }.store(in: &cancellables)
     }
     
-    func filterBySearchTerm(_ searchTerm: String){
+    // helper function to filter earnings by search term
+    private func filterBySearchTerm(_ searchTerm: String){
         // case insenstive search against each spending's title
         earnings = earningsCopy.filter{ $0.title.lowercased().contains(searchTerm.lowercased()) }
     }
     
-    func filterByMonthYear(_ monthYear: DropdownOption){
+    // helper function to filter earning by month year
+    private func filterByMonthYear(_ monthYear: DropdownOption){
         earnings = earningsCopy.filter { $0.date.isInMonthYear(monthYearString: monthYear.value) }
         
         // caluclate month total
         monthTotal = earnings.map({ $0.amount }).reduce(0, +)
     }
     
-    func reload(){
+    // helper function to replace the filtered earnings back to orignal
+    private func reload(){
         earnings = earningsCopy
         selectedMonthYear = nil
         monthTotal = 0
     }
     
+    // ask repo to delete an earning
     func remove(_ earning: Earning){
         earningRepo.remove(earning)
     }
     
+    // ask repo to create an earning
     func add(_ earning: Earning){
         earningRepo.add(earning)
     }

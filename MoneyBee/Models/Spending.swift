@@ -11,11 +11,15 @@ import FirebaseFirestoreSwift
 
 struct Spending: Identifiable, Codable, Reposable {
     
+    // populated by firebasefirestore
     @DocumentID var id: String?
+    
     var title: String
     var amount: Float
     var date: Date
-    var type: String
+    var type: String // types: Food, School, Play, Others
+    
+    // populated by firebasefirestore
     @ServerTimestamp var createdTime: Timestamp?
     var userId: String?
 }

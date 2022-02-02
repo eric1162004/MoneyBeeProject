@@ -8,8 +8,7 @@
 import Foundation
 import SwiftUI
 
-
-
+// All SpendingType should have name and color as properties
 protocol SpendingType{
     var name : String {get}
     var color : Color {get}

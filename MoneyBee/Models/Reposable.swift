@@ -8,6 +8,8 @@
 import Foundation
 import FirebaseFirestore
 
+// provides a interface for all itemtype used by FirestoreRepository,
+// such as Earning, Spending, WishItem and AppUser
 protocol Reposable {
     var id: String? {get set}
     var createdTime: Timestamp? {get set}

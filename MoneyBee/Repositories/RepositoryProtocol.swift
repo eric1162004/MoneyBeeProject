@@ -7,7 +7,7 @@
 
 import Foundation
 
-// All repository must conform to this protocol
+// All repository must conform to this protocol: add, remove and update item
 protocol Repository {
     associatedtype T
     
