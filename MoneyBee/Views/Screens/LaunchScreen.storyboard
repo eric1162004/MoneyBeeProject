@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="BubblegumSans-Regular.ttf">
+            <string>BubblegumSans-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MoneyBee" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" showsExpansionTextWhenTruncated="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
+                                <rect key="frame" x="86" y="94" width="242" height="73"/>
+                                <fontDescription key="fontDescription" name="BubblegumSans-Regular" family="Bubblegum Sans" pointSize="60"/>
+                                <color key="textColor" name="appPrimaryColor"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" systemColor="labelColor"/>
+                                <size key="shadowOffset" width="3" height="3"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="honeyBeeLogo" translatesAutoresizingMaskIntoConstraints="NO" id="4M9-Vx-b7s">
+                                <rect key="frame" x="82" y="177" width="250" height="433"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Money Tracker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPh-gz-uiL">
+                                <rect key="frame" x="82.333333333333329" y="625" width="249.33333333333337" height="52.666666666666629"/>
+                                <fontDescription key="fontDescription" name="BubblegumSans-Regular" family="Bubblegum Sans" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For Kids" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERw-JJ-M6Q">
+                                <rect key="frame" x="152.66666666666666" y="692.66666666666663" width="108.99999999999997" height="41"/>
+                                <fontDescription key="fontDescription" name="BubblegumSans-Regular" family="Bubblegum Sans" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
+                        <color key="backgroundColor" name="appBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4Wn-ax-xwX"/>
+                            <constraint firstItem="lPh-gz-uiL" firstAttribute="top" secondItem="4M9-Vx-b7s" secondAttribute="bottom" constant="15" id="HAN-OE-DpM"/>
+                            <constraint firstItem="lPh-gz-uiL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="R0t-nZ-K3d"/>
+                            <constraint firstItem="ERw-JJ-M6Q" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="TCD-p5-jp0"/>
+                            <constraint firstItem="ERw-JJ-M6Q" firstAttribute="top" secondItem="lPh-gz-uiL" secondAttribute="bottom" constant="15" id="VVP-9V-krL"/>
+                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="50" id="bQ7-05-Gd6"/>
+                            <constraint firstItem="4M9-Vx-b7s" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="spX-Xv-mcf"/>
+                            <constraint firstItem="4M9-Vx-b7s" firstAttribute="top" secondItem="GJd-Yh-RWb" secondAttribute="bottom" constant="10" id="zpL-7g-9LN"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="51.86915887850467" y="374.51403887688986"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="honeyBeeLogo" width="250" height="433"/>
+        <namedColor name="appBackgroundColor">
+            <color red="0.99199998378753662" green="0.98000001907348633" blue="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="appPrimaryColor">
+            <color red="1" green="0.49803921568627452" blue="0.054901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

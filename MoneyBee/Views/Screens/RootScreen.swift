@@ -13,15 +13,26 @@ struct RootScreen: View {
     
     // AuthenticationService is registered in Resolver.
     @ObservedObject var authService: AuthService = Resolver.resolve()
-    
+    @State var isActive : Bool = false
     var body: some View {
         NavigationView{
-
-            if authService.user == nil {
-                SignInScreen()
-            } else {
-                HomeScreen()
-            }
+            if isActive {
+                if authService.user == nil {
+                    SignInScreen()
+                } else {
+                    HomeScreen()
+                }
+                    } else {
+                        SplashScreen()
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                                withAnimation {
+                                    self.isActive = true
+                                }
+                            }
+                        }
+                    }
+            
             
 //            SplashScreen()
 //            SignInScreen()
