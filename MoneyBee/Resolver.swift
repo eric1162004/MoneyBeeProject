@@ -23,6 +23,7 @@ extension Resolver: ResolverRegistering {
       register { SpendingViewModel() }.scope(.application)
       register { WishItemViewModel() }.scope(.application)
       register { AppUserViewModel() }.scope(.application)
+      register { HomeViewModel() }.scope(.application)
     
       // provide a singleton of AuthService
       register { AuthService() }.scope(.application)

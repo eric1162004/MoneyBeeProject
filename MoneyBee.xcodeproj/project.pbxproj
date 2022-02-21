@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07C54B5B27C44026003484AF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C54B5A27C44026003484AF /* HomeViewModel.swift */; };
 		456ABAF227A64BA500E66F8D /* SpendingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456ABAF127A64BA500E66F8D /* SpendingType.swift */; };
 		456ABAF427A651C200E66F8D /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456ABAF327A651C200E66F8D /* ViewExtension.swift */; };
 		456ABAF627A65C3E00E66F8D /* AppImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456ABAF527A65C3E00E66F8D /* AppImageView.swift */; };
@@ -70,6 +71,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07C54B5A27C44026003484AF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		456ABAF127A64BA500E66F8D /* SpendingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingType.swift; sourceTree = "<group>"; };
 		456ABAF327A651C200E66F8D /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		456ABAF527A65C3E00E66F8D /* AppImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImageView.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				45737ACB27A952AC00AE9A87 /* SpendingViewModel.swift */,
 				4572FCEC27A9F688009F40F2 /* AppUserViewModel.swift */,
 				4572FCEE27A9F6A9009F40F2 /* WishItemViewModel.swift */,
+				07C54B5A27C44026003484AF /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				456B7AE427A537A40048E05F /* DropdownSelector.swift in Sources */,
 				45737ACE27A95B1200AE9A87 /* SpendingChartScreen.swift in Sources */,
 				457CD9B227A5CAF9007A9EF0 /* AppPopupView.swift in Sources */,
+				07C54B5B27C44026003484AF /* HomeViewModel.swift in Sources */,
 				45737ABA27A8A57D00AE9A87 /* Earning.swift in Sources */,
 				45737AAE27A8970800AE9A87 /* AuthService.swift in Sources */,
 				457CD9B027A5C071007A9EF0 /* AppFloatingButton.swift in Sources */,

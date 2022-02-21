@@ -12,9 +12,14 @@ struct HomeScreen: View {
     
     @ObservedObject var appUserViewModel: AppUserViewModel = Resolver.resolve()
     
-    @State var showMenu = false
+    @ObservedObject var homeViewModel: HomeViewModel = Resolver.resolve()
+    
+    @State var showSideMenu = false
     
     var body: some View {
+        
+        // Calculate the total saving amount
+        let totalAmount = homeViewModel.totalEarning - homeViewModel.totalSpending - homeViewModel.totalBoughtWishItem
         
         // Drag gesture that allow side menu to close from right to left
         let drag = DragGesture()
@@ -23,7 +28,7 @@ struct HomeScreen: View {
                 // check whether the user has exceeded a certain threshold value with his swiping gesture, if this is the case, we close the menu
                 if $0.translation.width < -100 {
                     withAnimation {
-                        self.showMenu = false
+                        self.showSideMenu = false
                     }
                 }
             }
@@ -34,7 +39,7 @@ struct HomeScreen: View {
                 VStack{
                     // Topbar
                     TopBar(title: "Money Bee", leadingIcon: "line.3.horizontal", leadingIconHandler: { print("pressed")
-                        showMenu.toggle()
+                        showSideMenu.toggle()
                     })
                     
                     // Screen Content
@@ -73,15 +78,23 @@ struct HomeScreen: View {
                         
                         // Display Saving Amount
                         VStack{
-                            AppText(text: "Your Total Saving:", fontSize: FontSize.large, fontColor: .white)
-                            AppText(text: "$100", fontSize: FontSize.large, fontColor: .white)
+                            
+                            AppText(
+                                text: "Your Total Saving:",
+                                fontSize: FontSize.large,
+                                fontColor: .white)
+                            
+                            AppText(
+                                text: "$\(totalAmount.toStringWithDecimal(n: 2))",
+                                fontSize: FontSize.large,
+                                fontColor: .white)
+                            
                         }
                         .frame(maxWidth: .infinity, minHeight: 200)
                         .background(Color.primaryColor)
                         .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
                         .shadow(radius: Dm.tiny)
                         .padding(.bottom, Dm.small)
-                        
                         
                         // Buttons
                         VStack(spacing: Dm.small){
@@ -107,7 +120,7 @@ struct HomeScreen: View {
                 .background(Color.backgroundColor)
                 .ignoresSafeArea()
                 
-                if showMenu{
+                if showSideMenu{
                     SideMenu()
                         .frame(width: geometry.size.width / 2, height: geometry.size.height)
                         .background(Color.backgroundColor)
@@ -118,7 +131,9 @@ struct HomeScreen: View {
             .gesture(drag)
             .navigationBarHidden(true)
             .onAppear {
-                showMenu = false
+                
+                // make sure the side menu is close when displaying the screen
+                showSideMenu = false
             }
         }
     }
