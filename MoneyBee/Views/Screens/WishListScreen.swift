@@ -70,25 +70,24 @@ private struct WishItemListSection: View {
     
     var body: some View {
         List{
-            ForEach(wishItemVM.wishItems){ wishItem in
+            ForEach($wishItemVM.wishItems){ wishItem in
                 // an earning card
                 AppWishItemCard(
                     wishItem: wishItem,
                     backgroundColor: Color.appLightBlue, buyButtonHandler: {
                         
                         // handle buy
-                        print("buy pressed")
+                        wishItemVM.buyItem(wishItem.wrappedValue)
                         
                     }, swipeDeleteHandler: {
                         
                         // handle delete
-                        wishItemVM.remove(wishItem)
+                        wishItemVM.remove(wishItem.wrappedValue)
                         
                     })
                 // clear the default white list item background
                 .listRowBackground(Color.clear)
             }
-            
         }
         .listStyle(.plain)
     }

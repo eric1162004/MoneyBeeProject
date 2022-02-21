@@ -9,12 +9,14 @@ import SwiftUI
 
 struct AppWishItemCard: View {
 
-    @State var wishItem: WishItem
+    @Binding var wishItem: WishItem
     @State var backgroundColor: Color = Color.primaryColor
     @State var buyButtonHandler: (() -> ())?
     @State var swipeDeleteHandler: (() -> ())?
     
     var body: some View {
+        
+        let isBought = wishItem.purchased
         
         HStack{
             VStack{
@@ -33,8 +35,10 @@ struct AppWishItemCard: View {
             VStack{
                 AppMoneyAmountView(amount: wishItem.cost)
                 
-                AppRoundedCornerButton(label: "Buy!", backgroundColor: Color.appGreen) {
-                    
+                AppRoundedCornerButton(
+                    label: isBought ? "Bought" : "Buy" ,
+                backgroundColor: isBought ? Color.gray : Color.appGreen) {
+                
                     buyButtonHandler?()
                 }
             }
@@ -61,8 +65,8 @@ struct AppWishItemCard: View {
     }
 }
 
-struct AppWishItemCard_Previews: PreviewProvider {
-    static var previews: some View {
-        AppWishItemCard(wishItem: WishItem(title: "cat", cost: 20, imageUrl: "https://i.guim.co.uk/img/media/c5e73ed8e8325d7e79babf8f1ebbd9adc0d95409/2_5_1754_1053/master/1754.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=b6ba011b74a9f7a5c8322fe75478d9d"))
-    }
-}
+//struct AppWishItemCard_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AppWishItemCard(wishItem: WishItem(title: "cat", cost: 20, imageUrl: "https://i.guim.co.uk/img/media/c5e73ed8e8325d7e79babf8f1ebbd9adc0d95409/2_5_1754_1053/master/1754.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=b6ba011b74a9f7a5c8322fe75478d9d"))
+//    }
+//}

@@ -59,5 +59,13 @@ class WishItemViewModel: ObservableObject {
         }
         
     }
-    
+
+    func buyItem(_ wishItem: WishItem){
+        
+        var wishItemUpdated = wishItem
+        wishItemUpdated.purchased.toggle()
+        wishItemRepo.update(wishItemUpdated)
+        
+    }
+
 }
