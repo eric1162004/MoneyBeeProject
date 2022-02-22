@@ -55,6 +55,7 @@ struct SignInScreen: View {
                     // TODO: Sign in user
                     authService.signIn(email: email, password: password, onError: {
                         error in print(error.localizedDescription)
+                        errorMsg = "\(error.localizedDescription)"
                     }, onSuccess: {
                         print("user has signed in")
                     })

@@ -79,6 +79,7 @@ struct SignUpScreen: View {
                         
                         authService.signUp(email: email, password: password, onError: { error in
                             print(error.localizedDescription)
+                            errorMsg = "\(error.localizedDescription)"
                         }, onSuccess:{
                             appUserViewModel.add(AppUser(name: name, email: email))
                         })

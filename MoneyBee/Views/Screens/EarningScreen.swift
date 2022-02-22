@@ -143,6 +143,8 @@ private struct EarningPopupField: View {
     @State private var newEarningAmount: String = ""
     @State private var newEarningDate: Date = Date()
     
+    @State private var errorMsg : String?
+    
     private func resetFields() {
         newEarningTitle = ""
         newEarningAmount = ""
@@ -160,10 +162,17 @@ private struct EarningPopupField: View {
                     AppTextField(text: $newEarningTitle, placeholder: "Title")
                     
                     // new earning amount
-                    AppTextField(text: $newEarningAmount, placeholder: "Amount", keyboardType: .numberPad)
+                    AppTextField(text: $newEarningAmount, placeholder: "Amount", keyboardType: .decimalPad)
                     
                     // new earning date
                     AppDatePicker(selectedDate: $newEarningDate)
+                    
+                    // error message
+                    if let errorMsg = errorMsg {
+                        Text(errorMsg)
+                            .bold()
+                            .foregroundColor(.appRed)
+                    }
                 }
             )
             
