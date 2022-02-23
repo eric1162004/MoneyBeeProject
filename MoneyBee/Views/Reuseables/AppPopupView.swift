@@ -62,7 +62,7 @@ struct AppPopupView: View {
         .frame(maxWidth: 330, maxHeight: 520)
         .cornerRadius(20).shadow(radius: 20)
     }
-    }
+}
 
 
 struct AppPopupView_Previews: PreviewProvider {

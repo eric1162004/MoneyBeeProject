@@ -118,10 +118,13 @@ private struct WishListPopup: View {
     @State private var newWishItemTitle: String = ""
     @State private var newWishItemCost: String = ""
     
+    @State private var errorMsg: String?
+    
     private func reset() {
         wishItemVM.selectedImage = nil
         newWishItemTitle = ""
         newWishItemCost = ""
+        errorMsg = nil
     }
     
     var body: some View {
@@ -140,9 +143,18 @@ private struct WishListPopup: View {
                             showingPhotoPicker.toggle()
                         }
                     
+                    //new wish item title
                     AppTextField(text: $newWishItemTitle, placeholder: "Title")
                     
-                    AppTextField(text: $newWishItemCost, placeholder: "Cost",keyboardType: .numberPad)
+                    //new wish item cost
+                    AppTextField(text: $newWishItemCost, placeholder: "Cost",keyboardType: .decimalPad)
+                    
+                    // error message
+                    if let errorMsg = errorMsg {
+                        Text(errorMsg)
+                            .bold()
+                            .foregroundColor(.appRed)
+                    }
                 }
             )
             
@@ -154,11 +166,15 @@ private struct WishListPopup: View {
                     view: popupForm,
                     handleConfirm: {
                         
-                        guard !newWishItemCost.isEmpty, !newWishItemTitle.isEmpty else {return}
-                        
-                        wishItemVM.add(WishItem(title: newWishItemTitle, cost: newWishItemCost.floatValue))
-                        
-                        reset()
+                        // Check empty input and show error message
+                        if newWishItemCost.isEmpty, newWishItemTitle.isEmpty {
+                            errorMsg = "Fields cannot be empty."
+                            showPopUp.toggle()
+                        }
+                        else{
+                            wishItemVM.add(WishItem(title: newWishItemTitle, cost: newWishItemCost.floatValue))
+                            reset()
+                        }
                     },
                     handleCancel:{
                         reset()

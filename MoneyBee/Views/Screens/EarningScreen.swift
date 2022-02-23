@@ -183,13 +183,24 @@ private struct EarningPopupField: View {
                 view: popupForm,
                 handleConfirm: {
                     
-                    earningVM.add(Earning(
-                        title: newEarningTitle, amount: newEarningAmount.floatValue, date: newEarningDate))
-                    
-                    resetFields()
-                    
+                    // ensure all fields are not empty and show error message
+                    if (newEarningTitle.isEmpty){
+                        errorMsg = "Title cannot be empty."
+                        showPopUp.toggle()
+                    }
+                    else if (newEarningAmount.isEmpty) {
+                        errorMsg = "Amount cannot be empty."
+                        showPopUp.toggle()
+                    }
+                    else {
+                        earningVM.add(Earning(
+                            title: newEarningTitle, amount: newEarningAmount.floatValue, date: newEarningDate))
+                        
+                        resetFields()
+                    }
                 },
                 handleCancel:{
+                    errorMsg = nil
                     resetFields()
                 }
             )

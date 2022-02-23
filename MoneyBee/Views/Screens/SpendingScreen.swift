@@ -153,6 +153,7 @@ private struct SpendingScreenFloadButton: View {
         AppFloatingButton(iconName: "plus", iconBackgroundColor: Color.appRed) {
             // handle action button pressed
             showPopUp.toggle()
+            
         }
         .padding(.horizontal, Dm.medium)
         .padding(.vertical, Dm.xlarge)
@@ -171,6 +172,8 @@ private struct SpendingPopupField: View {
     @State var newSpendingTitle: String = ""
     @State var newSpendingAmount: String = ""
     @State var newSpendingDate: Date = Date()
+    
+    @State var errorMsg: String?
     
     private func resetFields() {
         newSpendingTitle = ""
@@ -200,10 +203,17 @@ private struct SpendingPopupField: View {
                     AppTextField(text: $newSpendingTitle, placeholder: "Title")
                     
                     // new spending amount
-                    AppTextField(text: $newSpendingAmount, placeholder: "Amount", keyboardType: .numberPad)
+                    AppTextField(text: $newSpendingAmount, placeholder: "Amount", keyboardType: .decimalPad)
                     
                     // new spending date
                     AppDatePicker(selectedDate: $newSpendingDate)
+                    
+                    // error message
+                    if let errorMsg = errorMsg {
+                        Text(errorMsg)
+                            .bold()
+                            .foregroundColor(.white)
+                    }
                 }
             )
             
@@ -214,15 +224,19 @@ private struct SpendingPopupField: View {
                 view: popupForm,
                 handleConfirm: {
                     
-                    if let newSpendingType = newSpendingType, !newSpendingTitle.isEmpty {
+                    // Check empty input and show error message
+                    if let newSpendingType = newSpendingType, !newSpendingTitle.isEmpty, !newSpendingAmount.isEmpty {
                         spendingVM.add(Spending(
                             title: newSpendingTitle, amount: newSpendingAmount.floatValue, date: newSpendingDate, type: newSpendingType.value))
+                        resetFields()
                     }
-                    
-                    resetFields()
-                    
+                    else {
+                        errorMsg = "Fields cannot be empty."
+                        showPopUp.toggle()
+                    }
                 },
                 handleCancel:{
+                    errorMsg = nil
                     resetFields()
                 }
             )

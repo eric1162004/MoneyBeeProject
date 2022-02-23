@@ -13,6 +13,7 @@ struct EditProfileScreen: View {
     @ObservedObject var appUserViewModel: AppUserViewModel = Resolver.resolve()
     
     @State private var showingPhotoPicker =  false
+    @State private var errorMsg: String?
     
     // allow us to pop the current view off the navigation stack
     @Environment(\.presentationMode) var presentation
@@ -72,16 +73,28 @@ struct EditProfileScreen: View {
                     // name field
                     AppTextField(text: $appUserViewModel.appUser.name, placeholder: "name", leadingIcon: "person")
                     
+                    // error message
+                    if let errorMsg = errorMsg {
+                        Text(errorMsg)
+                            .bold()
+                            .foregroundColor(.appRed)
+                    }
+                    
                     Spacer()
                     
                     // save button
                     AppCapsuleButton(label: "Save", backgroundColor: Color.appGreen){
                         
-                        appUserViewModel.update()
-                        
-                        // back to home screen
-                        presentation.wrappedValue.dismiss()
-                        
+                        // Check empty input and show error message
+                        if appUserViewModel.appUser.name.isEmpty {
+                            errorMsg = "Name cannot be empty."
+                        }
+                        else {
+                            appUserViewModel.update()
+                            
+                            // back to home screen
+                            presentation.wrappedValue.dismiss()
+                        }
                     }
                     .padding(.bottom, Dm.small)
 
