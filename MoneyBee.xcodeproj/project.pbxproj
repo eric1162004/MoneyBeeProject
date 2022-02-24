@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		072EBA5D27C74B7400C48240 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 072EBA5C27C74B7400C48240 /* FirebaseAuth */; };
+		072EBA5F27C74B7400C48240 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 072EBA5E27C74B7400C48240 /* FirebaseFirestore */; };
+		072EBA6127C74B7400C48240 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 072EBA6027C74B7400C48240 /* FirebaseFirestoreSwift-Beta */; };
+		072EBA6327C74B7400C48240 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 072EBA6227C74B7400C48240 /* FirebaseStorage */; };
+		072EBA6627C74BD100C48240 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 072EBA6527C74BD100C48240 /* Resolver */; };
 		07C54B5B27C44026003484AF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C54B5A27C44026003484AF /* HomeViewModel.swift */; };
 		456ABAF227A64BA500E66F8D /* SpendingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456ABAF127A64BA500E66F8D /* SpendingType.swift */; };
 		456ABAF427A651C200E66F8D /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456ABAF327A651C200E66F8D /* ViewExtension.swift */; };
@@ -67,7 +72,6 @@
 		45EA7F8727A4AD50009C0F58 /* SignInScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA7F8627A4AD50009C0F58 /* SignInScreen.swift */; };
 		45EA7F8927A4AD63009C0F58 /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA7F8827A4AD63009C0F58 /* SignUpScreen.swift */; };
 		45EA7F8B27A4B982009C0F58 /* AppTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EA7F8A27A4B982009C0F58 /* AppTextField.swift */; };
-		9810CA0217149520F0EA87BF /* Pods_MoneyBee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D13D132A57DD3E95E99A9DB7 /* Pods_MoneyBee.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,9 +137,6 @@
 		45EA7F8627A4AD50009C0F58 /* SignInScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInScreen.swift; sourceTree = "<group>"; };
 		45EA7F8827A4AD63009C0F58 /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		45EA7F8A27A4B982009C0F58 /* AppTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTextField.swift; sourceTree = "<group>"; };
-		5BA365BEFFF301F5860500A2 /* Pods-MoneyBee.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyBee.release.xcconfig"; path = "Target Support Files/Pods-MoneyBee/Pods-MoneyBee.release.xcconfig"; sourceTree = "<group>"; };
-		C7E7942453251A696E309BDA /* Pods-MoneyBee.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyBee.debug.xcconfig"; path = "Target Support Files/Pods-MoneyBee/Pods-MoneyBee.debug.xcconfig"; sourceTree = "<group>"; };
-		D13D132A57DD3E95E99A9DB7 /* Pods_MoneyBee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyBee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +144,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9810CA0217149520F0EA87BF /* Pods_MoneyBee.framework in Frameworks */,
+				072EBA6127C74B7400C48240 /* FirebaseFirestoreSwift-Beta in Frameworks */,
+				072EBA6327C74B7400C48240 /* FirebaseStorage in Frameworks */,
+				072EBA5D27C74B7400C48240 /* FirebaseAuth in Frameworks */,
+				072EBA6627C74BD100C48240 /* Resolver in Frameworks */,
+				072EBA5F27C74B7400C48240 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,8 +223,6 @@
 			children = (
 				45EA7F3D27A45D3E009C0F58 /* MoneyBee */,
 				45EA7F3C27A45D3E009C0F58 /* Products */,
-				C4E03FBBE71271A398E2FB79 /* Pods */,
-				7CADC07666AC0F09F5CB9B1F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -241,8 +244,8 @@
 				45737AAA27A8964400AE9A87 /* Services */,
 				457CD9B327A5E586007A9EF0 /* Utilities */,
 				45EA7F4227A45D40009C0F58 /* Assets.xcassets */,
-				45EA7F7827A490B6009C0F58 /* Fonts */,
 				45EA7F3E27A45D3E009C0F58 /* MoneyBeeApp.swift */,
+				45EA7F7827A490B6009C0F58 /* Fonts */,
 				45737AAF27A897BB00AE9A87 /* Resolver.swift */,
 				45EA7F7D27A49396009C0F58 /* Constants.swift */,
 				45737AA827A8952F00AE9A87 /* GoogleService-Info.plist */,
@@ -324,23 +327,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		7CADC07666AC0F09F5CB9B1F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D13D132A57DD3E95E99A9DB7 /* Pods_MoneyBee.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C4E03FBBE71271A398E2FB79 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C7E7942453251A696E309BDA /* Pods-MoneyBee.debug.xcconfig */,
-				5BA365BEFFF301F5860500A2 /* Pods-MoneyBee.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -348,17 +334,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 45EA7F4927A45D40009C0F58 /* Build configuration list for PBXNativeTarget "MoneyBee" */;
 			buildPhases = (
-				8C0D3A4FA11C7A26C78F1BB3 /* [CP] Check Pods Manifest.lock */,
 				45EA7F3727A45D3E009C0F58 /* Sources */,
 				45EA7F3827A45D3E009C0F58 /* Frameworks */,
 				45EA7F3927A45D3E009C0F58 /* Resources */,
-				E649ED0FA2A1AC7E5F627EA7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = MoneyBee;
+			packageProductDependencies = (
+				072EBA5C27C74B7400C48240 /* FirebaseAuth */,
+				072EBA5E27C74B7400C48240 /* FirebaseFirestore */,
+				072EBA6027C74B7400C48240 /* FirebaseFirestoreSwift-Beta */,
+				072EBA6227C74B7400C48240 /* FirebaseStorage */,
+				072EBA6527C74BD100C48240 /* Resolver */,
+			);
 			productName = MoneyBee;
 			productReference = 45EA7F3B27A45D3E009C0F58 /* MoneyBee.app */;
 			productType = "com.apple.product-type.application";
@@ -387,6 +378,10 @@
 				Base,
 			);
 			mainGroup = 45EA7F3227A45D3E009C0F58;
+			packageReferences = (
+				072EBA5B27C74B7400C48240 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				072EBA6427C74BD100C48240 /* XCRemoteSwiftPackageReference "Resolver" */,
+			);
 			productRefGroup = 45EA7F3C27A45D3E009C0F58 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -409,48 +404,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		8C0D3A4FA11C7A26C78F1BB3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MoneyBee-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E649ED0FA2A1AC7E5F627EA7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MoneyBee/Pods-MoneyBee-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MoneyBee/Pods-MoneyBee-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MoneyBee/Pods-MoneyBee-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		45EA7F3727A45D3E009C0F58 /* Sources */ = {
@@ -637,7 +590,6 @@
 		};
 		45EA7F4A27A45D40009C0F58 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C7E7942453251A696E309BDA /* Pods-MoneyBee.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -667,7 +619,6 @@
 		};
 		45EA7F4B27A45D40009C0F58 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5BA365BEFFF301F5860500A2 /* Pods-MoneyBee.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -717,6 +668,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		072EBA5B27C74B7400C48240 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		072EBA6427C74BD100C48240 /* XCRemoteSwiftPackageReference "Resolver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Resolver.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		072EBA5C27C74B7400C48240 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 072EBA5B27C74B7400C48240 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		072EBA5E27C74B7400C48240 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 072EBA5B27C74B7400C48240 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		072EBA6027C74B7400C48240 /* FirebaseFirestoreSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 072EBA5B27C74B7400C48240 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreSwift-Beta";
+		};
+		072EBA6227C74B7400C48240 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 072EBA5B27C74B7400C48240 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		072EBA6527C74BD100C48240 /* Resolver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 072EBA6427C74BD100C48240 /* XCRemoteSwiftPackageReference "Resolver" */;
+			productName = Resolver;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 45EA7F3327A45D3E009C0F58 /* Project object */;
 }

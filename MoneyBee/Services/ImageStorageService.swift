@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import FirebaseStorage
 
 public class ImageStorageService: ObservableObject {
