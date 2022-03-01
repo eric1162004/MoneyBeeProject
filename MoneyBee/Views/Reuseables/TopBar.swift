@@ -18,11 +18,13 @@ struct TopBar: View {
     
     var body: some View {
         HStack{
+            
             Image(systemName: leadingIcon ?? "")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 30, height: 30)
                 .padding(.horizontal)
+                .padding(.top, 2)
                 .foregroundColor(.white)
                 .onTapGesture {
                     leadingIconHandler?()
@@ -31,6 +33,7 @@ struct TopBar: View {
             Spacer()
             
             AppText(text: title, fontSize: FontSize.large, fontColor: Color.white)
+                .padding(.top, 3)
             
             Spacer()
             
@@ -39,6 +42,7 @@ struct TopBar: View {
                 .scaledToFit()
                 .frame(width:30, height: 30)
                 .padding(.horizontal)
+                .padding(.top, 5)
                 .foregroundColor(.white)
                 .onTapGesture {
                     trailingIconHandler?()

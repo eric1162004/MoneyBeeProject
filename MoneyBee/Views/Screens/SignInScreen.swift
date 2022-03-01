@@ -40,6 +40,9 @@ struct SignInScreen: View {
                     Text(errorMsg)
                         .bold()
                         .foregroundColor(.appRed)
+                        .lineLimit(3)
+                        .frame(height: 70)
+                        
                 }
                 
                 // sign in button

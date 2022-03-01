@@ -19,10 +19,10 @@ struct SpendingScreen: View {
         ZStack(alignment: .center){
             VStack {
                 // Topbar
-                SpendingScreenTopBar(showChartSheet: $showChartSheet)
+                SpendingScreenTopBar(showPopUp: $showPopUp)
                 
                 // Screen Content
-                SpendingScreenContent(showPopUp: $showPopUp)
+                SpendingScreenContent(showChartSheet: $showChartSheet)
             }
             // show add new earning pop up
             SpendingPopupField(showPopUp: $showPopUp)
@@ -37,7 +37,8 @@ struct SpendingScreen: View {
 
 struct SpendingScreenTopBar: View {
     
-    @Binding var showChartSheet: Bool
+    // show add earning pop up
+    @Binding var showPopUp : Bool
     
     // allow us to pop the current view off the navigation stack
     @Environment(\.presentationMode) var presentation
@@ -46,15 +47,15 @@ struct SpendingScreenTopBar: View {
         TopBar(
             title: "Spendings",
             leadingIcon: "chevron.left",
-            trailingIcon: "chart.pie.fill",
+            trailingIcon: "plus",
             backgroundColor: Color.appRed,
             leadingIconHandler: {
                 // back to home screen
                 presentation.wrappedValue.dismiss()
             },
             trailingIconHandler: {
-                // show pie chart sheet
-                showChartSheet.toggle()
+                // add new spending
+                showPopUp.toggle()
             })
     }
 }
@@ -64,7 +65,9 @@ struct SpendingScreenContent: View {
     @ObservedObject var spendingVM : SpendingViewModel = Resolver.resolve()
     
     // show add earning pop up
-    @Binding var showPopUp : Bool
+    //@Binding var showPopUp : Bool
+    
+    @Binding var showChartSheet: Bool
     
     var body: some View {
         ZStack {
@@ -75,7 +78,7 @@ struct SpendingScreenContent: View {
                 // Month Selector and Month Total
                 VStack{
                     // select a month of which earnings are made
-                    MonthSection()
+                    MonthSection(showChartSheet: $showChartSheet)
                     
                     // this zstack allow floating action to sit on top of the list
                     ZStack(alignment: .bottomTrailing){
@@ -84,7 +87,7 @@ struct SpendingScreenContent: View {
                         EarningListSection()
                         
                         // floating action button to add a new earning
-                        SpendingScreenFloadButton(showPopUp: $showPopUp)
+                        // SpendingScreenFloadButton(showPopUp: $showPopUp)
                     }
                 }
             }
@@ -96,6 +99,8 @@ struct SpendingScreenContent: View {
 private struct MonthSection: View {
     
     @ObservedObject var spendingVM : SpendingViewModel = Resolver.resolve()
+    
+    @Binding var showChartSheet: Bool
     
     var body: some View {
         VStack{
@@ -109,8 +114,24 @@ private struct MonthSection: View {
                 })
                 .zIndex(1)
             
-            // display the total amount of earnings made in the month
-            AppText(text: "Month Total: $\(spendingVM.monthTotal.toStringWithDecimal(n: 2))", fontSize: FontSize.medium, fontColor: .white)
+            HStack(alignment: .center){
+                // display the total amount of earnings made in the month
+                AppText(text: "Month Total: $\(spendingVM.monthTotal.toStringWithDecimal(n: 2))", fontSize: FontSize.medium, fontColor: .white)
+                    .padding(.top, 4.0)
+                Spacer()
+                    .frame(width: 10)
+                Image(systemName: "chart.pie.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width:25, height: 25)
+                    .foregroundColor(.white)
+                    .onTapGesture {
+                        // show pie chart sheet
+                        showChartSheet.toggle()
+                    }
+            }
+            .padding(.horizontal)
+            
         }
         .padding(Dm.medium)
         .background(Color.appLightRed)
@@ -145,21 +166,21 @@ private struct EarningListSection: View {
     }
 }
 
-private struct SpendingScreenFloadButton: View {
-    
-    @Binding var showPopUp: Bool
-    
-    var body: some View {
-        AppFloatingButton(iconName: "plus", iconBackgroundColor: Color.appRed) {
-            // handle action button pressed
-            showPopUp.toggle()
-            
-        }
-        .padding(.horizontal, Dm.medium)
-        .padding(.vertical, Dm.xlarge)
-    }
-    
-}
+//private struct SpendingScreenFloadButton: View {
+//
+//    @Binding var showPopUp: Bool
+//
+//    var body: some View {
+//        AppFloatingButton(iconName: "plus", iconBackgroundColor: Color.appRed) {
+//            // handle action button pressed
+//            showPopUp.toggle()
+//
+//        }
+//        .padding(.horizontal, Dm.medium)
+//        .padding(.vertical, Dm.xlarge)
+//    }
+//
+//}
 
 private struct SpendingPopupField: View {
     

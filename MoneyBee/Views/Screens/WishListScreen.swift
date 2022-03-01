@@ -22,14 +22,14 @@ struct WishListScreen: View {
         ZStack(alignment: .bottomTrailing) {
             VStack{
                 // Topbar
-                WishItemScreenTopBar()
+                WishItemScreenTopBar(showPopUp: $showPopUp)
                 
                 // list of earning cards
                 WishItemListSection()
             }
             
             // floating action button to add a new earning
-            WishListFloatingButton(showPopUp: $showPopUp)
+            // WishListFloatingButton(showPopUp: $showPopUp)
             
             // show add new earning pop up
             WishListPopup(
@@ -52,15 +52,24 @@ private struct WishItemScreenTopBar: View {
     // allow us to pop the current view off the navigation stack
     @Environment(\.presentationMode) var presentation
     
+    // show add earning pop up
+    @Binding var showPopUp : Bool
+    
     var body: some View {
         TopBar(
             title: "Wish List",
             leadingIcon: "chevron.left",
+            trailingIcon: "plus",
             backgroundColor: Color.appBlue,
             leadingIconHandler: {
                 // back to home screen
                 presentation.wrappedValue.dismiss()
-            })
+            },
+            trailingIconHandler: {
+                // Add new wish item
+                showPopUp.toggle()
+            }
+        )
     }
 }
 
@@ -93,20 +102,20 @@ private struct WishItemListSection: View {
     }
 }
 
-private struct WishListFloatingButton: View {
-    
-    @Binding var showPopUp: Bool
-    
-    var body: some View {
-        AppFloatingButton(iconName: "plus", iconBackgroundColor: Color.appBlue) {
-            // handle action button pressed
-            showPopUp.toggle()
-        }
-        .padding(.horizontal, Dm.medium)
-        .padding(.vertical, Dm.xlarge)
-    }
-    
-}
+//private struct WishListFloatingButton: View {
+//
+//    @Binding var showPopUp: Bool
+//
+//    var body: some View {
+//        AppFloatingButton(iconName: "plus", iconBackgroundColor: Color.appBlue) {
+//            // handle action button pressed
+//            showPopUp.toggle()
+//        }
+//        .padding(.horizontal, Dm.medium)
+//        .padding(.vertical, Dm.xlarge)
+//    }
+//
+//}
 
 private struct WishListPopup: View {
     

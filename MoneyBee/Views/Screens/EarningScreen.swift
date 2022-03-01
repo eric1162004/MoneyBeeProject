@@ -22,7 +22,7 @@ struct EarningScreen: View {
             VStack{
                 
                 // Topbar
-                EarningTopBar()
+                EarningTopBar(showPopUp: $showPopUp)
                 
                 // Month Selector and Month Total
                 MonthSection()
@@ -34,7 +34,7 @@ struct EarningScreen: View {
                     EarningListSection()
                     
                     // floating action button to add a new earning
-                    EarningFloatingButton(showPopUp: $showPopUp)
+                    //EarningFloatingButton(showPopUp: $showPopUp)
                 }
             }
             
@@ -46,32 +46,40 @@ struct EarningScreen: View {
     }
 }
 
-private struct EarningFloatingButton: View {
-    
-    @Binding var showPopUp: Bool
-    
-    var body: some View {
-        AppFloatingButton(iconName: "plus", iconBackgroundColor: Color.appGreen) {
-            // handle action button pressed
-            showPopUp.toggle()
-        }
-        .padding(.horizontal, Dm.medium)
-        .padding(.vertical, Dm.xlarge)
-    }
-}
+//private struct EarningFloatingButton: View {
+//
+//    @Binding var showPopUp: Bool
+//
+//    var body: some View {
+//        AppFloatingButton(iconName: "plus", iconBackgroundColor: Color.appGreen) {
+//            // handle action button pressed
+//            showPopUp.toggle()
+//        }
+//        .padding(.horizontal, Dm.medium)
+//        .padding(.vertical, Dm.xlarge)
+//    }
+//}
 
 private struct EarningTopBar: View {
+    
     // allow us to pop the current view off the navigation stack
     @Environment(\.presentationMode) var presentation
+    
+    @Binding var showPopUp: Bool
     
     var body: some View {
         TopBar(
             title: "Earnings",
             leadingIcon: "chevron.left",
+            trailingIcon: "plus",
             backgroundColor: Color.appGreen,
             leadingIconHandler: {
                 // back to home screen
                 presentation.wrappedValue.dismiss()
+            },
+            trailingIconHandler: {
+                // handle action button pressed
+                showPopUp.toggle()
             }
         )
     }

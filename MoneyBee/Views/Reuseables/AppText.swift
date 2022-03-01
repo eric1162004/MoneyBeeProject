@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AppText: View {
     var text: String
-    var fontSize: CGFloat = 20
+    var fontSize: CGFloat = 18
     var fontColor: Color = .black
     
     var body: some View {
