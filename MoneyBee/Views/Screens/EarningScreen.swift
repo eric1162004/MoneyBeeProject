@@ -61,6 +61,7 @@ struct EarningScreen: View {
 //}
 
 private struct EarningTopBar: View {
+    
     // allow us to pop the current view off the navigation stack
     @Environment(\.presentationMode) var presentation
     

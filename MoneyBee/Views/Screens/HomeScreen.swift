@@ -10,18 +10,21 @@ import Resolver
 
 struct HomeScreen: View {
     
+    // contains information about the current user
     @ObservedObject var appUserViewModel: AppUserViewModel = Resolver.resolve()
     
+    // contain user's total amount of earning, spending and wishlist
     @ObservedObject var homeViewModel: HomeViewModel = Resolver.resolve()
     
+    // display side menu or not
     @State var showSideMenu = false
     
     var body: some View {
         
-        // Calculate the total saving amount
-        let totalAmount = homeViewModel.totalEarning - homeViewModel.totalSpending - homeViewModel.totalBoughtWishItem
+        // dynanmically calculate the total saving amount
+        let totalSavingAmount = homeViewModel.totalEarning - homeViewModel.totalSpending - homeViewModel.totalBoughtWishItem
         
-        // Drag gesture that allow side menu to close from right to left
+        // drag gesture that allows side menu to close from right to left
         let drag = DragGesture()
             .onEnded {
                 
@@ -44,8 +47,11 @@ struct HomeScreen: View {
                     
                     // Screen Content
                     ScrollView{
+                        
                         // User Avatar image and Greeting
                         HStack(alignment: .center){
+                            
+                            // if user has provided a profile image, use that image, else just display a default honey bee logo
                             if !appUserViewModel.appUser.imageUrl.isEmpty{
                                 
                                 AsyncImage(url: URL(string: appUserViewModel.appUser.imageUrl)) { image in
@@ -68,7 +74,8 @@ struct HomeScreen: View {
                                     .frame(width: 60, height: 60, alignment: .center)
                                     .clipShape(Circle())
                             }
-
+                            
+                            // Greeting text
                             AppText(text: "Hello, \(appUserViewModel.appUser.name)!", fontSize: FontSize.large)
                                 .padding(.vertical, Dm.small)
                             
@@ -78,21 +85,25 @@ struct HomeScreen: View {
                         
                         // Display Saving Amount
                         VStack(spacing: 10){
+                            
                             Spacer()
+                            
                             AppText(
                                 text: "Your Total Saving:",
                                 fontSize: FontSize.large,
                                 fontColor: .white)
                             
+                            // Displaying Saving amount
                             Image("honeyJar")
                                 .resizable()
                                 .frame(width: 220, height: 170, alignment: .center)
                                 .overlay(
                                     AppText(
-                                    text: "$\(totalAmount.toStringWithDecimal(n: 2))",
+                                    text: "$\(totalSavingAmount.toStringWithDecimal(n: 2))",
                                     fontSize: FontSize.large,
                                     fontColor: .white)
                                         .padding(.top, 45.0))
+                            
                             Spacer()
                         }
                         .frame(maxWidth: .infinity, minHeight: 200)
@@ -101,7 +112,7 @@ struct HomeScreen: View {
                         .shadow(radius: Dm.tiny)
                         .padding(.bottom, Dm.small)
                         
-                        // Buttons
+                        // Earings, Spendings, WishList Buttons
                         VStack(spacing: Dm.small){
                             
                             NavigationLink(destination: EarningScreen()){
@@ -126,6 +137,7 @@ struct HomeScreen: View {
                 .ignoresSafeArea()
                 
                 if showSideMenu{
+                    // use geometry width to determine the width of sidemenu
                     SideMenu()
                         .frame(width: geometry.size.width / 2, height: geometry.size.height)
                         .background(Color.backgroundColor)
@@ -142,7 +154,6 @@ struct HomeScreen: View {
             }
         }
     }
-    
 }
 
 struct HomeScreen_Previews: PreviewProvider {

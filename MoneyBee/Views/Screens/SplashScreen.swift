@@ -17,7 +17,7 @@ struct SplashScreen: View {
             // title
             StrokeText(text: "Money Bee", width: 0.5, color: .black)
                 .foregroundColor(Color.primaryColor)
-                .font(.custom(Fonts.bubbleGum, size: 60))
+                .font(.custom(Fonts.bubbleGum, size: FontSize.xxlarge))
                 .padding(.bottom, Dm.large)
             
             // App logo
