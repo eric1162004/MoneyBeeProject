@@ -17,14 +17,14 @@ struct SplashScreen: View {
             // title
             StrokeText(text: "Money Bee", width: 0.5, color: .black)
                 .foregroundColor(Color.primaryColor)
-                .font(.custom(Fonts.bubbleGum, size: FontSize.xlarge))
+                .font(.custom(Fonts.bubbleGum, size: 60))
                 .padding(.bottom, Dm.large)
             
             // App logo
             Image("honeyBeeLogo")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 150, alignment: .center)
+                .frame(width: 250, alignment: .center)
             
             // Subtitle
             AppText(text: "Money Tracker",

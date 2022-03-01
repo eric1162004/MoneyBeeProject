@@ -77,18 +77,23 @@ struct HomeScreen: View {
                         }
                         
                         // Display Saving Amount
-                        VStack{
-                            
+                        VStack(spacing: 10){
+                            Spacer()
                             AppText(
                                 text: "Your Total Saving:",
                                 fontSize: FontSize.large,
                                 fontColor: .white)
                             
-                            AppText(
-                                text: "$\(totalAmount.toStringWithDecimal(n: 2))",
-                                fontSize: FontSize.large,
-                                fontColor: .white)
-                            
+                            Image("honeyJar")
+                                .resizable()
+                                .frame(width: 220, height: 170, alignment: .center)
+                                .overlay(
+                                    AppText(
+                                    text: "$\(totalAmount.toStringWithDecimal(n: 2))",
+                                    fontSize: FontSize.large,
+                                    fontColor: .white)
+                                        .padding(.top, 45.0))
+                            Spacer()
                         }
                         .frame(maxWidth: .infinity, minHeight: 200)
                         .background(Color.primaryColor)
