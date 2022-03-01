@@ -18,6 +18,7 @@ struct TopBar: View {
     
     var body: some View {
         HStack{
+            
             Image(systemName: leadingIcon ?? "")
                 .resizable()
                 .scaledToFit()
