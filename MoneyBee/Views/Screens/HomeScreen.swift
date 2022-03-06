@@ -94,16 +94,38 @@ struct HomeScreen: View {
                                 fontColor: .white)
                             
                             // Displaying Saving amount
-                            Image("honeyJar")
-                                .resizable()
-                                .frame(width: 220, height: 170, alignment: .center)
-                                .overlay(
-                                    AppText(
-                                    text: "$\(totalSavingAmount.toStringWithDecimal(n: 2))",
-                                    fontSize: FontSize.large,
-                                    fontColor: .white)
-                                        .padding(.top, 45.0))
-                            
+                            if (totalSavingAmount >= 500) {
+                                Image("full")
+                                    .resizable()
+                                    .frame(width: 220, height: 200, alignment: .center)
+                                    .overlay(
+                                        AppText(
+                                        text: "$\(totalSavingAmount.toStringWithDecimal(n: 2))",
+                                        fontSize: FontSize.large,
+                                        fontColor: .white)
+                                            .padding(.top, 45.0))
+                                
+                            } else if (totalSavingAmount >= 150 && totalSavingAmount < 500){
+                                Image("some")
+                                    .resizable()
+                                    .frame(width: 220, height: 200, alignment: .center)
+                                    .overlay(
+                                        AppText(
+                                        text: "$\(totalSavingAmount.toStringWithDecimal(n: 2))",
+                                        fontSize: FontSize.large,
+                                        fontColor: .white)
+                                            .padding(.top, 45.0))
+                            } else {
+                                Image("empty")
+                                    .resizable()
+                                    .frame(width: 220, height: 170, alignment: .center)
+                                    .overlay(
+                                        AppText(
+                                        text: "$\(totalSavingAmount.toStringWithDecimal(n: 2))",
+                                        fontSize: FontSize.large,
+                                        fontColor: .white)
+                                            .padding(.top, 45.0))
+                            }
                             Spacer()
                         }
                         .frame(maxWidth: .infinity, minHeight: 200)
