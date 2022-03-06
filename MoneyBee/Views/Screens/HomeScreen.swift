@@ -18,12 +18,9 @@ struct HomeScreen: View {
     
     // display side menu or not
     @State var showSideMenu = false
-    
+
     var body: some View {
-        
-        // dynanmically calculate the total saving amount
-        let totalSavingAmount = homeViewModel.totalEarning - homeViewModel.totalSpending - homeViewModel.totalBoughtWishItem
-        
+                
         // drag gesture that allows side menu to close from right to left
         let drag = DragGesture()
             .onEnded {
@@ -41,7 +38,7 @@ struct HomeScreen: View {
                 
                 VStack{
                     // Topbar
-                    TopBar(title: "Money Bee", leadingIcon: "line.3.horizontal", leadingIconHandler: { print("pressed")
+                    TopBar(title: "Money Bee", leadingIcon: "line.3.horizontal", leadingIconHandler: { 
                         showSideMenu.toggle()
                     })
                     
@@ -94,38 +91,16 @@ struct HomeScreen: View {
                                 fontColor: .white)
                             
                             // Displaying Saving amount
-                            if (totalSavingAmount >= 500) {
-                                Image("full")
-                                    .resizable()
-                                    .frame(width: 220, height: 200, alignment: .center)
-                                    .overlay(
-                                        AppText(
-                                        text: "$\(totalSavingAmount.toStringWithDecimal(n: 2))",
-                                        fontSize: FontSize.large,
-                                        fontColor: .white)
-                                            .padding(.top, 45.0))
-                                
-                            } else if (totalSavingAmount >= 150 && totalSavingAmount < 500){
-                                Image("some")
-                                    .resizable()
-                                    .frame(width: 220, height: 200, alignment: .center)
-                                    .overlay(
-                                        AppText(
-                                        text: "$\(totalSavingAmount.toStringWithDecimal(n: 2))",
-                                        fontSize: FontSize.large,
-                                        fontColor: .white)
-                                            .padding(.top, 45.0))
-                            } else {
-                                Image("empty")
-                                    .resizable()
-                                    .frame(width: 220, height: 170, alignment: .center)
-                                    .overlay(
-                                        AppText(
-                                        text: "$\(totalSavingAmount.toStringWithDecimal(n: 2))",
-                                        fontSize: FontSize.large,
-                                        fontColor: .white)
-                                            .padding(.top, 45.0))
-                            }
+                            Image(homeViewModel.honeyJarImage)
+                                .resizable()
+                                .frame(width: 220, height: 170, alignment: .center)
+                                .overlay(
+                                    AppText(
+                                        text: "$\(homeViewModel.totalSavingAmount.toStringWithDecimal(n: 2))",
+                                    fontSize: FontSize.large,
+                                    fontColor: .white)
+                                        .padding(.top, Dm.xlarge))
+                            
                             Spacer()
                         }
                         .frame(maxWidth: .infinity, minHeight: 200)

@@ -20,6 +20,9 @@ class HomeViewModel: ObservableObject {
     @Published var totalEarning: Float = 0.0
     @Published var totalSpending: Float = 0.0
     @Published var totalBoughtWishItem: Float = 0.0
+    @Published var totalSavingAmount: Float = 0.0
+    
+    @Published var honeyJarImage = "emptyHoneyJar"
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -31,15 +34,20 @@ class HomeViewModel: ObservableObject {
                 // only map the wish item that has been brought
                 wishItems.map { wishItem in
                     if wishItem.purchased {
-                        return wishItem.cost
+                        return Double(wishItem.cost)
                     }
                     return 0.0
                 }
             }
             .map { wishItemCosts in
+                // summing each cost
                 wishItemCosts.reduce(0.0, +)
             }
-            .assign(to: \.totalBoughtWishItem, on: self)
+            .sink { [weak self] value in
+                // update total
+                 self!.totalBoughtWishItem = Float(value)
+                 self!.updateSavingAmount()
+             }
             .store(in: &cancellables)
         
         // Calculate total earning
@@ -52,7 +60,10 @@ class HomeViewModel: ObservableObject {
             .map { earnings in
                 earnings.reduce(0.0, +)
             }
-            .assign(to: \.totalEarning, on: self)
+            .sink { [weak self] value in
+                 self!.totalEarning = Float(value)
+                 self!.updateSavingAmount()
+             }
             .store(in: &cancellables)
             
         // calculate total spending
@@ -65,9 +76,29 @@ class HomeViewModel: ObservableObject {
             .map { spendings in
                 spendings.reduce(0.0, +)
             }
-            .assign(to: \.totalSpending, on: self)
+            .sink { [weak self] value in
+                 self!.totalSpending = Float(value)
+                 self!.updateSavingAmount()
+             }
             .store(in: &cancellables)
 
+    }
+    
+    private func updateSavingAmount() {
+        totalSavingAmount = totalEarning - totalSpending - totalBoughtWishItem
+        
+        // update honey jar image
+        updateHoneyJarimage()
+    }
+    
+    private func updateHoneyJarimage(){
+        if totalSavingAmount >= 500 {
+            honeyJarImage = "fullHoneyJar"
+        } else if totalSavingAmount > 0 {
+            honeyJarImage = "halfFullHoneyJar"
+        } else {
+            honeyJarImage = "emptyHoneyJar"
+        }
     }
     
 }

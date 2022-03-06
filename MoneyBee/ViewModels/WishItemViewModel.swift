@@ -18,6 +18,9 @@ class WishItemViewModel: ObservableObject {
     
     @Published var selectedImage: UIImage?
     
+    // contain user's total amount of earning, spending and wishlist
+    private var homeViewModel: HomeViewModel = Resolver.resolve()
+    
     private let imageStorageService: ImageStorageService = Resolver.resolve()
     
     private var cancellables = Set<AnyCancellable>()
@@ -58,10 +61,21 @@ class WishItemViewModel: ObservableObject {
             // upload wish item without image provided
             wishItemRepo.add(wishItem)
         }
-        
     }
 
     func buyItem(_ wishItem: WishItem){
+            
+        // dynanmically calculate the total saving amount
+        let totalSavingAmount = homeViewModel.totalEarning - homeViewModel.totalSpending - homeViewModel.totalBoughtWishItem
+        
+        // check if the user has enough saving to buy the error
+        guard totalSavingAmount >= wishItem.cost else {
+            
+            // display "Not enough saving to buy" messahe to user
+            
+            
+            return
+        }
         
         var wishItemUpdated = wishItem
         wishItemUpdated.purchased.toggle()

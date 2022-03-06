@@ -14,16 +14,10 @@ struct AppWishItemCard: View {
     @State var backgroundColor: Color = Color.primaryColor
     @State var buyButtonHandler: (() -> ())?
     @State var swipeDeleteHandler: (() -> ())?
-    
-    // contain user's total amount of earning, spending and wishlist
-    @ObservedObject var homeViewModel: HomeViewModel = Resolver.resolve()
-    
+
     var body: some View {
         
         let isBought = wishItem.purchased
-        
-        // dynanmically calculate the total saving amount
-        let totalSavingAmount = homeViewModel.totalEarning - homeViewModel.totalSpending - homeViewModel.totalBoughtWishItem
         
         HStack{
             VStack{
@@ -42,20 +36,13 @@ struct AppWishItemCard: View {
             VStack{
                 AppMoneyAmountView(amount: wishItem.cost)
                 
-                if totalSavingAmount < wishItem.cost {
-                    AppRoundedCornerButton(
-                        label: "Buy" ,
-                    backgroundColor:Color.gray) {
-                    }
-                } else {
-                    AppRoundedCornerButton(
-                        label: isBought ? "Bought" : "Buy" ,
-                    backgroundColor: isBought ? Color.gray : Color.appGreen) {
-                        buyButtonHandler?()
-                    }
+                AppRoundedCornerButton(
+                    label: isBought ? "Bought" : "Buy" ,
+                backgroundColor: isBought ? Color.gray : Color.appGreen) {
+
+                    buyButtonHandler?()
+                    
                 }
-                
-                
             }
             .frame(maxWidth: 150)
         }
