@@ -22,23 +22,28 @@ struct AppSecureField: View {
                 // leading icon
                 if(!leadingIcon.isEmpty){
                     Image(systemName: leadingIcon)
-                        .foregroundColor(Color.secondary)
+                        .foregroundColor(Color.appLightGray)
                 }
         
                 SecureField(label, text: $password)
+                    .placeholder(when: password.isEmpty) {
+                        Text(label).foregroundColor(Color.appLightGray)
+                }
+                    .foregroundColor(Color.appLightGray)
                     .font(Font.custom(Fonts.bubbleGum, size: FontSize.small))
                     .disableAutocorrection(true)
                     .textInputAutocapitalization(.never)
+                    
                 
                 // Button to toggle password field display
                 Button(action: {
                     isSecured.toggle()
                 }) {
                     Image(systemName: self.isSecured ? "eye.slash" : "eye")
-                        .foregroundColor(Color.secondary)
+                        .foregroundColor(Color.appLightGray)
                 }
             }
-            .padding(Dm.small)
+            .padding(Dm.small) 
             .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color(UIColor.separator), lineWidth: 4))
             .background(.white)
             .clipShape(RoundedRectangle(cornerRadius: 20))

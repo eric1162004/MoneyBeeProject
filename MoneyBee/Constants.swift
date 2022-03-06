@@ -22,6 +22,7 @@ extension Color {
     static let appLightGreen = Color("appLightGreen")
     static let appBlue = Color("appBlue")
     static let appLightBlue = Color("appLightBlue")
+    static let appLightGray = Color("appLightGray")
 }
 
 // FontSize

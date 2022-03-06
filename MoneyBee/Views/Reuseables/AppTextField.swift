@@ -22,14 +22,15 @@ struct AppTextField: View {
             // leading icon
             if(!leadingIcon.isEmpty){
                 Image(systemName: leadingIcon)
-                    .foregroundColor(Color.secondary)
+                    .foregroundColor(Color.appLightGray)
             }
 
             // text field
             TextField("", text: $text)
                 .placeholder(when: text.isEmpty) {
-                    Text(placeholder).foregroundColor(.gray)
+                    Text(placeholder).foregroundColor(Color.appLightGray)
             }
+                .foregroundColor(Color.appLightGray)
                 .font(Font.custom(Fonts.bubbleGum, size: FontSize.small))
                 .disableAutocorrection(true)
                 .textInputAutocapitalization(.never)
@@ -42,11 +43,11 @@ struct AppTextField: View {
                         handler()
                     } label: {
                         Image(systemName: trailingIcon)
-                            .foregroundColor(Color.secondary)
+                            .foregroundColor(Color.appLightGray)
                     }
                 } else {
                     Image(systemName: trailingIcon)
-                        .foregroundColor(Color.secondary)
+                        .foregroundColor(Color.appLightGray)
                 }
             }
 
