@@ -18,6 +18,10 @@ class WishItemViewModel: ObservableObject {
     
     @Published var selectedImage: UIImage?
     
+    @Published var showingAlert: Bool = false
+    
+    @Published var notEnoughMoneyError: String = ""
+    
     // contain user's total amount of earning, spending and wishlist
     private var homeViewModel: HomeViewModel = Resolver.resolve()
     
@@ -68,11 +72,12 @@ class WishItemViewModel: ObservableObject {
         // dynanmically calculate the total saving amount
         let totalSavingAmount = homeViewModel.totalEarning - homeViewModel.totalSpending - homeViewModel.totalBoughtWishItem
         
-        // check if the user has enough saving to buy the error
+        // check if the user has enough saving to buy the item
         guard totalSavingAmount >= wishItem.cost else {
             
             // display "Not enough saving to buy" messahe to user
-            
+            showingAlert = true
+            notEnoughMoneyError = "You don't have enough saving to buy this item."
             
             return
         }

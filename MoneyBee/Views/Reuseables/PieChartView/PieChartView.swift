@@ -27,7 +27,7 @@ struct PieSliceView: View {
                     
                     path.addArc(
                         center: center,
-                        radius: width * 0.5,
+                        radius: width * 0.46,
                         startAngle: Angle(degrees: -90.0) + pieSliceData.startAngle,
                         endAngle: Angle(degrees: -90.0) + pieSliceData.endAngle,
                         clockwise: false)

@@ -16,18 +16,17 @@ struct SpendingChartView: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        VStack(){
+        VStack(spacing: 10){
+            Spacer()
+                .frame(height: 10)
             // Spending Pie Chart
             if let totalAmount = spendingVM.spendingChartTotalAmounts {
                 AppText(text: spendingVM.selectedMonthYear?.value ?? "Overall Spending", fontSize: FontSize.medium)
-                
-                PieChartView(values: totalAmount, colors: spendingVM.spendingChartTypeColors, backgroundColor: Color.clear)
-                
-                Spacer()
-                
+                    
+                PieChartView(values: totalAmount, colors: spendingVM.spendingChartTypeColors, backgroundColor: Color.clear).scaledToFill()
+                    
                 SpendingTable()
-                    .frame(maxHeight: 280)
-                
+                    .frame(maxHeight: 250)
             } else {
                 AppText(text: "Please select a month.", fontSize: FontSize.large)
             }

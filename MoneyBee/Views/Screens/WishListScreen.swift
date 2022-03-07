@@ -83,7 +83,8 @@ private struct WishItemListSection: View {
                 // an earning card
                 AppWishItemCard(
                     wishItem: wishItem,
-                    backgroundColor: Color.appLightBlue, buyButtonHandler: {
+                    backgroundColor: Color.appLightBlue,
+                    buyButtonHandler: {
                         
                         // handle buy
                         wishItemVM.buyItem(wishItem.wrappedValue)
@@ -99,6 +100,12 @@ private struct WishItemListSection: View {
             }
         }
         .listStyle(.plain)
+        .alert(isPresented: $wishItemVM.showingAlert) {
+            Alert(
+                title: Text("Oops..."),
+                message: Text(wishItemVM.notEnoughMoneyError)
+            )
+        }
     }
 }
 
