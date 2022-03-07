@@ -16,23 +16,34 @@ struct SpendingChartView: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        VStack(spacing: 10){
-            Spacer()
-                .frame(height: 10)
-            // Spending Pie Chart
-            if let totalAmount = spendingVM.spendingChartTotalAmounts {
-                AppText(text: spendingVM.selectedMonthYear?.value ?? "Overall Spending", fontSize: FontSize.medium)
+        GeometryReader { geometry in
+            VStack(){
+                // Spending Pie Chart
+                if let totalAmount = spendingVM.spendingChartTotalAmounts {
                     
-                PieChartView(values: totalAmount, colors: spendingVM.spendingChartTypeColors, backgroundColor: Color.clear).scaledToFill()
+                    AppText(text: spendingVM.selectedMonthYear?.value ?? "Overall Spending", fontSize: FontSize.medium)
                     
-                SpendingTable()
-                    .frame(maxHeight: 250)
-            } else {
-                AppText(text: "Please select a month.", fontSize: FontSize.large)
+                    PieChartView(
+                        values: totalAmount,
+                        colors: spendingVM.spendingChartTypeColors,
+                        backgroundColor: Color.clear)
+                        .frame(maxHeight: geometry.size.height * 0.4)
+                        .scaledToFit()
+                        .aspectRatio(contentMode: .fit)
+                    
+                    Spacer()
+                    
+                    SpendingTable()
+                        .frame(maxHeight: geometry.size.height * 0.4)
+                        .padding(.bottom)
+                    
+                    Spacer()
+                    
+                } else {
+                    AppText(text: "Please select a month.", fontSize: FontSize.large)
+                }
             }
-            
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(Dm.medium)
         .background(Color.backgroundColor)
     }
