@@ -25,6 +25,7 @@ struct AppDatePicker: View {
              in: dateRange,
              displayedComponents: [.date]
         )
+            .foregroundColor(Color.appLightGray)
             .font(Font.custom(Fonts.bubbleGum, size: FontSize.small))
             .accentColor(Color.primaryColor)
             .padding(Dm.small)

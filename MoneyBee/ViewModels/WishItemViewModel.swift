@@ -68,12 +68,9 @@ class WishItemViewModel: ObservableObject {
     }
 
     func buyItem(_ wishItem: WishItem){
-            
-        // dynanmically calculate the total saving amount
-        let totalSavingAmount = homeViewModel.totalEarning - homeViewModel.totalSpending - homeViewModel.totalBoughtWishItem
         
         // check if the user has enough saving to buy the item
-        guard totalSavingAmount >= wishItem.cost else {
+        guard homeViewModel.totalSavingAmount >= wishItem.cost else {
             
             // display "Not enough saving to buy" messahe to user
             showingAlert = true

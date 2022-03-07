@@ -99,7 +99,7 @@ struct DropdownSelector: View {
         .overlay(
             VStack {
                 if self.shouldShowDropdown {
-                    Spacer(minLength: buttonHeight + 20)
+                    Spacer(minLength: buttonHeight + 18)
                     Dropdown(options: self.options, onOptionSelected: { option in
                         shouldShowDropdown = false
                         selectedOption = option

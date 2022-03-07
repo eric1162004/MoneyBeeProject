@@ -133,10 +133,12 @@ private struct EarningListSection: View {
                 }
                 // clear the default white list item background
                 .listRowBackground(Color.backgroundColor)
+                .listRowSeparator(.hidden)
             }
             
         }
         .listStyle(.plain)
+        .listRowSeparator(.hidden)
     }
 }
 

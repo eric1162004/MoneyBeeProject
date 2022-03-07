@@ -97,9 +97,11 @@ private struct WishItemListSection: View {
                     })
                 // clear the default white list item background
                 .listRowBackground(Color.clear)
+                .listRowSeparator(.hidden)
             }
         }
         .listStyle(.plain)
+        .listRowSeparator(.hidden)
         .alert(isPresented: $wishItemVM.showingAlert) {
             Alert(
                 title: Text("Oops..."),

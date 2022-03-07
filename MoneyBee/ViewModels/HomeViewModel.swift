@@ -90,7 +90,7 @@ class HomeViewModel: ObservableObject {
         // update honey jar image
         updateHoneyJarimage()
     }
-    
+    // Show different images in three level money
     private func updateHoneyJarimage(){
         if totalSavingAmount >= 500 {
             honeyJarImage = "fullHoneyJar"
