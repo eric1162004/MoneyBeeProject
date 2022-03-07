@@ -29,7 +29,6 @@ struct SpendingChartView: View {
                         backgroundColor: Color.clear)
                         .frame(maxHeight: geometry.size.height * 0.4)
                         .scaledToFit()
-                        .aspectRatio(contentMode: .fit)
                     
                     Spacer()
                     
