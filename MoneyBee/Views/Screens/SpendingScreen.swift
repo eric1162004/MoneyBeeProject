@@ -55,7 +55,7 @@ struct SpendingScreenTopBar: View {
             },
             trailingIconHandler: {
                 // add new spending
-                showPopUp.toggle()
+                withAnimation{self.showPopUp.toggle()}
             })
     }
 }
@@ -261,6 +261,7 @@ private struct SpendingPopupField: View {
                     resetFields()
                 }
             )
+                .transition(.slide)
         }
     }
 }

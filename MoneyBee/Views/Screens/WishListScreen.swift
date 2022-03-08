@@ -67,7 +67,7 @@ private struct WishItemScreenTopBar: View {
             },
             trailingIconHandler: {
                 // Add new wish item
-                showPopUp.toggle()
+                withAnimation{self.showPopUp.toggle()}
             }
         )
     }
@@ -188,8 +188,11 @@ private struct WishListPopup: View {
                     handleCancel:{
                         reset()
                     }
-                )}
+                )
+                   
+            }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .transition(.slide)
         }
     }
 }

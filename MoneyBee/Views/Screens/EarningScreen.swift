@@ -79,7 +79,7 @@ private struct EarningTopBar: View {
             },
             trailingIconHandler: {
                 // handle action button pressed
-                showPopUp.toggle()
+                withAnimation{self.showPopUp.toggle()}
             }
         )
     }
@@ -212,6 +212,7 @@ private struct EarningPopupField: View {
                     resetFields()
                 }
             )
+                .transition(.slide)
         }
     }
 }
@@ -220,5 +221,6 @@ struct EarningScreen_Previews: PreviewProvider {
     static var previews: some View {
         EarningScreen()
             .previewInterfaceOrientation(.portrait)
+           
     }
 }
