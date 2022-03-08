@@ -114,7 +114,6 @@ private struct MonthSection: View {
 private struct EarningListSection: View {
     
     @ObservedObject var earningVM : EarningViewModel = Resolver.resolve()
-    
     var body: some View {
         List{
             
@@ -128,6 +127,7 @@ private struct EarningListSection: View {
             ForEach(earningVM.earnings){ earning in
                 // an earning card
                 EarningCard(earning: earning, backgroundColor: Color.appLightGreen) {
+                    //.listRowBackground((earning % 2 == 0) ? Color.appLightGreen: Color.appLightBlue)
                     // handle swipt delete
                     earningVM.remove(earning)
                 }
