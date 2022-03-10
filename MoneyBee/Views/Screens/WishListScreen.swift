@@ -137,7 +137,15 @@ private struct WishListPopup: View {
     }
     
     var body: some View {
-        
+        //grey out the background area on tap gesture
+        if showPopUp{
+            Color.black
+                .opacity(0.6)
+                .ignoresSafeArea()
+                .onTapGesture {
+                    showPopUp = true
+                }
+        }
         if $showPopUp.wrappedValue {
             
             // all text field goes here
