@@ -79,11 +79,11 @@ private struct WishItemListSection: View {
     
     var body: some View {
         List{
-            ForEach($wishItemVM.wishItems){ wishItem in
+            ForEach(Array($wishItemVM.wishItems.enumerated()), id: \.element.id){ index, wishItem in
                 // an earning card
                 AppWishItemCard(
                     wishItem: wishItem,
-                    backgroundColor: Color.appLightBlue, buyButtonHandler: {
+                    backgroundColor: ((index % 2 == 0) ? Color.appBlue : Color.appLightBlue), buyButtonHandler: {
                         
                         // handle buy
                         wishItemVM.buyItem(wishItem.wrappedValue)

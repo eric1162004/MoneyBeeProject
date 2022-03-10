@@ -124,10 +124,9 @@ private struct EarningListSection: View {
             
             
             // display all earnings
-            ForEach(earningVM.earnings){ earning in
+            ForEach(Array(earningVM.earnings.enumerated()), id: \.element.id){ index, earning in
                 // an earning card
-                EarningCard(earning: earning, backgroundColor: Color.appLightGreen) {
-                    
+                EarningCard(earning: earning, backgroundColor:((index % 2 == 0 ) ? Color.appGreen : Color.appLightGreen)) {
                     // handle swipt delete
                     earningVM.remove(earning)
                 }

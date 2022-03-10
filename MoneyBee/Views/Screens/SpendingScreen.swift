@@ -152,9 +152,9 @@ private struct EarningListSection: View {
                 .shadow(color: .gray, radius: 5, x: 0, y: 2)
             
             // an earning card
-            ForEach(spendingVM.spendings){ spending in
+            ForEach(Array(spendingVM.spendings.enumerated()), id: \.element.id){ index, spending in
                 // an earning card
-                SpendingCard(spending: spending, backgroundColor: Color.appLightRed) {
+                SpendingCard(spending: spending, backgroundColor: ((index % 2 == 0) ? Color.appRed : Color.appLightRed)) {
                     // handle swipt delete
                     spendingVM.remove(spending)
                 }
