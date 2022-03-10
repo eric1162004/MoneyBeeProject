@@ -108,6 +108,7 @@ private struct MonthSection: View {
         .background(Color.appLightGreen)
         .offset(y: -Dm.tiny)
         .zIndex(1)
+        .transition(.asymmetric(insertion: .opacity, removal: .scale))
     }
 }
 
