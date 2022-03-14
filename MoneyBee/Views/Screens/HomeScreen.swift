@@ -39,7 +39,9 @@ struct HomeScreen: View {
                 VStack{
                     // Topbar
                     TopBar(title: "Money Bee", leadingIcon: "line.3.horizontal", leadingIconHandler: { 
-                        showSideMenu.toggle()
+                        withAnimation(.easeOut(duration: 0.5)) {
+                            showSideMenu.toggle()
+                        }
                     })
                     
                     // Screen Content
@@ -139,16 +141,13 @@ struct HomeScreen: View {
                         .frame(width: geometry.size.width / 2, height: geometry.size.height)
                         .background(Color.backgroundColor)
                         .transition(.move(edge: .leading))
-                        .animation(.easeOut(duration: 1))
-                   
-            
+//                        .animation(.easeOut(duration: 1))
                 }
             }
             // attach the swipe-to-close side menu gesture
             .gesture(drag)
             .navigationBarHidden(true)
             .onAppear {
-                
                 // make sure the side menu is close when displaying the screen
                 showSideMenu = false
             }
