@@ -14,11 +14,17 @@ struct AppMoneyAmountView: View {
     var body: some View {
         let formattedAmount = String(format: "%.2f", amount)
         
-        AppText(text:"$\(formattedAmount)", fontSize: FontSize.small)
-            .frame(width: 80, height: 80)
-            .padding(Dm.small)
-            .background(.white)
-            .clipShape(Circle())
+        Image("honeyJar")
+            .resizable()
+            .scaledToFill()
+            .frame(width: 100, height: 90)
+            .overlay {
+                AppText(text:"$\(formattedAmount)", fontSize: FontSize.tiny, fontColor: .white)
+                    .padding(.top)
+                    .frame(width: 90, height: 75)
+                    .padding(Dm.small)
+            }
+        
         
     }
 }
