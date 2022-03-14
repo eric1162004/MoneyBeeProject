@@ -30,6 +30,9 @@ struct AppRoundedCornerButton: View {
                         .resizable()
                         .scaledToFill()
                         .frame(width: 50, height: 50)
+                        .padding(.trailing, 10)
+                        
+                        
                     
                     AppText(text: label, fontSize: fontSize, fontColor: .white)
                     
@@ -52,6 +55,7 @@ struct AppRoundedCornerButton: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 50, height: 50)
+                    .padding(.trailing, 10)
                 
                 AppText(text: label, fontSize: fontSize, fontColor: .white)
                 
@@ -68,6 +72,6 @@ struct AppRoundedCornerButton: View {
 
 struct AppRoundedCornerButton_Previews: PreviewProvider {
     static var previews: some View {
-        AppRoundedCornerButton(label: "click me"){}
+        AppRoundedCornerButton(label: "click me", buttonIcons: "test1"){}
     }
 }

@@ -21,7 +21,7 @@ struct EditProfileScreen: View {
     var body: some View {
             VStack{
                 // Topbar
-                TopBar(title: "Edit Profile", leadingIcon: "chevron.left", leadingIconHandler: { 
+                TopBar(title: "Edit Profile", leadingIcon: "chevron.left", topbarIcon: "editIcon",leadingIconHandler: {
 
                     // back to home screen
                     presentation.wrappedValue.dismiss()

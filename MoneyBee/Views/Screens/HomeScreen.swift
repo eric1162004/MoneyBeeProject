@@ -86,11 +86,17 @@ struct HomeScreen: View {
                         VStack(spacing: 10){
                             
                             Spacer()
+                            HStack{
+                                Image("earnings")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 40, height: 50)
+                                AppText(
+                                    text: "Your Total Saving:",
+                                    fontSize: FontSize.large,
+                                    fontColor: .white)
+                            }
                             
-                            AppText(
-                                text: "Your Total Saving:",
-                                fontSize: FontSize.large,
-                                fontColor: .white)
                             
                             // Displaying Saving amount
                             Image(homeViewModel.honeyJarImage)
@@ -115,11 +121,11 @@ struct HomeScreen: View {
                         VStack(spacing: Dm.small){
                             
                             NavigationLink(destination: EarningScreen()){
-                                AppRoundedCornerButton(label: "Earnings", buttonIcons: "earnings" ,backgroundColor: Color.appGreen, height: 100, fontSize: FontSize.large)
+                                AppRoundedCornerButton(label: "Earnings", buttonIcons: "earningbee" ,backgroundColor: Color.appGreen, height: 100, fontSize: FontSize.large)
                             }
                             
                             NavigationLink(destination: SpendingScreen()){
-                                AppRoundedCornerButton(label: "Spendings", buttonIcons: "spendings", backgroundColor: Color.appRed, height: 100, fontSize: FontSize.large)
+                                AppRoundedCornerButton(label: "Spendings", buttonIcons: "spendingCoin", backgroundColor: Color.appRed, height: 100, fontSize: FontSize.large)
                             }
                             
                             NavigationLink(destination: WishListScreen()){
@@ -138,7 +144,7 @@ struct HomeScreen: View {
                 if showSideMenu{
                     // use geometry width to determine the width of sidemenu
                     SideMenu()
-                        .frame(width: geometry.size.width / 2, height: geometry.size.height)
+                        .frame(width: geometry.size.width / 1.7, height: geometry.size.height)
                         .background(Color.backgroundColor)
                         .transition(.move(edge: .leading))
 //                        .animation(.easeOut(duration: 1))

@@ -47,7 +47,7 @@ struct SpendingScreenTopBar: View {
         TopBar(
             title: "Spendings",
             leadingIcon: "chevron.left",
-            topbarIcon: "spendings",
+            topbarIcon: "spendingCoin",
             trailingIcon: "plus",
             backgroundColor: Color.appRed,
             leadingIconHandler: {

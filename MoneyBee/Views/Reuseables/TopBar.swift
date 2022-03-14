@@ -39,6 +39,7 @@ struct TopBar: View {
                 .frame(width: 48, height: 48)
                 .padding(.leading)
                 .padding(.top, 2)
+                .padding(.trailing, 7)
             
             AppText(text: title, fontSize: FontSize.large, fontColor: Color.white)
                 .padding(.top, 3)

@@ -71,7 +71,7 @@ private struct EarningTopBar: View {
         TopBar(
             title: "Earnings",
             leadingIcon: "chevron.left",
-            topbarIcon: "earnings",
+            topbarIcon: "earningbee",
             trailingIcon: "plus",
             backgroundColor: Color.appGreen,
             leadingIconHandler: {
