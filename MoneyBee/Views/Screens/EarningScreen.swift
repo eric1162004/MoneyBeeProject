@@ -79,7 +79,7 @@ private struct EarningTopBar: View {
             },
             trailingIconHandler: {
                 // handle action button pressed
-                showPopUp.toggle()
+                withAnimation{self.showPopUp.toggle()}
             }
         )
     }
@@ -108,13 +108,13 @@ private struct MonthSection: View {
         .background(Color.appLightGreen)
         .offset(y: -Dm.tiny)
         .zIndex(1)
+        .transition(.asymmetric(insertion: .opacity, removal: .scale))
     }
 }
 
 private struct EarningListSection: View {
     
     @ObservedObject var earningVM : EarningViewModel = Resolver.resolve()
-    
     var body: some View {
         List{
             
@@ -125,9 +125,9 @@ private struct EarningListSection: View {
             
             
             // display all earnings
-            ForEach(earningVM.earnings){ earning in
+            ForEach(Array(earningVM.earnings.enumerated()), id: \.element.id){ index, earning in
                 // an earning card
-                EarningCard(earning: earning, backgroundColor: Color.appLightGreen) {
+                EarningCard(earning: earning, backgroundColor:((index % 2 == 0 ) ? Color.appGreen : Color.appLightGreen)) {
                     // handle swipt delete
                     earningVM.remove(earning)
                 }
@@ -162,6 +162,15 @@ private struct EarningPopupField: View {
     }
 
     var body: some View {
+        //grey out the background area on tap gesture
+        if showPopUp{
+            Color.black
+                .opacity(0.6)
+                .ignoresSafeArea()
+                .onTapGesture {
+                    showPopUp = true
+                }
+        }
         if $showPopUp.wrappedValue {
             
             // all text field inside the pop up goes here
@@ -214,6 +223,7 @@ private struct EarningPopupField: View {
                     resetFields()
                 }
             )
+                .transition(.slide)
         }
     }
 }
@@ -222,5 +232,6 @@ struct EarningScreen_Previews: PreviewProvider {
     static var previews: some View {
         EarningScreen()
             .previewInterfaceOrientation(.portrait)
+           
     }
 }

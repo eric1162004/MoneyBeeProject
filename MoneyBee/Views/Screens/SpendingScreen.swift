@@ -55,7 +55,7 @@ struct SpendingScreenTopBar: View {
             },
             trailingIconHandler: {
                 // add new spending
-                showPopUp.toggle()
+                withAnimation{self.showPopUp.toggle()}
             })
     }
 }
@@ -152,9 +152,9 @@ private struct EarningListSection: View {
                 .shadow(color: .gray, radius: 5, x: 0, y: 2)
             
             // an earning card
-            ForEach(spendingVM.spendings){ spending in
+            ForEach(Array(spendingVM.spendings.enumerated()), id: \.element.id){ index, spending in
                 // an earning card
-                SpendingCard(spending: spending, backgroundColor: Color.appLightRed) {
+                SpendingCard(spending: spending, backgroundColor: ((index % 2 == 0) ? Color.appRed : Color.appLightRed)) {
                     // handle swipt delete
                     spendingVM.remove(spending)
                 }
@@ -206,6 +206,15 @@ private struct SpendingPopupField: View {
     }
     
     var body: some View {
+        //grey out the background area on tap gesture
+        if showPopUp{
+            Color.black
+                .opacity(0.6)
+                .ignoresSafeArea()
+                .onTapGesture {
+                    showPopUp = true
+                }
+        }
         if $showPopUp.wrappedValue {
             
             // all text field inside the pop up goes here
@@ -263,6 +272,7 @@ private struct SpendingPopupField: View {
                     resetFields()
                 }
             )
+                .transition(.slide)
         }
     }
 }

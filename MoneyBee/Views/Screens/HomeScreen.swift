@@ -139,6 +139,9 @@ struct HomeScreen: View {
                         .frame(width: geometry.size.width / 2, height: geometry.size.height)
                         .background(Color.backgroundColor)
                         .transition(.move(edge: .leading))
+                        .animation(.easeOut(duration: 1))
+                   
+            
                 }
             }
             // attach the swipe-to-close side menu gesture

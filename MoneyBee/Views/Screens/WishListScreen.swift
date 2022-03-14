@@ -67,7 +67,7 @@ private struct WishItemScreenTopBar: View {
             },
             trailingIconHandler: {
                 // Add new wish item
-                showPopUp.toggle()
+                withAnimation{self.showPopUp.toggle()}
             }
         )
     }
@@ -79,12 +79,12 @@ private struct WishItemListSection: View {
     
     var body: some View {
         List{
-            ForEach($wishItemVM.wishItems){ wishItem in
+            ForEach(Array($wishItemVM.wishItems.enumerated()), id: \.element.id){ index, wishItem in
                 // an earning card
                 AppWishItemCard(
                     wishItem: wishItem,
-                    backgroundColor: Color.appLightBlue,
-                    buyButtonHandler: {
+
+                    backgroundColor: ((index % 2 == 0) ? Color.appBlue : Color.appLightBlue), buyButtonHandler: {
                         
                         // handle buy
                         wishItemVM.buyItem(wishItem.wrappedValue)
@@ -146,7 +146,15 @@ private struct WishListPopup: View {
     }
     
     var body: some View {
-        
+        //grey out the background area on tap gesture
+        if showPopUp{
+            Color.black
+                .opacity(0.6)
+                .ignoresSafeArea()
+                .onTapGesture {
+                    showPopUp = true
+                }
+        }
         if $showPopUp.wrappedValue {
             
             // all text field goes here
@@ -197,8 +205,11 @@ private struct WishListPopup: View {
                     handleCancel:{
                         reset()
                     }
-                )}
+                )
+                   
+            }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .transition(.slide)
         }
     }
 }
