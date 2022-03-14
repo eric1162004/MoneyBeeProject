@@ -38,7 +38,7 @@ struct HomeScreen: View {
                 
                 VStack{
                     // Topbar
-                    TopBar(title: "Money Bee", leadingIcon: "line.3.horizontal", leadingIconHandler: { 
+                    TopBar(title: "Money Bee", leadingIcon: "line.3.horizontal", topbarIcon: "topbarIcon", leadingIconHandler: {
                         withAnimation(.easeOut(duration: 0.5)) {
                             showSideMenu.toggle()
                         }
@@ -115,15 +115,15 @@ struct HomeScreen: View {
                         VStack(spacing: Dm.small){
                             
                             NavigationLink(destination: EarningScreen()){
-                                AppRoundedCornerButton(label: "Earnings", backgroundColor: Color.appGreen, height: 100, fontSize: FontSize.large)
+                                AppRoundedCornerButton(label: "Earnings", buttonIcons: "earnings" ,backgroundColor: Color.appGreen, height: 100, fontSize: FontSize.large)
                             }
                             
                             NavigationLink(destination: SpendingScreen()){
-                                AppRoundedCornerButton(label: "Spendings", backgroundColor: Color.appRed, height: 100, fontSize: FontSize.large)
+                                AppRoundedCornerButton(label: "Spendings", buttonIcons: "spendings", backgroundColor: Color.appRed, height: 100, fontSize: FontSize.large)
                             }
                             
                             NavigationLink(destination: WishListScreen()){
-                                AppRoundedCornerButton(label: "Wish List", backgroundColor: Color.appBlue, height: 100, fontSize: FontSize.large)
+                                AppRoundedCornerButton(label: "Wish List", buttonIcons: "wishlist", backgroundColor: Color.appBlue, height: 100, fontSize: FontSize.large)
                             }
                         }
                         

@@ -1,16 +1,16 @@
 //
-//  AppRoundedCornerButton.swift
+//  AppRoundedCornerNonIconButton.swift
 //  MoneyBee
 //
-//  Created by Eric Cheung on 2022-01-28.
+//  Created by PoKai Huang on 2022-03-14.
 //
 
 import SwiftUI
 
-struct AppRoundedCornerButton: View {
+
+struct AppRoundedCornerNonIconButton: View {
     
     var label: String
-    var buttonIcons: String?
     var backgroundColor: Color = Color.primaryColor
     var height: CGFloat = Dm.xlarge
     var fontSize: CGFloat = FontSize.small
@@ -25,12 +25,7 @@ struct AppRoundedCornerButton: View {
             } label: {
                 HStack{
                     Spacer()
-                    
-                    Image(buttonIcons ?? "")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 50, height: 50)
-                    
+
                     AppText(text: label, fontSize: fontSize, fontColor: .white)
                     
                     Spacer()
@@ -48,11 +43,6 @@ struct AppRoundedCornerButton: View {
             HStack{
                 Spacer()
                 
-                Image(buttonIcons ?? "")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 50, height: 50)
-                
                 AppText(text: label, fontSize: fontSize, fontColor: .white)
                 
                 Spacer()
@@ -66,7 +56,7 @@ struct AppRoundedCornerButton: View {
     }
 }
 
-struct AppRoundedCornerButton_Previews: PreviewProvider {
+struct AppRoundedCornerNonIconButton_Previews: PreviewProvider {
     static var previews: some View {
         AppRoundedCornerButton(label: "click me"){}
     }

@@ -36,7 +36,7 @@ struct AppWishItemCard: View {
             VStack{
                 AppMoneyAmountView(amount: wishItem.cost)
                 
-                AppRoundedCornerButton(
+                AppRoundedCornerNonIconButton(
                     label: isBought ? "Bought" : "Buy" ,
                 backgroundColor: isBought ? Color.gray : Color.appGreen) {
 

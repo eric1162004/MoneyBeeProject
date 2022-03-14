@@ -59,6 +59,7 @@ private struct WishItemScreenTopBar: View {
         TopBar(
             title: "Wish List",
             leadingIcon: "chevron.left",
+            topbarIcon: "wishlist",
             trailingIcon: "plus",
             backgroundColor: Color.appBlue,
             leadingIconHandler: {

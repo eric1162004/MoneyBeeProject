@@ -11,6 +11,7 @@ struct TopBar: View {
     
     var title: String
     var leadingIcon: String?
+    var topbarIcon: String?
     var trailingIcon: String?
     var backgroundColor: Color = Color.primaryColor
     var leadingIconHandler: (() -> ())?
@@ -32,9 +33,17 @@ struct TopBar: View {
             
             Spacer()
             
+            Image(topbarIcon ?? "")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 48, height: 48)
+                .padding(.leading)
+                .padding(.top, 2)
+            
             AppText(text: title, fontSize: FontSize.large, fontColor: Color.white)
                 .padding(.top, 3)
             
+            Spacer()
             Spacer()
             
             Image(systemName: trailingIcon ?? "")
@@ -56,6 +65,6 @@ struct TopBar: View {
 
 struct TopBar_Previews: PreviewProvider {
     static var previews: some View {
-        TopBar(title: "title", leadingIcon: "person", trailingIcon: "pencil")
+        TopBar(title: "title", leadingIcon: "person", topbarIcon: "topbarIcon", trailingIcon: "pencil")
     }
 }
