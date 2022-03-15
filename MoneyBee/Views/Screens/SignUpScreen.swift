@@ -19,6 +19,7 @@ struct SignUpScreen: View {
     @State var email: String = ""
     @State var password: String = ""
     @State var confirmPassword: String = ""
+    @State var isChecked: Bool = false
     
     @State var errorMsg : String?
     
@@ -31,7 +32,6 @@ struct SignUpScreen: View {
             VStack{
                 // top banner
                 AppSignInAndSignUpTopBanner()
-//                    .padding(.top, Dm.xlarge)
                 
                 // title
                 AppText(text: "Sign Up", fontSize: FontSize.xlarge, fontColor: .black)
@@ -50,6 +50,19 @@ struct SignUpScreen: View {
                     // confirm password
                     AppSecureField(label: "Confirm Password", password: $confirmPassword)
                     
+                    // parent's consent checkbox
+                    Button {
+                        isChecked = !isChecked
+                    } label: {
+                        VStack(alignment: .leading) {
+                            HStack(alignment: .top) {
+                                Image(systemName: isChecked ? "checkmark.square": "square")
+                                AppText(text: "I have obtained parental consent to use this app")
+                                
+                            }.foregroundColor(.black)
+                        }
+                    }
+
                     // error message
                     if let errorMsg = errorMsg {
                         Text(errorMsg)
@@ -71,6 +84,12 @@ struct SignUpScreen: View {
                         // ensure passwords are matching
                         guard password == confirmPassword else {
                             errorMsg = "Passwords are not matching."
+                            return
+                        }
+                        
+                        // ensure checkbox is checked
+                        guard isChecked else {
+                            errorMsg = "Make sure have your parents consent."
                             return
                         }
                         

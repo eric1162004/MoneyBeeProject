@@ -39,6 +39,7 @@ struct FontSize {
 struct Dm {
     static let tiny: CGFloat = 10
     static let small: CGFloat = 15
+    static let mediumSmall: CGFloat = 20
     static let medium: CGFloat = 25
     static let large: CGFloat = 35
     static let xlarge: CGFloat = 45
