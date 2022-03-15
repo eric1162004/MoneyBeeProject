@@ -37,7 +37,7 @@ struct SideMenu: View {
             // User name
             HStack{
                 // Icon
-                Image("earnings")
+                Image("beeWithDropletIcon")
                     .resizable()
                     .scaledToFill()
                     .frame(width: IconSize.small,
