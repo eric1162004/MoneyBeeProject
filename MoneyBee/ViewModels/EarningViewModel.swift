@@ -29,6 +29,15 @@ class EarningViewModel: ObservableObject {
     // Calculated month total
     @Published var monthTotal: Float = 0
     
+    @Published var showPopUp: Bool = false
+    
+    // pop up states
+    @Published var newEarningTitle: String = ""
+    @Published var newEarningAmount: String = ""
+    @Published var newEarningDate: Date = Date()
+    
+    @Published var errorMsg : String?
+    
     // Hold a copy of all the earnings to replace the filtered earnings
     private var earningsCopy: [Earning] = [Earning]()
     
@@ -136,7 +145,22 @@ class EarningViewModel: ObservableObject {
     
     // ask repo to create an earning
     func add(_ earning: Earning){
+        
+        guard !newEarningTitle.isEmpty && !newEarningAmount.isEmpty else {
+            showPopUp.toggle()
+            errorMsg = "Fields cannot be empty"
+            
+            return
+        }
         earningRepo.add(earning)
+        resetFields()
+
+    }
+    
+    func resetFields() {
+        newEarningTitle = ""
+        newEarningAmount = ""
+        newEarningDate = Date()
     }
     
 }

@@ -11,7 +11,9 @@ import Resolver
 struct EarningScreen: View {
         
     // show add earning pop up
-    @State private var showPopUp = false
+//    @State private var showPopUp = false
+    
+    @ObservedObject var earningVM : EarningViewModel = Resolver.resolve()
     
     var body: some View {
         
@@ -22,7 +24,7 @@ struct EarningScreen: View {
             VStack{
                 
                 // Topbar
-                EarningTopBar(showPopUp: $showPopUp)
+                EarningTopBar(showPopUp: $earningVM.showPopUp)
                 
                 // Month Selector and Month Total
                 MonthSection()
@@ -39,7 +41,7 @@ struct EarningScreen: View {
             }
             
             // show add new earning pop up
-            EarningPopupField(showPopUp: $showPopUp)
+            EarningPopupField()
         }
         .navigationBarHidden(true)
         .ignoresSafeArea()
@@ -116,6 +118,7 @@ private struct MonthSection: View {
 private struct EarningListSection: View {
     
     @ObservedObject var earningVM : EarningViewModel = Resolver.resolve()
+    
     var body: some View {
         List{
             
@@ -146,49 +149,34 @@ private struct EarningListSection: View {
 private struct EarningPopupField: View {
     
     @ObservedObject var earningVM : EarningViewModel = Resolver.resolve()
-    
-    @Binding var showPopUp: Bool
-    
-    // pop up states
-    @State private var newEarningTitle: String = ""
-    @State private var newEarningAmount: String = ""
-    @State private var newEarningDate: Date = Date()
-    
-    @State private var errorMsg : String?
-    
-    private func resetFields() {
-        newEarningTitle = ""
-        newEarningAmount = ""
-        newEarningDate = Date()
-    }
 
     var body: some View {
         //grey out the background area on tap gesture
-        if showPopUp{
+        if earningVM.showPopUp{
             Color.black
                 .opacity(0.6)
                 .ignoresSafeArea()
                 .onTapGesture {
-                    showPopUp = true
+                    earningVM.showPopUp = true
                 }
         }
-        if $showPopUp.wrappedValue {
+        if $earningVM.showPopUp.wrappedValue {
             
             // all text field inside the pop up goes here
             let popupForm: AnyView = AnyView(
                 VStack{
                     
                     // new earning title
-                    AppTextField(text: $newEarningTitle, placeholder: "Title")
+                    AppTextField(text: $earningVM.newEarningTitle, placeholder: "Title")
                     
                     // new earning amount
-                    AppTextField(text: $newEarningAmount, placeholder: "Amount", keyboardType: .decimalPad)
+                    AppTextField(text: $earningVM.newEarningAmount, placeholder: "Amount", keyboardType: .decimalPad)
                     
                     // new earning date
-                    AppDatePicker(selectedDate: $newEarningDate)
+                    AppDatePicker(selectedDate: $earningVM.newEarningDate)
                     
                     // error message
-                    if let errorMsg = errorMsg {
+                    if let errorMsg = earningVM.errorMsg {
                         Text(errorMsg)
                             .bold()
                             .foregroundColor(.appRed)
@@ -199,32 +187,22 @@ private struct EarningPopupField: View {
             AppPopupView(
                 title: "New Earning",
                 backgroundColor: Color.appLightGreen,
-                showPopUp: $showPopUp,
+                showPopUp: $earningVM.showPopUp,
                 view: popupForm,
                 handleConfirm: {
+
+                    earningVM.add(Earning(
+                        title: earningVM.newEarningTitle,
+                        amount: earningVM.newEarningAmount.floatValue,
+                        date: earningVM.newEarningDate))
                     
-                    // ensure all fields are not empty and show error message
-                    if (newEarningTitle.isEmpty){
-                        errorMsg = "Title cannot be empty."
-                        showPopUp.toggle()
-                    }
-                    else if (newEarningAmount.isEmpty) {
-                        errorMsg = "Amount cannot be empty."
-                        showPopUp.toggle()
-                    }
-                    else {
-                        earningVM.add(Earning(
-                            title: newEarningTitle, amount: newEarningAmount.floatValue, date: newEarningDate))
-                        
-                        resetFields()
-                    }
+
                 },
                 handleCancel:{
-                    errorMsg = nil
-                    resetFields()
+                    earningVM.errorMsg = nil
+                    earningVM.resetFields()
                 }
-            )
-                .transition(.slide)
+            ).transition(.slide)
         }
     }
 }
