@@ -28,10 +28,9 @@ class EarningViewModel: ObservableObject {
     
     // Calculated month total
     @Published var monthTotal: Float = 0
-    
-    @Published var showPopUp: Bool = false
-    
+     
     // pop up states
+    @Published var showPopUp: Bool = false
     @Published var newEarningTitle: String = ""
     @Published var newEarningAmount: String = ""
     @Published var newEarningDate: Date = Date()

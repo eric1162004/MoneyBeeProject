@@ -12,20 +12,19 @@ struct SpendingScreen: View {
     
     @State var showChartSheet = false
     
-    // show add earning pop up
-    @State var showPopUp = false
+    @ObservedObject var spendingVM : SpendingViewModel = Resolver.resolve()
     
     var body: some View {
         ZStack(alignment: .center){
             VStack {
                 // Topbar
-                SpendingScreenTopBar(showPopUp: $showPopUp)
+                SpendingScreenTopBar(showPopUp: $spendingVM.showPopUp)
                 
                 // Screen Content
                 SpendingScreenContent(showChartSheet: $showChartSheet)
             }
             // show add new earning pop up
-            SpendingPopupField(showPopUp: $showPopUp)
+            SpendingPopupField()
         }
         .sheet(isPresented: $showChartSheet) {
             SpendingChartView()
@@ -189,34 +188,17 @@ private struct SpendingPopupField: View {
     
     @ObservedObject var spendingVM : SpendingViewModel = Resolver.resolve()
     
-    @Binding var showPopUp: Bool
-
-    // pop up states
-    @State var newSpendingType: DropdownOption?
-    @State var newSpendingTitle: String = ""
-    @State var newSpendingAmount: String = ""
-    @State var newSpendingDate: Date = Date()
-    
-    @State var errorMsg: String?
-    
-    private func resetFields() {
-        newSpendingTitle = ""
-        newSpendingAmount = ""
-        newSpendingType = nil
-        newSpendingDate = Date()
-    }
-    
     var body: some View {
         //grey out the background area on tap gesture
-        if showPopUp{
+        if spendingVM.showPopUp{
             Color.black
                 .opacity(0.6)
                 .ignoresSafeArea()
                 .onTapGesture {
-                    showPopUp = true
+                    spendingVM.showPopUp = true
                 }
         }
-        if $showPopUp.wrappedValue {
+        if $spendingVM.showPopUp.wrappedValue {
             
             // all text field inside the pop up goes here
             let popupForm: AnyView = AnyView(
@@ -224,25 +206,25 @@ private struct SpendingPopupField: View {
                     
                     // new spending type
                     DropdownSelector(
-                        selectedOption: $newSpendingType,
+                        selectedOption: $spendingVM.newSpendingType,
                         placeholder: "Spending Type",
                         options: spendingVM.spendingTypeOptions,
                         onOptionSelected: { option in
-                            newSpendingType = option
+                            spendingVM.newSpendingType = option
                         })
                         .zIndex(3)
                     
                     // new spending title
-                    AppTextField(text: $newSpendingTitle, placeholder: "Title")
+                    AppTextField(text: $spendingVM.newSpendingTitle, placeholder: "Title")
                     
                     // new spending amount
-                    AppTextField(text: $newSpendingAmount, placeholder: "Amount", keyboardType: .decimalPad)
+                    AppTextField(text: $spendingVM.newSpendingAmount, placeholder: "Amount", keyboardType: .decimalPad)
                     
                     // new spending date
-                    AppDatePicker(selectedDate: $newSpendingDate)
+                    AppDatePicker(selectedDate: $spendingVM.newSpendingDate)
                     
                     // error message
-                    if let errorMsg = errorMsg {
+                    if let errorMsg = spendingVM.errorMsg {
                         Text(errorMsg)
                             .bold()
                             .foregroundColor(.white)
@@ -253,24 +235,20 @@ private struct SpendingPopupField: View {
             AppPopupView(
                 title: "New Spending",
                 backgroundColor: Color.appLightRed,
-                showPopUp: $showPopUp,
+                showPopUp: $spendingVM.showPopUp,
                 view: popupForm,
                 handleConfirm: {
                     
-                    // Check empty input and show error message
-                    if let newSpendingType = newSpendingType, !newSpendingTitle.isEmpty, !newSpendingAmount.isEmpty {
-                        spendingVM.add(Spending(
-                            title: newSpendingTitle, amount: newSpendingAmount.floatValue, date: newSpendingDate, type: newSpendingType.value))
-                        resetFields()
-                    }
-                    else {
-                        errorMsg = "Fields cannot be empty."
-                        showPopUp.toggle()
-                    }
+                    spendingVM.add(Spending(
+                        title: spendingVM.newSpendingTitle,
+                        amount: spendingVM.newSpendingAmount.floatValue,
+                        date: spendingVM.newSpendingDate,
+                        type: spendingVM.newSpendingType?.value ?? ""))
+
                 },
                 handleCancel:{
-                    errorMsg = nil
-                    resetFields()
+                    spendingVM.errorMsg = nil
+                    spendingVM.resetFields()
                 }
             )
                 .transition(.slide)

@@ -22,6 +22,16 @@ class WishItemViewModel: ObservableObject {
     
     @Published var notEnoughMoneyError: String = ""
     
+    // pop up states
+    @Published var showPopUp: Bool = false
+    @Published var showingPhotoPicker: Bool = false
+
+    @Published var newWishItemTitle: String = ""
+    @Published var newWishItemCost: String = ""
+    
+    @Published var errorMsg: String?
+    
+    
     // contain user's total amount of earning, spending and wishlist
     private var homeViewModel: HomeViewModel = Resolver.resolve()
     
@@ -62,8 +72,17 @@ class WishItemViewModel: ObservableObject {
                 }
             }
         } else {
+            
+            guard !newWishItemTitle.isEmpty && !newWishItemCost.isEmpty else {
+                
+                showPopUp.toggle()
+                errorMsg = "Fields cannot be empty"
+                
+                return
+            }
             // upload wish item without image provided
             wishItemRepo.add(wishItem)
+            resetFields()
         }
     }
 
@@ -83,6 +102,13 @@ class WishItemViewModel: ObservableObject {
         wishItemUpdated.purchased.toggle()
         wishItemRepo.update(wishItemUpdated)
         
+    }
+    
+    func resetFields() {
+        selectedImage = nil
+        newWishItemTitle = ""
+        newWishItemCost = ""
+        errorMsg = nil
     }
 
 }

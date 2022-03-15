@@ -11,10 +11,6 @@ import Resolver
 struct WishListScreen: View {
     
     @ObservedObject private var wishItemVM : WishItemViewModel = Resolver.resolve()
-    
-    // show add earning pop up
-    @State var showPopUp = false
-    @State private var showingPhotoPicker =  false
 
     var body: some View {
         
@@ -22,7 +18,7 @@ struct WishListScreen: View {
         ZStack(alignment: .bottomTrailing) {
             VStack{
                 // Topbar
-                WishItemScreenTopBar(showPopUp: $showPopUp)
+                WishItemScreenTopBar()
                 
                 // list of earning cards
                 WishItemListSection()
@@ -32,12 +28,9 @@ struct WishListScreen: View {
             // WishListFloatingButton(showPopUp: $showPopUp)
             
             // show add new earning pop up
-            WishListPopup(
-                showPopUp: $showPopUp,
-                showingPhotoPicker: $showingPhotoPicker
-            )
+            WishListPopup()
         }
-        .sheet(isPresented: $showingPhotoPicker) {
+        .sheet(isPresented: $wishItemVM.showingPhotoPicker) {
             PhotoPicker(image: $wishItemVM.selectedImage)
         }
         .background(Color.backgroundColor)
@@ -52,8 +45,7 @@ private struct WishItemScreenTopBar: View {
     // allow us to pop the current view off the navigation stack
     @Environment(\.presentationMode) var presentation
     
-    // show add earning pop up
-    @Binding var showPopUp : Bool
+    @ObservedObject var wishItemVM : WishItemViewModel = Resolver.resolve()
     
     var body: some View {
         TopBar(
@@ -68,7 +60,7 @@ private struct WishItemScreenTopBar: View {
             },
             trailingIconHandler: {
                 // Add new wish item
-                withAnimation{self.showPopUp.toggle()}
+                withAnimation{wishItemVM.showPopUp.toggle()}
             }
         )
     }
@@ -131,32 +123,19 @@ private struct WishListPopup: View {
     
     @ObservedObject private var wishItemVM : WishItemViewModel = Resolver.resolve()
     
-    @Binding var showPopUp: Bool
-    @Binding var showingPhotoPicker: Bool
     
-    @State private var newWishItemTitle: String = ""
-    @State private var newWishItemCost: String = ""
-    
-    @State private var errorMsg: String?
-    
-    private func reset() {
-        wishItemVM.selectedImage = nil
-        newWishItemTitle = ""
-        newWishItemCost = ""
-        errorMsg = nil
-    }
     
     var body: some View {
         //grey out the background area on tap gesture
-        if showPopUp{
+        if wishItemVM.showPopUp{
             Color.black
                 .opacity(0.6)
                 .ignoresSafeArea()
                 .onTapGesture {
-                    showPopUp = true
+                    wishItemVM.showPopUp = true
                 }
         }
-        if $showPopUp.wrappedValue {
+        if $wishItemVM.showPopUp.wrappedValue {
             
             // all text field goes here
             let popupForm: AnyView = AnyView(
@@ -167,17 +146,17 @@ private struct WishListPopup: View {
                         .background()
                         .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
                         .onTapGesture {
-                            showingPhotoPicker.toggle()
+                            wishItemVM.showingPhotoPicker.toggle()
                         }
                     
                     //new wish item title
-                    AppTextField(text: $newWishItemTitle, placeholder: "Title")
+                    AppTextField(text: $wishItemVM.newWishItemTitle, placeholder: "Title")
                     
                     //new wish item cost
-                    AppTextField(text: $newWishItemCost, placeholder: "Cost",keyboardType: .decimalPad)
+                    AppTextField(text: $wishItemVM.newWishItemCost, placeholder: "Cost",keyboardType: .decimalPad)
                     
                     // error message
-                    if let errorMsg = errorMsg {
+                    if let errorMsg = wishItemVM.errorMsg {
                         Text(errorMsg)
                             .bold()
                             .foregroundColor(.appRed)
@@ -189,22 +168,18 @@ private struct WishListPopup: View {
                 AppPopupView(
                     title: "New Wish Item",
                     backgroundColor: Color.appLightBlue,
-                    showPopUp: $showPopUp,
+                    showPopUp: $wishItemVM.showPopUp,
                     view: popupForm,
                     handleConfirm: {
                         
-                        // Check empty input and show error message
-                        if newWishItemCost.isEmpty, newWishItemTitle.isEmpty {
-                            errorMsg = "Fields cannot be empty."
-                            showPopUp.toggle()
-                        }
-                        else{
-                            wishItemVM.add(WishItem(title: newWishItemTitle, cost: newWishItemCost.floatValue))
-                            reset()
-                        }
+                        wishItemVM.add(WishItem(
+                            title: wishItemVM.newWishItemTitle,
+                            cost: wishItemVM.newWishItemCost.floatValue))
+                        
                     },
                     handleCancel:{
-                        reset()
+                        wishItemVM.errorMsg = nil
+                        wishItemVM.resetFields()
                     }
                 )
                    

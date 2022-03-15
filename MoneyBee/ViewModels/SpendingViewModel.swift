@@ -24,6 +24,17 @@ class SpendingViewModel: ObservableObject {
     
     @Published var monthTotal: Float = 0
     
+    
+
+    // pop up states
+    @Published var showPopUp: Bool = false
+    @Published var newSpendingType: DropdownOption?
+    @Published var newSpendingTitle: String = ""
+    @Published var newSpendingAmount: String = ""
+    @Published var newSpendingDate: Date = Date()
+    
+    @Published var errorMsg: String?
+    
     // spending total by type in order: Food, School, Play, Other
     @Published var spendingChartTotalAmounts: [Double]?
     
@@ -169,7 +180,24 @@ class SpendingViewModel: ObservableObject {
     }
     
     func add(_ spending: Spending){
+        
+        // Check empty input and show error message
+        guard ((newSpendingType != nil) && !newSpendingTitle.isEmpty && !newSpendingAmount.isEmpty) else {
+            
+            showPopUp.toggle()
+            errorMsg = "Fields cannot be empty"
+            
+            return
+        }
         spendingRepo.add(spending)
+        resetFields()
+    }
+    
+    func resetFields() {
+        newSpendingTitle = ""
+        newSpendingAmount = ""
+        newSpendingType = nil
+        newSpendingDate = Date()
     }
     
 }
