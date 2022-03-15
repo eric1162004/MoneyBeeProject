@@ -64,9 +64,6 @@ struct SpendingScreenContent: View {
     
     @ObservedObject var spendingVM : SpendingViewModel = Resolver.resolve()
     
-    // show add earning pop up
-    //@Binding var showPopUp : Bool
-    
     @Binding var showChartSheet: Bool
     
     var body: some View {
@@ -85,13 +82,10 @@ struct SpendingScreenContent: View {
                         
                         // list of earning cards
                         EarningListSection()
-                        
-                        // floating action button to add a new earning
-                        // SpendingScreenFloadButton(showPopUp: $showPopUp)
+                
                     }
                 }
             }
-            
         }
     }
 }
@@ -168,36 +162,12 @@ private struct EarningListSection: View {
     }
 }
 
-//private struct SpendingScreenFloadButton: View {
-//
-//    @Binding var showPopUp: Bool
-//
-//    var body: some View {
-//        AppFloatingButton(iconName: "plus", iconBackgroundColor: Color.appRed) {
-//            // handle action button pressed
-//            showPopUp.toggle()
-//
-//        }
-//        .padding(.horizontal, Dm.medium)
-//        .padding(.vertical, Dm.xlarge)
-//    }
-//
-//}
-
 private struct SpendingPopupField: View {
     
     @ObservedObject var spendingVM : SpendingViewModel = Resolver.resolve()
     
     var body: some View {
-        //grey out the background area on tap gesture
-        if spendingVM.showPopUp{
-            Color.black
-                .opacity(0.6)
-                .ignoresSafeArea()
-                .onTapGesture {
-                    spendingVM.showPopUp = true
-                }
-        }
+
         if $spendingVM.showPopUp.wrappedValue {
             
             // all text field inside the pop up goes here
@@ -231,6 +201,9 @@ private struct SpendingPopupField: View {
                     }
                 }
             )
+            
+            // grey out the background area on tap gesture
+            PopupOpaqueBlackground()
             
             AppPopupView(
                 title: "New Spending",

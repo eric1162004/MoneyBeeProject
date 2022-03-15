@@ -22,20 +22,25 @@ struct AppWishItemCard: View {
         HStack{
             VStack{
                 
+                // wish item image
                 if !wishItem.imageUrl.isEmpty{
                     AysncImageLoader(imageUrl: wishItem.imageUrl)
                         .scaledToFit()
-                        .frame(width: 140, height: 140)
+                        .frame(width: 120, height: 120)
                         .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
                 }
                 
+                // wish item title
                 AppText(text: wishItem.title, fontSize: FontSize.small, fontColor: .white)
             }
             .frame(maxWidth: .infinity)
             
             VStack{
+                
+                // wish item cost
                 AppMoneyAmountView(amount: wishItem.cost)
                 
+                // wish item buy button
                 AppRoundedCornerNonIconButton(
                     label: isBought ? "Bought" : "Buy" ,
                 backgroundColor: isBought ? Color.gray : Color.appGreen) {
@@ -66,9 +71,3 @@ struct AppWishItemCard: View {
         }
     }
 }
-
-//struct AppWishItemCard_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AppWishItemCard(wishItem: WishItem(title: "cat", cost: 20, imageUrl: "https://i.guim.co.uk/img/media/c5e73ed8e8325d7e79babf8f1ebbd9adc0d95409/2_5_1754_1053/master/1754.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=b6ba011b74a9f7a5c8322fe75478d9d"))
-//    }
-//}

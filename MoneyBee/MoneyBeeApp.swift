@@ -11,6 +11,7 @@ import Firebase
 @main
 struct MoneyBeeApp: App {
     
+    // Set up Firebase when finish launch, see appDelegate
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
@@ -20,13 +21,4 @@ struct MoneyBeeApp: App {
     }
 }
 
-class AppDelegate: NSObject, UIApplicationDelegate {
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
-        // Initialize Firebase
-        FirebaseApp.configure()
-    
-        return true
-    }
-}
+

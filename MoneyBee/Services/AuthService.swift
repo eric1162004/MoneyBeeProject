@@ -4,6 +4,7 @@
 //
 //  Created by Eric Cheung on 2022-01-31.
 //
+//  Communicate with FireAuth
 
 import Foundation
 import Firebase
@@ -15,6 +16,7 @@ class AuthService: ObservableObject {
     @Published var user: User?
     
     init() {
+        // listen to fireauth changes
         self.registerStateListener()
     }
     

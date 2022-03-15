@@ -23,43 +23,58 @@ struct AppRoundedCornerButton: View {
             Button {
                handlePress()
             } label: {
-                HStack{
-                    Spacer()
+                HStack(){
                     
+                    // button icon
                     Image(buttonIcons ?? "")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 50, height: 50)
-                        .padding(.trailing, 10)
-                        
-                        
+                        .frame(width: IconSize.large, height: IconSize.large)
+                        .padding(.leading, Dm.large)
                     
+                    Spacer()
+                    
+                    // icon text
                     AppText(text: label, fontSize: fontSize, fontColor: .white)
                     
                     Spacer()
-                        
+                    
+                    // placeholder to balance the right side
+                    Image("")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: IconSize.large, height: IconSize.large)
+                        .padding()
                 }
                 .frame(maxWidth: .infinity, minHeight: height)
                 .background(backgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
-                
-                    
             }
             
         } else{
             // if handlePress is not provided, return a view that look like a button
             HStack{
-                Spacer()
                 
+                // button icon
                 Image(buttonIcons ?? "")
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 50, height: 50)
-                    .padding(.trailing, 10)
+                    .frame(width: IconSize.large, height: IconSize.large)
+                    .padding(.leading, Dm.large)
                 
+                Spacer()
+                
+                // icon text
                 AppText(text: label, fontSize: fontSize, fontColor: .white)
                 
                 Spacer()
+                
+                // placeholder to balance the right side
+                Image("")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: IconSize.large, height: IconSize.large)
+                    .padding()
                     
             }
             .frame(maxWidth: .infinity, minHeight: height)

@@ -19,6 +19,8 @@ struct SideMenu: View {
         VStack{
             TopBar(title: "")
             
+            // If user doesn't have a image
+            // show default image, else show provided image
             if !appUserViewModel.appUser.imageUrl.isEmpty{
                 AysncImageLoader(imageUrl: appUserViewModel.appUser.imageUrl)
                     .scaledToFit()
@@ -28,24 +30,38 @@ struct SideMenu: View {
                     .padding(.bottom)
                 
             } else {
+                // default image
                 AppCircularProfileImage(imageName: "honeyBeeLogo")
             }
             
             // User name
-            AppText(text: appUserViewModel.appUser.name, fontSize: FontSize.medium)
+            HStack{
+                // Icon
+                Image("earnings")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: IconSize.small,
+                           height: IconSize.small)
+                
+                // User name
+                AppText(text: appUserViewModel.appUser.name,
+                        fontSize: FontSize.medium)
+            }
             
             // edit profile button
             VStack {
                 
+                // go to edit profile screen
                 NavigationLink {
                     EditProfileScreen()
                 } label: {
+                    // edit profile button
                     AppRoundedCornerNonIconButton(label: "Edit Profile", backgroundColor:  Color.appBlue)
                 }
 
                 Spacer()
                 
-                //
+                // logout button
                 AppRoundedCornerNonIconButton(label: "Logout", backgroundColor:  Color.appRed) {
                     
                     // log out user

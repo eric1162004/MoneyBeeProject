@@ -9,9 +9,6 @@ import SwiftUI
 import Resolver
 
 struct EarningScreen: View {
-        
-    // show add earning pop up
-//    @State private var showPopUp = false
     
     @ObservedObject var earningVM : EarningViewModel = Resolver.resolve()
     
@@ -47,20 +44,6 @@ struct EarningScreen: View {
         .ignoresSafeArea()
     }
 }
-
-//private struct EarningFloatingButton: View {
-//
-//    @Binding var showPopUp: Bool
-//
-//    var body: some View {
-//        AppFloatingButton(iconName: "plus", iconBackgroundColor: Color.appGreen) {
-//            // handle action button pressed
-//            showPopUp.toggle()
-//        }
-//        .padding(.horizontal, Dm.medium)
-//        .padding(.vertical, Dm.xlarge)
-//    }
-//}
 
 private struct EarningTopBar: View {
     
@@ -105,7 +88,11 @@ private struct MonthSection: View {
                 .zIndex(1)
             
             // display the total amount of earnings made in the month
-            AppText(text: "Month Total: $\(earningVM.monthTotal.toStringWithDecimal(n: 2))", fontSize: FontSize.medium, fontColor: .white)
+            AppText(
+                text: "Month Total: $\(earningVM.monthTotal.toStringWithDecimal(n: 2))",
+                fontSize: FontSize.medium,
+                fontColor: .white
+            )
         }
         .padding(Dm.medium)
         .background(Color.appLightGreen)
@@ -121,7 +108,6 @@ private struct EarningListSection: View {
     
     var body: some View {
         List{
-            
             // search bar - search by earning title
             AppTextField(text:$earningVM.searchTerm, placeholder: "search", trailingIcon: "magnifyingglass")
                 .listRowBackground(Color.backgroundColor)
@@ -130,7 +116,7 @@ private struct EarningListSection: View {
             
             // display all earnings
             ForEach(Array(earningVM.earnings.enumerated()), id: \.element.id){ index, earning in
-                // an earning card
+                // display an earning card with alternate color
                 EarningCard(earning: earning, backgroundColor:((index % 2 == 0 ) ? Color.appGreen : Color.appLightGreen)) {
                     // handle swipt delete
                     earningVM.remove(earning)
@@ -139,7 +125,6 @@ private struct EarningListSection: View {
                 .listRowBackground(Color.backgroundColor)
                 .listRowSeparator(.hidden)
             }
-            
         }
         .listStyle(.plain)
         .listRowSeparator(.hidden)
@@ -149,23 +134,12 @@ private struct EarningListSection: View {
 private struct EarningPopupField: View {
     
     @ObservedObject var earningVM : EarningViewModel = Resolver.resolve()
-
+    
     var body: some View {
-        //grey out the background area on tap gesture
-        if earningVM.showPopUp{
-            Color.black
-                .opacity(0.6)
-                .ignoresSafeArea()
-                .onTapGesture {
-                    earningVM.showPopUp = true
-                }
-        }
         if $earningVM.showPopUp.wrappedValue {
-            
             // all text field inside the pop up goes here
             let popupForm: AnyView = AnyView(
                 VStack{
-                    
                     // new earning title
                     AppTextField(text: $earningVM.newEarningTitle, placeholder: "Title")
                     
@@ -184,13 +158,17 @@ private struct EarningPopupField: View {
                 }
             )
             
+            //grey out the background area on tap gesture
+            PopupOpaqueBlackground()
+            
             AppPopupView(
                 title: "New Earning",
                 backgroundColor: Color.appLightGreen,
                 showPopUp: $earningVM.showPopUp,
                 view: popupForm,
                 handleConfirm: {
-
+                    
+                    // validate and add earning to repo
                     earningVM.add(Earning(
                         title: earningVM.newEarningTitle,
                         amount: earningVM.newEarningAmount.floatValue,

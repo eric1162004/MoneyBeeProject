@@ -12,6 +12,8 @@
 		072EBA6127C74B7400C48240 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 072EBA6027C74B7400C48240 /* FirebaseFirestoreSwift-Beta */; };
 		072EBA6327C74B7400C48240 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 072EBA6227C74B7400C48240 /* FirebaseStorage */; };
 		072EBA6627C74BD100C48240 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 072EBA6527C74BD100C48240 /* Resolver */; };
+		0755508427E12AA1007784D8 /* PopupOpaqueBlackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0755508327E12AA1007784D8 /* PopupOpaqueBlackground.swift */; };
+		0755508727E12C00007784D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0755508627E12C00007784D8 /* AppDelegate.swift */; };
 		07C54B5B27C44026003484AF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C54B5A27C44026003484AF /* HomeViewModel.swift */; };
 		456ABAF227A64BA500E66F8D /* SpendingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456ABAF127A64BA500E66F8D /* SpendingType.swift */; };
 		456ABAF427A651C200E66F8D /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456ABAF327A651C200E66F8D /* ViewExtension.swift */; };
@@ -76,6 +78,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0755508327E12AA1007784D8 /* PopupOpaqueBlackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupOpaqueBlackground.swift; sourceTree = "<group>"; };
+		0755508627E12C00007784D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07C54B5A27C44026003484AF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		456ABAF127A64BA500E66F8D /* SpendingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingType.swift; sourceTree = "<group>"; };
 		456ABAF327A651C200E66F8D /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
@@ -157,6 +161,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0755508527E12BB2007784D8 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				45EA7F7D27A49396009C0F58 /* Constants.swift */,
+				45737AAF27A897BB00AE9A87 /* Resolver.swift */,
+				0755508627E12C00007784D8 /* AppDelegate.swift */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
 		45737AAA27A8964400AE9A87 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,14 +213,6 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		457CD9BE27A638F5007A9EF0 /* PieChartView */ = {
-			isa = PBXGroup;
-			children = (
-				457CD9BC27A6387F007A9EF0 /* PieChartView.swift */,
-			);
-			path = PieChartView;
-			sourceTree = "<group>";
-		};
 		457CD9C327A64A58007A9EF0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,11 +251,10 @@
 				45EA7F7427A489C1009C0F58 /* Views */,
 				45737AAA27A8964400AE9A87 /* Services */,
 				457CD9B327A5E586007A9EF0 /* Utilities */,
-				45EA7F4227A45D40009C0F58 /* Assets.xcassets */,
+				0755508527E12BB2007784D8 /* Configs */,
 				45EA7F3E27A45D3E009C0F58 /* MoneyBeeApp.swift */,
+				45EA7F4227A45D40009C0F58 /* Assets.xcassets */,
 				45EA7F7827A490B6009C0F58 /* Fonts */,
-				45737AAF27A897BB00AE9A87 /* Resolver.swift */,
-				45EA7F7D27A49396009C0F58 /* Constants.swift */,
 				45737AA827A8952F00AE9A87 /* GoogleService-Info.plist */,
 				45EA7F7C27A492FB009C0F58 /* Info.plist */,
 				45EA7F4427A45D40009C0F58 /* Preview Content */,
@@ -277,29 +282,30 @@
 		45EA7F7527A489D1009C0F58 /* Reuseables */ = {
 			isa = PBXGroup;
 			children = (
-				457CD9BE27A638F5007A9EF0 /* PieChartView */,
-				45EA7F7F27A49BE3009C0F58 /* AppText.swift */,
-				45EA7F8127A4A399009C0F58 /* StrokeText.swift */,
-				45EA7F8A27A4B982009C0F58 /* AppTextField.swift */,
-				456B7ACF27A4D2B20048E05F /* AppSecureTextField.swift */,
 				456B7AD127A4D7790048E05F /* AppCapsuleButton.swift */,
-				456B7AD327A4EA5D0048E05F /* AppHyperLink.swift */,
-				456B7AD727A51BA50048E05F /* AppRoundedCornerButton.swift */,
-				A075038827DF2AB000123A82 /* AppRoundedCornerNonIconButton.swift */,
-				456B7ADB27A520EF0048E05F /* TopBar.swift */,
-				456B7AE327A537A40048E05F /* DropdownSelector.swift */,
+				457CD9BA27A6168F007A9EF0 /* AppCircularProfileImage.swift */,
+				457CD9B427A5E717007A9EF0 /* AppDatePicker.swift */,
 				457CD9AD27A5BC65007A9EF0 /* AppEarningCard.swift */,
 				457CD9AF27A5C071007A9EF0 /* AppFloatingButton.swift */,
-				457CD9B127A5CAF9007A9EF0 /* AppPopupView.swift */,
-				457CD9B427A5E717007A9EF0 /* AppDatePicker.swift */,
-				457CD9BA27A6168F007A9EF0 /* AppCircularProfileImage.swift */,
+				456B7AD327A4EA5D0048E05F /* AppHyperLink.swift */,
 				456ABAF527A65C3E00E66F8D /* AppImageView.swift */,
-				456ABAF727A65FE300E66F8D /* AppWishItemCard.swift */,
 				456ABAF927A6631F00E66F8D /* AppMoneyAmountView.swift */,
+				457CD9B127A5CAF9007A9EF0 /* AppPopupView.swift */,
+				456B7AD727A51BA50048E05F /* AppRoundedCornerButton.swift */,
+				A075038827DF2AB000123A82 /* AppRoundedCornerNonIconButton.swift */,
+				456B7ACF27A4D2B20048E05F /* AppSecureTextField.swift */,
 				45737AB127A89F8700AE9A87 /* AppSignInAndSignUpTopBanner.swift */,
 				45737ABF27A8E9E000AE9A87 /* AppSpendingCard.swift */,
-				4572FCF027A9FF21009F40F2 /* PhotoPicker.swift */,
+				45EA7F7F27A49BE3009C0F58 /* AppText.swift */,
+				45EA7F8A27A4B982009C0F58 /* AppTextField.swift */,
+				456ABAF727A65FE300E66F8D /* AppWishItemCard.swift */,
 				4572FCF227A9FF60009F40F2 /* AsyncImageLoader.swift */,
+				456B7AE327A537A40048E05F /* DropdownSelector.swift */,
+				4572FCF027A9FF21009F40F2 /* PhotoPicker.swift */,
+				457CD9BC27A6387F007A9EF0 /* PieChartView.swift */,
+				0755508327E12AA1007784D8 /* PopupOpaqueBlackground.swift */,
+				45EA7F8127A4A399009C0F58 /* StrokeText.swift */,
+				456B7ADB27A520EF0048E05F /* TopBar.swift */,
 			);
 			path = Reuseables;
 			sourceTree = "<group>";
@@ -307,16 +313,16 @@
 		45EA7F7627A48A2D009C0F58 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				45EA7F4027A45D3E009C0F58 /* SplashScreen.swift */,
+				456B7ADD27A5341E0048E05F /* EarningScreen.swift */,
+				456B7AD927A520AD0048E05F /* EditProfileScreen.swift */,
+				456B7AD527A50CD40048E05F /* HomeScreen.swift */,
 				45EA7F8427A4A81B009C0F58 /* RootScreen.swift */,
+				457CD9B827A60F84007A9EF0 /* SideMenu.swift */,
 				45EA7F8627A4AD50009C0F58 /* SignInScreen.swift */,
 				45EA7F8827A4AD63009C0F58 /* SignUpScreen.swift */,
-				456B7AD527A50CD40048E05F /* HomeScreen.swift */,
-				457CD9B827A60F84007A9EF0 /* SideMenu.swift */,
-				456B7AD927A520AD0048E05F /* EditProfileScreen.swift */,
-				456B7ADD27A5341E0048E05F /* EarningScreen.swift */,
-				456B7ADF27A534800048E05F /* SpendingScreen.swift */,
 				45737ACD27A95B1200AE9A87 /* SpendingChartScreen.swift */,
+				456B7ADF27A534800048E05F /* SpendingScreen.swift */,
+				45EA7F4027A45D3E009C0F58 /* SplashScreen.swift */,
 				456B7AE127A534A30048E05F /* WishListScreen.swift */,
 			);
 			path = Screens;
@@ -431,6 +437,7 @@
 				45737AC227A8EA7A00AE9A87 /* Spending.swift in Sources */,
 				456B7ADA27A520AD0048E05F /* EditProfileScreen.swift in Sources */,
 				45737AB627A8A45F00AE9A87 /* FirestoreRepository.swift in Sources */,
+				0755508427E12AA1007784D8 /* PopupOpaqueBlackground.swift in Sources */,
 				45EA7F8B27A4B982009C0F58 /* AppTextField.swift in Sources */,
 				45737AB427A8A36A00AE9A87 /* ImageStorageService.swift in Sources */,
 				45EA7F3F27A45D3E009C0F58 /* MoneyBeeApp.swift in Sources */,
@@ -469,6 +476,7 @@
 				45737ABA27A8A57D00AE9A87 /* Earning.swift in Sources */,
 				45737AAE27A8970800AE9A87 /* AuthService.swift in Sources */,
 				457CD9B027A5C071007A9EF0 /* AppFloatingButton.swift in Sources */,
+				0755508727E12C00007784D8 /* AppDelegate.swift in Sources */,
 				456ABAFA27A6631F00E66F8D /* AppMoneyAmountView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

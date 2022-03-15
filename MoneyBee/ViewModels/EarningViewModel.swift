@@ -145,12 +145,18 @@ class EarningViewModel: ObservableObject {
     // ask repo to create an earning
     func add(_ earning: Earning){
         
-        guard !newEarningTitle.isEmpty && !newEarningAmount.isEmpty else {
+        // validate earning
+        guard !newEarningTitle.isEmpty
+            && !newEarningAmount.isEmpty else {
+            
+            // set error msg
             showPopUp.toggle()
             errorMsg = "Fields cannot be empty"
             
             return
         }
+        
+        // save to repo
         earningRepo.add(earning)
         resetFields()
 

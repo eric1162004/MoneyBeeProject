@@ -30,10 +30,9 @@ struct EditProfileScreen: View {
                 // Screen Content
                 VStack(spacing: Dm.small){
                     
-                    // Image Edit
                     ZStack(alignment:.bottomTrailing){
-                        // Image
                         
+                        // User Profile Image Edit
                         if(appUserViewModel.selectedImage != nil) {
                             Image(uiImage: appUserViewModel.selectedImage!)
                                 .resizable()
@@ -52,16 +51,15 @@ struct EditProfileScreen: View {
                                 .padding(.bottom)
                         }
                     
-                        Image(systemName: "photo.fill")
                         // image edit icon
+                        Image(systemName: "photo.fill")
                             .scaledToFit()
-                            .frame(width: 20, height: 20, alignment: .center)
+                            .frame(width: 10, height: 10)
                             .padding()
                             .background(.gray)
                             .foregroundColor(.white)
                             .clipShape(Circle())
-                            .padding(.leading)
-                            .offset(y: -Dm.medium)
+                            .offset(x: Dm.small, y: -Dm.medium)
                             .onTapGesture {
                                 showingPhotoPicker.toggle()
                             }

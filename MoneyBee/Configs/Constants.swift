@@ -51,3 +51,11 @@ struct CornerRadius {
     static let large: CGFloat = 30
     static let xlarge: CGFloat = 50
 }
+
+// Icon size
+struct IconSize {
+    static let small: CGFloat = 35
+    static let medium: CGFloat = 40
+    static let large: CGFloat = 45
+    static let xlarge: CGFloat = 50
+}

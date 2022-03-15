@@ -20,6 +20,7 @@ struct TopBar: View {
     var body: some View {
         HStack{
             
+            // leading icon
             Image(systemName: leadingIcon ?? "")
                 .resizable()
                 .scaledToFit()
@@ -32,21 +33,20 @@ struct TopBar: View {
                 }
             
             Spacer()
-            
-            Image(topbarIcon ?? "")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 48, height: 48)
-                .padding(.leading)
-                .padding(.top, 2)
-                .padding(.trailing, 7)
-            
+        
+            // Title Text
             AppText(text: title, fontSize: FontSize.large, fontColor: Color.white)
                 .padding(.top, 3)
             
-            Spacer()
+            // Title Icon
+            Image(topbarIcon ?? "")
+                .resizable()
+                .scaledToFill()
+                .frame(width: IconSize.small, height: IconSize.small)
+             
             Spacer()
             
+            // trailing icon
             Image(systemName: trailingIcon ?? "")
                 .resizable()
                 .scaledToFit()

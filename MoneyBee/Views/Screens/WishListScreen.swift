@@ -24,13 +24,11 @@ struct WishListScreen: View {
                 WishItemListSection()
             }
             
-            // floating action button to add a new earning
-            // WishListFloatingButton(showPopUp: $showPopUp)
-            
             // show add new earning pop up
             WishListPopup()
         }
         .sheet(isPresented: $wishItemVM.showingPhotoPicker) {
+            // user select a picture from gallery
             PhotoPicker(image: $wishItemVM.selectedImage)
         }
         .background(Color.backgroundColor)
@@ -104,50 +102,26 @@ private struct WishItemListSection: View {
     }
 }
 
-//private struct WishListFloatingButton: View {
-//
-//    @Binding var showPopUp: Bool
-//
-//    var body: some View {
-//        AppFloatingButton(iconName: "plus", iconBackgroundColor: Color.appBlue) {
-//            // handle action button pressed
-//            showPopUp.toggle()
-//        }
-//        .padding(.horizontal, Dm.medium)
-//        .padding(.vertical, Dm.xlarge)
-//    }
-//
-//}
-
 private struct WishListPopup: View {
     
     @ObservedObject private var wishItemVM : WishItemViewModel = Resolver.resolve()
     
-    
-    
     var body: some View {
-        //grey out the background area on tap gesture
-        if wishItemVM.showPopUp{
-            Color.black
-                .opacity(0.6)
-                .ignoresSafeArea()
-                .onTapGesture {
-                    wishItemVM.showPopUp = true
-                }
-        }
         if $wishItemVM.showPopUp.wrappedValue {
-            
+
             // all text field goes here
             let popupForm: AnyView = AnyView(
                 VStack{
                     
+                    // User gallery image selector
                     AppImageView(uiImage: wishItemVM.selectedImage)
-                        .frame(width: 140, height: 140)
+                        .frame(width: 120, height: 120)
                         .background()
                         .clipShape(RoundedRectangle(cornerRadius: CornerRadius.medium))
                         .onTapGesture {
                             wishItemVM.showingPhotoPicker.toggle()
                         }
+                        .padding(.bottom, Dm.tiny)
                     
                     //new wish item title
                     AppTextField(text: $wishItemVM.newWishItemTitle, placeholder: "Title")
@@ -165,6 +139,10 @@ private struct WishListPopup: View {
             )
             
             ZStack(alignment: .center){
+                
+                //grey out the background area on tap gesture
+                PopupOpaqueBlackground()
+                
                 AppPopupView(
                     title: "New Wish Item",
                     backgroundColor: Color.appLightBlue,

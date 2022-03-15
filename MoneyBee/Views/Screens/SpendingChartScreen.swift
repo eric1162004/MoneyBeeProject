@@ -4,12 +4,14 @@
 //
 //  Created by Eric Cheung on 2022-02-01.
 //
+//  A piechart view
 
 import SwiftUI
 import Resolver
 
 struct SpendingChartView: View {
     
+    // required to query all spendings
     @ObservedObject var spendingVM : SpendingViewModel = Resolver.resolve()
     
     // used to dismiss the sheetview: dismiss()
@@ -21,6 +23,7 @@ struct SpendingChartView: View {
                 // Spending Pie Chart
                 if let totalAmount = spendingVM.spendingChartTotalAmounts {
                     
+                    // if a specific monthyear is not selected, the piechart will show all spendings
                     AppText(text: spendingVM.selectedMonthYear?.value ?? "Overall Spending", fontSize: FontSize.medium)
                     
                     PieChartView(
@@ -32,6 +35,7 @@ struct SpendingChartView: View {
                     
                     Spacer()
                     
+                    // show spending type color and spending cost
                     SpendingTable()
                         .frame(maxHeight: geometry.size.height * 0.4)
                         .padding(.bottom)
@@ -39,6 +43,7 @@ struct SpendingChartView: View {
                     Spacer()
                     
                 } else {
+                    // if not spending data, ask user to select a month
                     AppText(text: "Please select a month.", fontSize: FontSize.large)
                 }
             }
@@ -59,7 +64,9 @@ struct SpendingTable: View {
             VStack{
                 
                 ForEach(spendingVM.spendingTypes, id:\.name) { SpendingType in
+                    // show a spending type row in the table
                     HStack{
+                        // spending color
                         Circle()
                             .fill(SpendingType.color)
                             .frame(width: geometry.size.width * 0.1)
@@ -67,6 +74,7 @@ struct SpendingTable: View {
                         AppText(text: SpendingType.name, fontSize: FontSize.small)
                             .frame(width: geometry.size.width * 0.3)
                         
+                        // convent cost from float to string
                         let moneyAmount = String(format:"$%.2f", spendingVM.spendingChartTotalAmounts![spendingVM.getSpendingTypeIndex(SpendingType)])
                         
                         AppText(text: moneyAmount,

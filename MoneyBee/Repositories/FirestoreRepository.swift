@@ -4,6 +4,9 @@
 //
 //  Created by Eric Cheung on 2022-01-31.
 //
+//  FirestoreResponsitory provides a generic interface to
+//  communicate with Firestore
+
 import Foundation
 import Firebase
 import FirebaseFirestore
@@ -11,6 +14,7 @@ import FirebaseFirestoreSwift
 import Resolver
 import Combine
 
+// itemType is a model
 class FirestoreRepository<itemType: Codable & Identifiable & Reposable>: Repository, ObservableObject {
     
     // initialize db
@@ -21,6 +25,7 @@ class FirestoreRepository<itemType: Codable & Identifiable & Reposable>: Reposit
         db.collection(collectionName)
     }
     
+    // store and publish items
     @Published var items = [itemType]()
 
     // inject AuthService from Resolver
@@ -100,6 +105,7 @@ class FirestoreRepository<itemType: Codable & Identifiable & Reposable>: Reposit
         }
     }
     
+    // get an item by id
     func getById(_ id: String, _ onCompleted: @escaping ((Result<itemType?, Error>) -> Void)) {
         let docRef = collectionRef.document(id)
         

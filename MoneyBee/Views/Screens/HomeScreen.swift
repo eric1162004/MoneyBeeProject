@@ -36,12 +36,12 @@ struct HomeScreen: View {
         return GeometryReader { geometry in
             ZStack(alignment: .leading) {
                 
-                VStack{
+                VStack(){
                     // Topbar
                     TopBar(title: "Money Bee", leadingIcon: "line.3.horizontal", topbarIcon: "topbarIcon", leadingIconHandler: {
-                        withAnimation(.easeOut(duration: 0.5)) {
-                            showSideMenu.toggle()
-                        }
+                            withAnimation(.easeOut(duration: 0.5)) {
+                                showSideMenu.toggle()
+                            }
                     })
                     
                     // Screen Content
@@ -61,7 +61,7 @@ struct HomeScreen: View {
                                         .foregroundColor(.white)
                                 }
                                 .scaledToFit()
-                                .frame(width: 60, height: 60, alignment: .center)
+                                .frame(width: IconSize.xlarge, height: IconSize.xlarge, alignment: .center)
                                 .background(.white)
                                 .clipShape(Circle())
                                 .padding(.bottom)
@@ -70,7 +70,7 @@ struct HomeScreen: View {
                                 Image("honeyBeeLogo")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 60, height: 60, alignment: .center)
+                                    .frame(width: IconSize.xlarge, height: IconSize.xlarge, alignment: .center)
                                     .clipShape(Circle())
                             }
                             
@@ -83,16 +83,13 @@ struct HomeScreen: View {
                         }
                         
                         // Display Saving Amount
-                        VStack(spacing: 10){
+                        VStack(spacing: Dm.tiny){
                             
                             Spacer()
+                            
                             HStack{
-                                Image("earnings")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 40, height: 50)
                                 AppText(
-                                    text: "Your Total Saving:",
+                                    text: "Your Money Saving:",
                                     fontSize: FontSize.large,
                                     fontColor: .white)
                             }
