@@ -56,13 +56,13 @@ struct SideMenu: View {
                     EditProfileScreen()
                 } label: {
                     // edit profile button
-                    AppRoundedCornerNonIconButton(label: "Edit Profile", backgroundColor:  Color.appBlue)
+                    AppRoundedCornerButton(label: "Edit Profile", backgroundColor:  Color.appBlue)
                 }
 
                 Spacer()
                 
                 // logout button
-                AppRoundedCornerNonIconButton(label: "Logout", backgroundColor:  Color.appRed) {
+                AppRoundedCornerButton(label: "Logout", backgroundColor:  Color.appRed) {
                     
                     // log out user
                     authService.signOut()

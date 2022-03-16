@@ -41,7 +41,7 @@ struct AppWishItemCard: View {
                 AppMoneyAmountView(amount: wishItem.cost)
                 
                 // wish item buy button
-                AppRoundedCornerNonIconButton(
+                AppRoundedCornerButton(
                     label: isBought ? "Bought" : "Buy" ,
                 backgroundColor: isBought ? Color.gray : Color.appGreen) {
 

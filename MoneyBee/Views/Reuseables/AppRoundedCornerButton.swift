@@ -26,12 +26,14 @@ struct AppRoundedCornerButton: View {
                 HStack(){
                     
                     // button icon
-                    Image(buttonIcons ?? "")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: IconSize.large, height: IconSize.large)
-                        .padding(.leading, Dm.large)
-                    
+                    if let buttonIcons = buttonIcons {
+                        Image(buttonIcons)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: IconSize.large, height: IconSize.large)
+                            .padding(.leading, Dm.large)
+                    }
+
                     Spacer()
                     
                     // icon text
@@ -40,11 +42,13 @@ struct AppRoundedCornerButton: View {
                     Spacer()
                     
                     // placeholder to balance the right side
-                    Image("")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: IconSize.large, height: IconSize.large)
-                        .padding()
+                    if let _ = buttonIcons {
+                        Image("")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: IconSize.large, height: IconSize.large)
+                            .padding()
+                    }
                 }
                 .frame(maxWidth: .infinity, minHeight: height)
                 .background(backgroundColor)
@@ -56,12 +60,14 @@ struct AppRoundedCornerButton: View {
             HStack{
                 
                 // button icon
-                Image(buttonIcons ?? "")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: IconSize.large, height: IconSize.large)
-                    .padding(.leading, Dm.large)
-                
+                if let buttonIcons = buttonIcons {
+                    Image(buttonIcons)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: IconSize.large, height: IconSize.large)
+                        .padding(.leading, Dm.large)
+                }
+
                 Spacer()
                 
                 // icon text
@@ -70,11 +76,13 @@ struct AppRoundedCornerButton: View {
                 Spacer()
                 
                 // placeholder to balance the right side
-                Image("")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: IconSize.large, height: IconSize.large)
-                    .padding()
+                if let _ = buttonIcons {
+                    Image("")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: IconSize.large, height: IconSize.large)
+                        .padding()
+                }
                     
             }
             .frame(maxWidth: .infinity, minHeight: height)
