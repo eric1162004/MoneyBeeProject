@@ -42,7 +42,10 @@ struct EarningScreen: View {
         }
         .navigationBarHidden(true)
         .ignoresSafeArea()
-    }
+        .onTapGesture {
+            hideKeyboard()
+        }
+    }    
 }
 
 private struct EarningTopBar: View {

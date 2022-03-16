@@ -34,6 +34,9 @@ struct WishListScreen: View {
         .background(Color.backgroundColor)
         .ignoresSafeArea()
         .navigationBarHidden(true)
+        .onTapGesture {
+            hideKeyboard()
+        }
         
     }
 }

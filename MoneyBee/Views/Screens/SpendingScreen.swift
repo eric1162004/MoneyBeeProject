@@ -31,6 +31,9 @@ struct SpendingScreen: View {
         }
         .ignoresSafeArea()
         .navigationBarHidden(true)
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
 }
 
