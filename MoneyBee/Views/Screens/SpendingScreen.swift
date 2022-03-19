@@ -160,6 +160,10 @@ private struct EarningListSection: View {
                 .listRowSeparator(.hidden)
             }
         }
+        .refreshable {
+            // refresh earnings
+            spendingVM.searchTerm = ""
+        }
         .listStyle(.plain)
         .listRowSeparator(.hidden)
     }

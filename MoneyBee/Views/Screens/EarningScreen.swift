@@ -129,6 +129,10 @@ private struct EarningListSection: View {
                 .listRowSeparator(.hidden)
             }
         }
+        .refreshable {
+            // refresh earnings
+            earningVM.searchTerm = ""
+        }
         .listStyle(.plain)
         .listRowSeparator(.hidden)
     }
@@ -177,7 +181,6 @@ private struct EarningPopupField: View {
                         amount: earningVM.newEarningAmount.floatValue,
                         date: earningVM.newEarningDate))
                     
-
                 },
                 handleCancel:{
                     earningVM.errorMsg = nil
