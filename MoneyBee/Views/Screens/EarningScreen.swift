@@ -131,7 +131,7 @@ private struct EarningListSection: View {
         }
         .refreshable {
             // refresh earnings
-            earningVM.searchTerm = ""
+            earningVM.refresh()
         }
         .listStyle(.plain)
         .listRowSeparator(.hidden)

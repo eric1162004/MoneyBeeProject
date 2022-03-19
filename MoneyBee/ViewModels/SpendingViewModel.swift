@@ -24,8 +24,6 @@ class SpendingViewModel: ObservableObject {
     
     @Published var monthTotal: Float = 0
     
-    
-
     // pop up states
     @Published var showPopUp: Bool = false
     @Published var newSpendingType: DropdownOption?
@@ -169,10 +167,19 @@ class SpendingViewModel: ObservableObject {
         return -1
     }
     
-    func reload(){
+    // helper function to replace the filtered spendings back to orignal
+    private func reload(){
         spendings = spendingsCopy
         selectedMonthYear = nil
         monthTotal = 0
+    }
+    
+    // refreshing earning list
+    func refresh() {
+        // order matters
+        selectedMonthYear = nil
+        monthTotal = 0
+        searchTerm = ""
     }
     
     func remove(_ spending: Spending){

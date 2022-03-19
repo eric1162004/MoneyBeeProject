@@ -161,8 +161,8 @@ private struct EarningListSection: View {
             }
         }
         .refreshable {
-            // refresh earnings
-            spendingVM.searchTerm = ""
+            // refresh spendings
+            spendingVM.refresh()
         }
         .listStyle(.plain)
         .listRowSeparator(.hidden)

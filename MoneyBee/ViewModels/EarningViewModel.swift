@@ -137,6 +137,14 @@ class EarningViewModel: ObservableObject {
         monthTotal = 0
     }
     
+    // refreshing earning list
+    func refresh() {
+        // order matters
+        selectedMonthYear = nil
+        monthTotal = 0
+        searchTerm = ""
+    }
+    
     // ask repo to delete an earning
     func remove(_ earning: Earning){
         earningRepo.remove(earning)
