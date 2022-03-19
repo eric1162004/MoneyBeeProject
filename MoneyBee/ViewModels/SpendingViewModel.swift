@@ -179,6 +179,7 @@ class SpendingViewModel: ObservableObject {
         // order matters
         selectedMonthYear = nil
         monthTotal = 0
+        spendings = spendingsCopy
         searchTerm = ""
     }
     

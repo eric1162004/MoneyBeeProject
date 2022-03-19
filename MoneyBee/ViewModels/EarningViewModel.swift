@@ -142,6 +142,7 @@ class EarningViewModel: ObservableObject {
         // order matters
         selectedMonthYear = nil
         monthTotal = 0
+        earnings = earningsCopy
         searchTerm = ""
     }
     
