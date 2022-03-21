@@ -60,9 +60,11 @@ class FirestoreRepository<itemType: Codable & Identifiable & Reposable>: Reposit
     }
     
     private func loadData(){
+        // query item that belongs to the current user id
+        // order the item by createdTime in descending order
         collectionRef
             .whereField("userId", isEqualTo: self.userId)
-            .order(by:"createdTime")
+            .order(by:"createdTime", descending: true)
             .addSnapshotListener { querySnapshot, error in
                 
             if let querySnapshot = querySnapshot {
