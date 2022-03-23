@@ -115,6 +115,7 @@ private struct EarningListSection: View {
             AppTextField(text:$earningVM.searchTerm, placeholder: "search", trailingIcon: "magnifyingglass")
                 .listRowBackground(Color.backgroundColor)
                 .shadow(color: .gray, radius: 5, x: 0, y: 2)
+                .listRowSeparator(.hidden)
             
             
             // display all earnings
@@ -133,8 +134,9 @@ private struct EarningListSection: View {
             // refresh earnings
             earningVM.refresh()
         }
-        .listStyle(.plain)
         .listRowSeparator(.hidden)
+        .listStyle(.plain)
+        
     }
 }
 

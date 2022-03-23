@@ -34,10 +34,7 @@ struct WishListScreen: View {
         .background(Color.backgroundColor)
         .ignoresSafeArea()
         .navigationBarHidden(true)
-        .onTapGesture {
-            hideKeyboard()
-        }
-        
+                
     }
 }
 
@@ -167,6 +164,10 @@ private struct WishListPopup: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .transition(.slide)
+            .onTapGesture {
+                hideKeyboard()
+            }
+
         }
     }
 }

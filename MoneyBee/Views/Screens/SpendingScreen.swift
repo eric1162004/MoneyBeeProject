@@ -147,6 +147,7 @@ private struct EarningListSection: View {
             AppTextField(text:$spendingVM.searchTerm, placeholder: "search", trailingIcon: "magnifyingglass")
                 .listRowBackground(Color.backgroundColor)
                 .shadow(color: .gray, radius: 5, x: 0, y: 2)
+                .listRowSeparator(.hidden)
             
             // an earning card
             ForEach(Array(spendingVM.spendings.enumerated()), id: \.element.id){ index, spending in

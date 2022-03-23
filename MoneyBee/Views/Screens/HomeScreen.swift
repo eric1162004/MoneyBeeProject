@@ -39,7 +39,7 @@ struct HomeScreen: View {
                 VStack(){
                     // Topbar
                     TopBar(title: "Money Bee", leadingIcon: "line.3.horizontal", topbarIcon: "topbarIcon", leadingIconHandler: {
-                            withAnimation(.easeOut(duration: 0.5)) {
+                            withAnimation(.easeOut(duration: 0.3)) {
                                 showSideMenu.toggle()
                             }
                     })
