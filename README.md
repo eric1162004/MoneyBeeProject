@@ -13,7 +13,7 @@ MoneyBee mainly focuses on piqueing the kids interest in personal financial mana
 - Set saving goals in wish list
 - Record earnings(Date, Amount) and view monthly total
 - Record spendings(Date, Amount) and view monthly total
-- View monthly savings/spendings in a Pie Chart
+- View monthly spendings in a Pie Chart
   
 # 💻 Requirements
 - ios 13+, macOs 10.15
