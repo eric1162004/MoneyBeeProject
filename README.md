@@ -1,12 +1,12 @@
 # CSTP 2305 Money Bee Project
 
 # Team Members
-- Pokai Huang
+- PoKai Huang
 - Eric Cheung
 - Jaisika Singh
 
 # 👀 What is MoneyBee?
-MoneyBee mainly focuses on piqueing the kids interest in personal financial management and foster their money-saving habits. Our app will help kids to keep track of their allowance from parents or to save money for certain goals with the consent of their parents. Our app will also give rewards(such as star levels) to the kids who are able to reach their money saving goals and keep up with their money habit.
+MoneyBee mainly focuses on piqueing the kids interest in personal financial management and `foster their money-saving habits`. Our app will help kids to keep track of their allowance from parents or to save money for certain goals with the consent of their parents. Our app will also give rewards(such as star levels) to the kids who are able to reach their money saving goals and keep up with their money habit.
 
 # 🚀 Features 
 - Adding money to the honey jar
@@ -23,5 +23,5 @@ MoneyBee mainly focuses on piqueing the kids interest in personal financial mana
 # 👷 How to run 
 
 - Clone the github repository or download the project  
-- Run the <span style="color:yellow">*MoneyBee.xcodeproj*</span>
+- Run the *`MoneyBee.xcodeproj`*
 
